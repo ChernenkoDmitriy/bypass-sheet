@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { IColors } from '../../../../../src/UIProvider/colors/IColorsController';
+import { IColors } from '../../../../src/UIProvider/colors/IColorsController';
 
 export const getStyle = (colors: IColors) => {
     const styles = StyleSheet.create({
@@ -22,7 +22,7 @@ export const getStyle = (colors: IColors) => {
         title: {
             fontSize: 14,
             lineHeight: 18,
-            color: colors.regularText,
+            color: colors.titleText,
             fontFamily: 'Roboto-Light'
         },
     });

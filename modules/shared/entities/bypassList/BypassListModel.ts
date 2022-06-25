@@ -1,6 +1,7 @@
 import { IStorage, storage } from "../../../../libs/storage";
 import { MobXRepository } from "../../repository/MobXRepository";
 import { IBypassCompany } from "./IBypassCompany";
+import { IBypassSheet } from "./IBypassSheet";
 
 export interface IBypassListModel {
     bypassList: IBypassCompany[];
@@ -34,11 +35,25 @@ class BypassListModel implements IBypassListModel {
 
     set bypassList(data: IBypassCompany[]) {
         this.bypassListRepository.save(data);
+        this.persistBypassList(this.bypassList);
     }
 
     addCompany = (item: IBypassCompany) => {
-        this.bypassListRepository.save([...this.bypassList, item]);
-        this.persistBypassList(this.bypassList);
+        this.bypassList = [...this.bypassList, item];
+    }
+
+    updateCompany = (item: IBypassCompany) => {
+        this.bypassList = this.bypassList.map(company => company.id === item.id ? item : company);
+    }
+
+    addBypassList = (companyId: number, item: IBypassSheet) => {
+        const bypassList = this.bypassList.map(bypassCompany => {
+            if (bypassCompany.id === companyId) {
+                return { ...bypassCompany, items: [...bypassCompany.items, item] }
+            }
+            return bypassCompany;
+        })
+        this.bypassList = bypassList;
     }
 
 }

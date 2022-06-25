@@ -8,6 +8,7 @@ export const getStyle = (colors: IColors) => {
             height: 40,
             alignItems: 'center',
             alignSelf: 'flex-end',
+            marginTop:5,
         },
         title: {
             fontSize: 16,

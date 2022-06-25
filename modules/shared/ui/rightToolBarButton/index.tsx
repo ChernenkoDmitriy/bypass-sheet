@@ -1,6 +1,6 @@
 import React, { FC, useMemo } from 'react';
 import { Text, TouchableOpacity } from 'react-native';
-import { useUiContext } from '../../../../../src/UIProvider';
+import { useUiContext } from '../../../../src/UIProvider';
 import { getStyle } from './styles';
 
 interface IProps {

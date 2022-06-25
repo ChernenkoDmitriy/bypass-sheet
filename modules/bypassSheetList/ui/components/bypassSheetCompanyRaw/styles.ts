@@ -9,13 +9,27 @@ export const getStyle = (colors: IColors) => {
             borderRadius: 10,
             marginTop: 10,
             backgroundColor: colors.card,
+            elevation: 2,
+        },
+        topContainer: {
+            flexDirection: 'row'
+        },
+        titleWrapper: {
+            flex: 1,
+            marginRight: 10,
         },
         title: {
             fontSize: 16,
             lineHeight: 20,
             color: colors.titleText,
-            fontFamily: 'Roboto-Bold'
+            fontFamily: 'Roboto-Regular'
         },
+        menuButton: {
+            height: 24,
+            width: 24,
+            justifyContent: 'center',
+            alignItems: 'center'
+        }
     });
     return styles;
 };

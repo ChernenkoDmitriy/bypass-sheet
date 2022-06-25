@@ -10,6 +10,10 @@ export const translations = {
     appName: 'BypassSheet'
   },
   en: {
+    update: 'Update',
+    addSubtask: 'Add subtask',
+    delete: 'Delete',
+    edit: 'Edit',
     addBypassSheet: 'Add bypass sheet',
     enterGroupName: 'Enter group name',
     createGroup: 'Create group',

@@ -6,7 +6,6 @@ export const getStyle = (colors: IColors) => {
         container: {
             flex: 1,
             minHeight: 50,
-            marginVertical: 3,
             borderBottomColor: colors.shadow,
             borderBottomWidth: 1,
         },

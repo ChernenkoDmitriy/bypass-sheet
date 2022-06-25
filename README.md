@@ -42,3 +42,6 @@ link https://github.com/facebook/react-native/issues/30922
 # Other #
 
  - find config - enter in terminal ```/sbin/ifconfig```
+
+ keytool -keystore debug.keystore -list -v
+

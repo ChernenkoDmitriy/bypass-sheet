@@ -19,7 +19,7 @@ export const allColors = {
         accentColorLight1: '#C4AFF0',
         accentColorDark1: '#3F2150',
         accentColorLight: '#C9D3EA',
-        accentColorDark: '#384F6A',
+        accentColorDark: '#6D5BE0',
     },
     dark: {
         accentText: '#4C6EBB',

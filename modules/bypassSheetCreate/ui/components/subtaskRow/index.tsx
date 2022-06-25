@@ -7,13 +7,14 @@ import { CustomInput } from '../../../../shared/ui/customInput';
 import { getStyle } from './styles';
 
 interface Props {
+    sortNumber: number;
     id: number;
     value: string;
     onChangeText: (text: string, id: number) => void;
     onDeleteItem: (id: number) => void;
 }
 
-export const BypassSheetCreatingRow: FC<Props> = ({ id, value, onChangeText, onDeleteItem }) => {
+export const SubtaskRow: FC<Props> = ({ id, value, sortNumber, onChangeText, onDeleteItem }) => {
     const { colors, t } = useUiContext();
     const styles = useMemo(() => getStyle(colors), [colors]);
 
@@ -29,7 +30,7 @@ export const BypassSheetCreatingRow: FC<Props> = ({ id, value, onChangeText, onD
         <View style={styles.container}>
             <View style={styles.topContainer}>
                 <View style={styles.inputWrapper}>
-                    <CustomInput autoFocus value={value} onChangeText={onHandleChangeText} placeholder={t('taskDescribe')} containerStyle={styles.input} />
+                    <CustomInput value={value} onChangeText={onHandleChangeText} placeholder={t('taskDescribe')} containerStyle={styles.input} />
                 </View>
                 <TouchableOpacity style={styles.sideContainer} onPress={onHandleDelete}>
                     <DeleteIcon />
@@ -40,5 +41,6 @@ export const BypassSheetCreatingRow: FC<Props> = ({ id, value, onChangeText, onD
                 <Text style={styles.addSubtaskText}>{t('addSubtask')}</Text>
             </TouchableOpacity>
         </View>
+
     )
 }
