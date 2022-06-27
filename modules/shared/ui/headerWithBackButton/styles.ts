@@ -1,16 +1,15 @@
 import { StyleSheet } from 'react-native';
 import { IColors } from '../../../../src/UIProvider/colors/IColorsController';
-import { Utils } from '../../../../src/utils/Utils';
+import { getInitialWindowMetrics, isIOS } from '../../../../src/utils/Utils';
 
 export const getStyle = (colors: IColors) => {
     const styles = StyleSheet.create({
         container: {
-            paddingTop: Utils.isIOS ? Utils.getInitialWindowMetrics.insets.top : 0,
+            paddingTop: isIOS ? getInitialWindowMetrics.insets.top : 0,
             width: '100%',
-            height: 60 + (Utils.isIOS ? Utils.getInitialWindowMetrics.insets.top : 0),
+            height: 60 + (isIOS ? getInitialWindowMetrics.insets.top : 0),
             flexDirection: 'row',
             alignItems: 'center',
-            // borderBottomWidth: 1,
             borderBottomColor: colors.shadow,
             backgroundColor: colors.card,
             paddingRight: 20,
@@ -21,6 +20,7 @@ export const getStyle = (colors: IColors) => {
             },
             shadowOpacity: 0.1,
             elevation: 5,
+            zIndex: 2,
         },
         buttonBack: {
             height: 50,

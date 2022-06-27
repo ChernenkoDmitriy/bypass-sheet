@@ -5,11 +5,13 @@ import { IBypassSheet } from "./IBypassSheet";
 
 export interface IBypassListModel {
     bypassList: IBypassCompany[];
+    chosenCompany: IBypassCompany | null;
     addCompany: (item: IBypassCompany) => void;
 }
 
 class BypassListModel implements IBypassListModel {
     private bypassListRepository = new MobXRepository<IBypassCompany[]>([]);
+    private chosenCompanyRepository = new MobXRepository<IBypassCompany | null>();
 
     constructor(private storage: IStorage) {
         this.load();
@@ -54,6 +56,31 @@ class BypassListModel implements IBypassListModel {
             return bypassCompany;
         })
         this.bypassList = bypassList;
+    }
+
+    deleteBypassList = (companyId: number, item: IBypassSheet) => {
+        const bypassList = this.bypassList.map(bypassCompany => {
+            if (bypassCompany.id === companyId) {
+                return { ...bypassCompany, items: [...bypassCompany.items, item] }
+            }
+            return bypassCompany;
+        })
+        this.bypassList = bypassList;
+    }
+
+    get chosenCompany() {
+        return this.chosenCompanyRepository.data;
+    }
+
+    set chosenCompany(data: IBypassCompany | null) {
+        this.chosenCompanyRepository.save(data);
+    }
+
+    deleteCompanyItem = (id: number) => {
+        if (this.chosenCompany) {
+            const items = this.chosenCompany.items.filter(item => item.id != id);
+            this.chosenCompany = { ...this.chosenCompany, items };
+        }
     }
 
 }

@@ -2,10 +2,10 @@ import React, { FC } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { observer } from 'mobx-react';
 import { LaunchAppView } from '../../../modules/launchApp/ui';
-import { BypassSheetListView } from '../../../modules/bypassSheetList/ui';
+import { BypassSheetListView } from '../../../modules/companyList/ui';
 import { BypassSheetCreateView } from '../../../modules/bypassSheetCreate/ui';
-import { BypassSheetView } from '../../../modules/bypassSheet/ui';
-import { BypassCompanyView } from '../../../modules/bypassCompany/ui';
+import { BypassSheetView } from '../../../modules/reportList/ui';
+import { BypassCompanyView } from '../../../modules/company/ui';
 
 const Stack = createStackNavigator();
 

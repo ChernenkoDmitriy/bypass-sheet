@@ -21,9 +21,9 @@ class Localization implements ILocalization {
     }
 
     private load = () => {
-        this.storage.get('LANGUAGE')
-            .then(data => { data && this.localizationStore.save(data); })
-            .catch(error => console.warn('Localization -> load: ', error));
+        // this.storage.get('LANGUAGE')
+        //     .then(data => { data && this.localizationStore.save(data); })
+        //     .catch(error => console.warn('Localization -> load: ', error));
     }
 
     get locales() {
@@ -31,7 +31,7 @@ class Localization implements ILocalization {
     }
 
     get locale() {
-        return this.localizationStore.data || 'en';
+        return this.localizationStore.data || 'ru';
     }
 
     setTranslation = (translations: any) => {
@@ -52,5 +52,5 @@ class Localization implements ILocalization {
 
 }
 
-const localizationStore = new MobXRepository<string>();
+const localizationStore = new MobXRepository<string>('ru');
 export const localization = new Localization(localizationStore, storage);

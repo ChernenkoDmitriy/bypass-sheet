@@ -1,7 +1,7 @@
 
 import React, { FC, useCallback, useMemo } from 'react';
 import { View, TouchableOpacity, Text } from 'react-native';
-import { DeleteIcon } from '../../../../../assets/icons/DeleteIcon';
+import { DeleteCircleIcon } from '../../../../../assets/icons/DeleteCircleIcon';
 import { useUiContext } from '../../../../../src/UIProvider';
 import { CustomInput } from '../../../../shared/ui/customInput';
 import { getStyle } from './styles';
@@ -32,13 +32,13 @@ export const BypassSheetCreatingRow: FC<Props> = ({ id, value, onChangeText, onD
                     <CustomInput autoFocus value={value} onChangeText={onHandleChangeText} placeholder={t('taskDescribe')} containerStyle={styles.input} />
                 </View>
                 <TouchableOpacity style={styles.sideContainer} onPress={onHandleDelete}>
-                    <DeleteIcon />
+                    <DeleteCircleIcon />
                 </TouchableOpacity>
             </View>
 
-            <TouchableOpacity style={styles.buttonText} onPress={() => { }}>
+            {/* <TouchableOpacity style={styles.buttonText} onPress={() => { }}>
                 <Text style={styles.addSubtaskText}>{t('addSubtask')}</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
         </View>
     )
 }

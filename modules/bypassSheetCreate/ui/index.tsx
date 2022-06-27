@@ -9,8 +9,8 @@ import { IBypassItem } from '../../shared/entities/bypassList/IBypassItem';
 import { useCreateBypassSheet } from '../presenters/useCreateBypassSheet';
 import { TitleBypassSheet } from './components/titleBypassSheet';
 import { FlatList } from 'react-native-gesture-handler';
-import { CircleAbsoluteButton } from '../../shared/ui/circleAbsoluteButton';
 import { RightToolBarButton } from '../../shared/ui/rightToolBarButton';
+import { BypassTopList } from '../../companyList/ui/components/bypassTopList';
 
 export const BypassSheetCreateView: FC = observer(() => {
     const { colors, t } = useUiContext();
@@ -28,6 +28,7 @@ export const BypassSheetCreateView: FC = observer(() => {
             <HeaderWithBackButton title={t('createBypassSheet')} >
                 <RightToolBarButton title={t(false ? 'update' : 'create')} onPress={onCreate} disabled={!title?.trim()} />
             </HeaderWithBackButton>
+            <BypassTopList title={t('objectOfAssessment')} buttonText={t('addItem')} onPress={onAddBypassItem} />
             <FlatList
                 ref={ref => scroll.current = ref}
                 ListHeaderComponent={<TitleBypassSheet value={title} onChangeText={setTitle} />}
@@ -37,7 +38,6 @@ export const BypassSheetCreateView: FC = observer(() => {
                 data={bypassSheetItems}
                 renderItem={renderItem}
             />
-            <CircleAbsoluteButton onPress={onAddBypassItem} />
         </ScreenContainer>
     )
 })

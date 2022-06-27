@@ -6,7 +6,7 @@ export const getStyle = (colors: IColors) => {
         container: {
             backgroundColor: colors.card,
             borderRadius: 4,
-            marginHorizontal: 10,
+            marginHorizontal: 16,
             marginVertical: 10,
         },
         topContainer: {

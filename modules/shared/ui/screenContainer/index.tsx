@@ -28,7 +28,7 @@ export const ScreenContainer: FC<IProps> = ({ children, scrollEnabled = false, k
                 >
                     {children}
                 </ScrollView>
-                : <View style={styles.container} onStartShouldSetResponder={keyboardShouldPersistTaps ? Keyboard.dismiss : undefined as any}>
+                : <View style={styles.container} onStartShouldSetResponder={keyboardShouldPersistTaps ? Keyboard.dismiss : undefined as any}   >
                     {children}
                 </View>}
         </SafeAreaView>

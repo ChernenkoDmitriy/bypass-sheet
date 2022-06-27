@@ -16,7 +16,7 @@ export const TitleBypassSheet: FC<IProps> = ({ value, onChangeText }) => {
 
     return (
         <View style={styles.container}>
-            <CustomInput value={value} onChangeText={onChangeText} placeholder={t('title')} containerStyle={styles.input} />
+            <CustomInput autoFocus value={value} onChangeText={onChangeText} placeholder={t('title')} containerStyle={styles.input} />
         </View>
     )
 }

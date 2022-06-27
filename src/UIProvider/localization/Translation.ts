@@ -1,5 +1,16 @@
 export const translations = {
   ru: {
+    groupName: 'Навание объекта',
+    enterGroupName: 'Введите название...',
+    continue: 'Продолжить',
+    photo: 'Фото',
+    objectOfAssessment: 'Объект оценивания',
+    bypassList: 'Обходные листы',
+    enterAddress: 'Введите адрес...',
+    address: 'Адрес объекта',
+    commonInformation: 'Общая информация',
+    newObject: 'Новый объект',
+    objectsOfAssessment: 'Объекты оценивания',
     comment: 'Комментарий',
     taskDescribe: 'Введите описание задачи',
     createBypassSheet: 'Обходной лист',
@@ -10,6 +21,8 @@ export const translations = {
     appName: 'BypassSheet'
   },
   en: {
+    newObject: 'New object',
+    objectsOfAssessment: 'Objects of assessment',
     update: 'Update',
     addSubtask: 'Add subtask',
     delete: 'Delete',

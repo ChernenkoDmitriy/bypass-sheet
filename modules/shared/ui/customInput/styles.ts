@@ -14,7 +14,7 @@ export const getStyle = (colors: IColors) => {
             padding: 0,
             marginHorizontal: 10,
             color: colors.titleText,
-            fontSize: 18,
+            fontSize: 14,
             fontFamily: 'Roboto-Regular',
         },
     });

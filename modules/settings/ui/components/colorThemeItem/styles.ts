@@ -1,8 +1,8 @@
 import { StyleSheet } from 'react-native';
-import { IColors } from '../../../../../src/colorTheme';
-import { Utils } from '../../../../../src/utils/Utils';
+import { IColors } from '../../../../../src/UIProvider/colors/IColorsController';
+import { size } from '../../../../../src/utils/Utils';
 
-const width = Utils.size.width;
+const width = size.width;
 const ITEM_WIDTH = (width / 2) < 175 ? '40%' : 170;
 
 export const getStyle = (colors: IColors, isChosen: boolean) => {

@@ -3,58 +3,50 @@ import DeviceInfo from 'react-native-device-info';
 import { initialWindowMetrics, Metrics } from 'react-native-safe-area-context';
 
 export class Utils {
-    private static instance: Utils;
+    private idealWidth: number = 375;
+    private idealHeight: number = 812;
+    private initialWindow!: Metrics;
+    private _isIOS: boolean = Platform.OS === 'ios';
+    private _size: { width: number, height: number } = Dimensions.get('window');
+    private _ratio: number = PixelRatio.getFontScale();
 
-    private static idealWidth: number = 375;
-    private static idealHeight: number = 812;
-    private static initialWindow: Metrics;
-    private static _isIOS: boolean = Platform.OS === 'ios';
-    private static _size: { width: number, height: number } = Dimensions.get('window');
-    private static _ratio: number = PixelRatio.getFontScale();
 
-    constructor() {
-        if (Utils.instance) {
-            return Utils.instance;
-        }
-        Utils.instance = this;
+    get isIOS() {
+        return this._isIOS;
     }
 
-    static get isIOS() {
-        return Utils._isIOS;
+    get size() {
+        return { ...this._size };
     }
 
-    static get size() {
-        return { ...Utils._size };
-    }
-
-    static get getFrameHeight() {
-        const initialWindow = Utils.getInitialWindowMetrics;
+    get getFrameHeight() {
+        const initialWindow = this.getInitialWindowMetrics;
         return initialWindow.frame.height - initialWindow.insets.bottom - initialWindow.insets.top;
     }
 
-    static getVersion = () => {
+    getVersion = () => {
         const version = DeviceInfo.getVersion();
         return version;
     }
 
-    static getBuild = () => {
+    getBuild = () => {
         const build = DeviceInfo.getBuildNumber();
         return build;
     }
 
-    static get getInitialWindowMetrics() {
-        if (Utils.initialWindow) {
-            return Utils.initialWindow;
+    get getInitialWindowMetrics() {
+        if (this.initialWindow) {
+            return this.initialWindow;
         } else if (initialWindowMetrics) {
-            Utils.initialWindow = initialWindowMetrics;
-            return Utils.initialWindow;
+            this.initialWindow = initialWindowMetrics;
+            return this.initialWindow;
         } else {
             const { width, height } = Dimensions.get('window');
             return { frame: { height, width, x: 0, y: 0 }, insets: { bottom: 0, left: 0, right: 0, top: 0 } };
         }
     }
 
-    static declOfNum = (number: number, translates: string[]): string => {
+    declOfNum = (number: number, translates: [string, string, string]): string => {
         const newNumber = number % 10;
         if (number > 10 && number < 20) {
             return translates[2];
@@ -70,24 +62,36 @@ export class Utils {
 
     /* Scale */
 
-    static scaleHorizontal = (inWidth: number = 1): number => {
-        const delimiter: number = Utils.idealWidth / inWidth;
-        return Utils._size.width / delimiter;
+    scaleHorizontal = (inWidth: number = 1): number => {
+        const delimiter: number = this.idealWidth / inWidth;
+        return this._size.width / delimiter;
     };
 
-    static scaleVertical = (inHeight: number = 1) => {
-        const delimiter: number = Utils.idealHeight / inHeight;
-        return Utils._size.height / delimiter;
+    scaleVertical = (inHeight: number = 1) => {
+        const delimiter: number = this.idealHeight / inHeight;
+        return this._size.height / delimiter;
     };
 
-    static scaleFontSize = (fontSize: number = 1): number => {
-        const divisionRatio: number = Utils.idealWidth / (fontSize / Utils._ratio);
-        return Utils._size.width / divisionRatio;
+    scaleFontSize = (fontSize: number = 1): number => {
+        const divisionRatio: number = this.idealWidth / (fontSize / this._ratio);
+        return this._size.width / divisionRatio;
     };
 
-    static scaleLineHeight = (lineHeight: number = 1): number => {
-        const divisionRatio: number = Utils.idealHeight / (lineHeight / Utils._ratio);
-        return Utils._size.height / divisionRatio;
+    scaleLineHeight = (lineHeight: number = 1): number => {
+        const divisionRatio: number = this.idealHeight / (lineHeight / this._ratio);
+        return this._size.height / divisionRatio;
     };
 
 }
+
+const utils = new Utils();
+
+export const {
+    scaleHorizontal,
+    scaleVertical,
+    scaleFontSize,
+    scaleLineHeight,
+    size,
+    getInitialWindowMetrics,
+    isIOS,
+ } = utils;
