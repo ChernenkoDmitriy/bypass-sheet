@@ -21,15 +21,15 @@ export const getStyle = (colors: IColors) => {
         title: {
             fontSize: 14,
             lineHeight: 18,
-            color: colors.titleText,
-            fontFamily: 'Roboto-Regular'
+            color: colors.regularText,
+            fontFamily: 'Roboto-Bold'
         },
         buttonText: {
             marginLeft: 8,
             fontSize: 14,
             lineHeight: 18,
-            color: colors.accentColorLight,
-            fontFamily: 'Roboto-Regular'
+            color: colors.regularText,
+            fontFamily: 'Roboto-Bold'
         }
     });
     return styles;

@@ -6,14 +6,14 @@ import { HeaderWithBackButton } from '../../shared/ui/headerWithBackButton';
 import { ScreenContainer } from '../../shared/ui/screenContainer';
 import { useBypassSheetList } from '../presenter/useBypassSheetList';
 import { BypassSheetsList } from './components/bypassSheetsList';
-import { BypassTopList } from './components/bypassTopList';
+import { BypassItemCreator } from './components/bypassItemCreator';
 import { ContinueReport } from './components/continueReport';
 import { getStyle } from './styles';
 
 export const BypassSheetListView: FC = observer(() => {
     const { t, colors } = useUiContext();
     const styles = useMemo(() => getStyle(colors), [colors]);
-    const { onGoCreateBypassCompany, bypassList, onChoseItem } = useBypassSheetList();
+    const { onGoCreateBypassList, bypassList, onChoseItem, onEditItem } = useBypassSheetList();
 
     return (
         <ScreenContainer>
@@ -21,8 +21,8 @@ export const BypassSheetListView: FC = observer(() => {
                 <Image style={styles.logo} source={require('../../../assets/img/logo.png')} />
             </HeaderWithBackButton>
             <ContinueReport />
-            <BypassTopList title={t('objectsOfAssessment')} buttonText={t('newObject')} onPress={onGoCreateBypassCompany} />
-            <BypassSheetsList bypassList={bypassList} onChoseRoom={onChoseItem} />
+            <BypassItemCreator title={t('objectsOfAssessment')} buttonText={t('newObject')} onPress={onGoCreateBypassList} />
+            <BypassSheetsList bypassList={bypassList} onChoseRoom={onChoseItem} onEditItem={onEditItem}/>
         </ScreenContainer>
     )
 })

@@ -1,5 +1,10 @@
 export const translations = {
   ru: {
+    editObject: 'Редактировать  объект',
+    criterialObject: 'Критерии оценивания',
+    deleteObject: 'Удалить обьект',
+    update: 'Обновить',
+    criterial: 'Критерии оценивания',
     groupName: 'Навание объекта',
     enterGroupName: 'Введите название...',
     continue: 'Продолжить',
@@ -17,7 +22,7 @@ export const translations = {
     addItem: 'Добавить поле',
     create: 'Создать',
     title: 'Заголовок',
-    emptyBypassSheetList: 'У вас нет обходных листов. Вы можете их создать',
+    emptyBypassSheetList: 'Чтобы добавить объект оценивания выберите “Новый объект” в верхнем меню',
     appName: 'BypassSheet'
   },
   en: {

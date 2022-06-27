@@ -7,15 +7,17 @@ import { getStyle } from './styles';
 import { BypassSheetCreatingRow } from './components/bypassSheetCreatingRow';
 import { IBypassItem } from '../../shared/entities/bypassList/IBypassItem';
 import { useCreateBypassSheet } from '../presenters/useCreateBypassSheet';
-import { TitleBypassSheet } from './components/titleBypassSheet';
 import { FlatList } from 'react-native-gesture-handler';
-import { RightToolBarButton } from '../../shared/ui/rightToolBarButton';
-import { BypassTopList } from '../../companyList/ui/components/bypassTopList';
+import { BypassItemCreator } from '../../companyList/ui/components/bypassItemCreator';
+import { BypassListTop } from './components/bypassListTop';
+import { MainButton } from '../../shared/ui/mainButton';
+import { BypassTitle } from './components/bypassTitle';
 
 export const BypassSheetCreateView: FC = observer(() => {
     const { colors, t } = useUiContext();
     const styles = useMemo(() => getStyle(colors), [colors]);
-    const { scroll, bypassSheetItems, title, setTitle, onAddBypassItem, onDeleteBypassItem, onChangeTitle, onCreate } = useCreateBypassSheet();
+    const { scroll, bypassSheetItems, title, address, bypassList, setAddress, setTitle, onDelete,
+        onAddBypassItem, onDeleteBypassItem, onChangeTitle, onCreate } = useCreateBypassSheet();
 
     const keyExtractor = useCallback((item: IBypassItem) => `${item.id}`, []);
 
@@ -25,19 +27,19 @@ export const BypassSheetCreateView: FC = observer(() => {
 
     return (
         <ScreenContainer>
-            <HeaderWithBackButton title={t('createBypassSheet')} >
-                <RightToolBarButton title={t(false ? 'update' : 'create')} onPress={onCreate} disabled={!title?.trim()} />
-            </HeaderWithBackButton>
-            <BypassTopList title={t('objectOfAssessment')} buttonText={t('addItem')} onPress={onAddBypassItem} />
+            <HeaderWithBackButton title={t(bypassList ? 'editObject' : 'newObject')} />
+            <BypassTitle isEditable={!!bypassList} onPress={onDelete} />
+            <BypassListTop {...{ title, setTitle, address, setAddress }} />
+            <BypassItemCreator title={t('criterialObject')} buttonText={t('addItem')} onPress={onAddBypassItem} />
             <FlatList
                 ref={ref => scroll.current = ref}
-                ListHeaderComponent={<TitleBypassSheet value={title} onChangeText={setTitle} />}
                 style={styles.scroll}
                 contentContainerStyle={styles.contentContainerStyle}
                 keyExtractor={keyExtractor}
                 data={bypassSheetItems}
                 renderItem={renderItem}
             />
+            <MainButton title={t(bypassList ? 'update' : 'create')} onPress={onCreate} containerStyle={styles.button} />
         </ScreenContainer>
     )
 })

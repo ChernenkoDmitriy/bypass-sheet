@@ -14,7 +14,8 @@ export const getStyle = (colors: IColors) => {
             paddingBottom: 70,
         },
         button: {
-            marginTop: 10,
+            backgroundColor: colors.accentColorLight,
+            marginVertical: 10,
             width: '90%',
             alignSelf: 'center',
         }

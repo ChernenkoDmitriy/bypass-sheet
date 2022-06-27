@@ -33,9 +33,11 @@ export const getStyle = (colors: IColors) => {
         },
         titleContainer: {
             flex: 1,
-            marginLeft: 10,
+            // marginLeft: 10,
             justifyContent: 'center',
-            alignItems: 'flex-start',
+            alignItems: 'center',
+            marginRight: 50,
+            // alignItems: 'flex-start',
         },
         titleContainerButton: {
             justifyContent: 'center',

@@ -10,7 +10,7 @@ interface IProps {
     onPress: () => void;
 }
 
-export const BypassTopList: FC<IProps> = memo(({ onPress, title, buttonText }) => {
+export const BypassItemCreator: FC<IProps> = memo(({ onPress, title, buttonText }) => {
     const { colors } = useUiContext();
     const styles = useMemo(() => getStyle(colors), [colors]);
 

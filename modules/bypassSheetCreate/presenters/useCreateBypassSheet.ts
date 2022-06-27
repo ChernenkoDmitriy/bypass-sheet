@@ -13,9 +13,10 @@ UIManager.setLayoutAnimationEnabledExperimental &&
 
 export const useCreateBypassSheet = () => {
     const navigation = useNavigation<StackNavigationProp<any>>();
-    const companyId = useRoute<any>().params?.companyId || 0;
-    const [title, setTitle] = useState('');
-    const [bypassSheetItems, setBypassSheetItems] = useState<IBypassItem[]>([]);
+    const bypassList: IBypassSheet | undefined = useRoute<any>().params?.item;
+    const [title, setTitle] = useState(bypassList?.title || '');
+    const [address, setAddress] = useState(bypassList?.address || '');
+    const [bypassSheetItems, setBypassSheetItems] = useState<IBypassItem[]>(bypassList?.items || []);
     const scroll = useRef<FlatList<IBypassItem> | null>();
 
     const onAddBypassItem = () => {
@@ -40,10 +41,25 @@ export const useCreateBypassSheet = () => {
     }
 
     const onCreate = () => {
-        const bypassSheet: IBypassSheet = { title: title, id: Date.now(), items: bypassSheetItems, }
-        bypassListModel.addBypassList(companyId, bypassSheet);
+        if (bypassList) {
+            const bypassSheet: IBypassSheet = { ...bypassList, title, address, items: bypassSheetItems, }
+            bypassListModel.updateBypassSheet(bypassSheet);
+        } else {
+            const bypassSheet: IBypassSheet = { title, address, id: Date.now(), items: bypassSheetItems, }
+            bypassListModel.addBypassList(bypassSheet);
+        }
         navigation.goBack();
     }
 
-    return { scroll, bypassSheetItems, title, setTitle, onAddBypassItem, onDeleteBypassItem, onChangeTitle, onCreate };
+    const onDelete = () => {
+        if (bypassList) {
+            bypassListModel.deleteBypassList(bypassList);
+            navigation.goBack();
+        }
+    }
+
+    return {
+        bypassList, scroll, bypassSheetItems, title, address, setAddress, setTitle,
+        onAddBypassItem, onDeleteBypassItem, onChangeTitle, onCreate, onDelete
+    };
 }

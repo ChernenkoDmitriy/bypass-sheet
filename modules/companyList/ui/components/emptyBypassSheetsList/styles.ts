@@ -7,14 +7,14 @@ export const getStyle = (colors: IColors) => {
             flexGrow: 1,
             justifyContent: 'center',
             alignSelf: 'center',
-            paddingHorizontal: 40,
+            paddingHorizontal: 30,
         },
         title: {
             textAlign: 'center',
             fontSize: 16,
             lineHeight: 20,
             color: colors.titleText,
-            fontFamily: 'Roboto-Light',
+            fontFamily: 'Roboto-Regular',
             marginHorizontal: 10,
         },
     });
