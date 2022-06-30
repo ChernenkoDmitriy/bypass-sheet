@@ -6,8 +6,8 @@ import { getStyle } from './styles';
 
 interface IProps {
     title: string;
-    buttonText: string;
-    onPress: () => void;
+    buttonText?: string;
+    onPress?: () => void;
 }
 
 export const BypassItemCreator: FC<IProps> = memo(({ onPress, title, buttonText }) => {
@@ -18,9 +18,9 @@ export const BypassItemCreator: FC<IProps> = memo(({ onPress, title, buttonText 
         <View style={styles.sideWrapper}>
             <Text style={styles.title}>{title}</Text>
         </View>
-        <TouchableOpacity style={styles.sideWrapperRight} onPress={onPress}>
+        {!!onPress && <TouchableOpacity style={styles.sideWrapperRight} onPress={onPress}>
             <AddIcon />
             <Text style={styles.buttonText}>{buttonText}</Text>
-        </TouchableOpacity>
+        </TouchableOpacity>}
     </View>
 })

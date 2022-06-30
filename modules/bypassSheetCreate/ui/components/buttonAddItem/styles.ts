@@ -1,27 +1,25 @@
 import { StyleSheet } from 'react-native';
-import { IColors } from '../../../../src/UIProvider/colors/IColorsController';
+import { IColors } from '../../../../../src/UIProvider/colors/IColorsController';
 
 export const getStyle = (colors: IColors) => {
     const styles = StyleSheet.create({
         container: {
-            backgroundColor: colors.accentColorDark,
+            flexDirection: 'row',
+            alignItems: 'center',
             borderRadius: 4,
-            elevation: 4,
             minHeight: 48,
             justifyContent: 'center',
+            width: '80%',
+            alignSelf: 'center',
         },
         text: {
             fontSize: 18,
             lineHeight: 22,
-            color: colors.buttonText,
+            color: colors.regularText,
             fontWeight: 'bold',
             textAlign: 'center',
+            marginRight: 20,
         },
-        absoluteSheet: {
-            ...StyleSheet.absoluteFillObject,
-            justifyContent: 'center',
-            alignItems: 'center',
-        }
     });
     return styles;
 }

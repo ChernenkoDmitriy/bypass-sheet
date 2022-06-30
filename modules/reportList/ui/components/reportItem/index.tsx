@@ -1,6 +1,6 @@
 
 import React, { FC, useCallback, useMemo, useState } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Alert } from 'react-native';
 import { ICropedImage } from '../../../../../libs/imagePicker/IImagePicker/ICropedImage';
 import { imagePicker } from '../../../../../libs/imagePicker/RNImageCropPicker';
 import { useUiContext } from '../../../../../src/UIProvider';
@@ -34,11 +34,25 @@ export const ReportItem: FC<IProps> = ({ item, onChangeComment, onChangeRate, on
         setIsCommentVisible(prev => !prev);
     }, []);
 
-    const onHandleAddPhoto = useCallback(() => {
-        imagePicker.onLoadPhoto()
-            .then(data => data && onAddPhoto(data, id));
-    }, []);
+    const onHandleAddPhoto = () => {
+        Alert.alert('Добавить фото', 'Сделайте новое фото или  загрузите из галерии', [{
+            text: 'Загрузить фото',
+            onPress: onOpenPicker
+        }, {
+            text: 'Сделать фото',
+            onPress: onLoadPhoto
+        }])
+    };
 
+    const onOpenPicker = () => {
+        imagePicker.onOpenPicker()
+            .then(data => data && onAddPhoto(data, id))
+    }
+
+    const onLoadPhoto = () => {
+        imagePicker.onLoadPhoto()
+            .then(data => data && onAddPhoto(data, id))
+    }
 
     return (
         <View style={styles.container}>
