@@ -1,13 +1,13 @@
 import { StyleSheet } from 'react-native';
 import { IColors } from '../../../../src/UIProvider/colors/IColorsController';
-import { getInitialWindowMetrics, isIOS } from '../../../../src/utils/Utils';
+import { getInitialWindowMetrics, isIOS, scaleVertical } from '../../../../src/utils/Utils';
 
 export const getStyle = (colors: IColors) => {
     const styles = StyleSheet.create({
         container: {
             paddingTop: isIOS ? getInitialWindowMetrics.insets.top : 0,
             width: '100%',
-            height: 60 + (isIOS ? getInitialWindowMetrics.insets.top : 0),
+            height: scaleVertical(60) + (isIOS ? getInitialWindowMetrics.insets.top : 0),
             flexDirection: 'row',
             alignItems: 'center',
             borderBottomColor: colors.shadow,

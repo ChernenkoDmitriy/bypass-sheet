@@ -7,7 +7,7 @@ import { getStyle } from './styles';
 import { BypassSheetCreatingRow } from './components/bypassSheetCreatingRow';
 import { IBypassItem } from '../../shared/entities/bypassList/IBypassItem';
 import { useCreateBypassSheet } from '../presenters/useCreateBypassSheet';
-import { BypassItemCreator } from '../../companyList/ui/components/bypassItemCreator';
+import { BypassItemCreator } from '../../dashboard/ui/components/bypassItemCreator';
 import { BypassListTop } from './components/bypassListTop';
 import { MainButton } from '../../shared/ui/mainButton';
 import { BypassTitle } from './components/bypassTitle';

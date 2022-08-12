@@ -15,9 +15,7 @@ export const LaunchAppView: FC = observer(() => {
         <View style={styles.container}>
             <Animated.Image style={[styles.logo, {
                 opacity: animValue,
-                transform: [{
-                    scale: interpolateNode(animValue, { inputRange: [0, 1], outputRange: [0.9, 1], })
-                }]
+                transform: [{ scale: interpolateNode(animValue, { inputRange: [0, 1], outputRange: [0.9, 1], }) }]
             }]} source={require('../../../assets/img/logo.png')} />
         </View>
     )

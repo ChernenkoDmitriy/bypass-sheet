@@ -21,13 +21,11 @@ class RNImageCropPicker implements IPickImage {
             await this.getPermission();
             const result: any = await ImagePicker.openPicker({
                 includeBase64: true,
-                compressImageQuality: 0.4,
+                compressImageQuality: 0.3,
                 forceJpg: true,
-                width: 300,
-                height: 400,
                 cropping,
             });
-            return { ...result, path: isIOS ? `file:///${result.path}` : result.path } as ICropedImage;
+            return { ...result } as ICropedImage;
         } catch (error) {
             console.warn('RNImageCropPicker -> onOpenPicker: ', error);
             return null;
@@ -38,14 +36,12 @@ class RNImageCropPicker implements IPickImage {
         try {
             await this.getPermission();
             const result: any = await ImagePicker.openCamera({
-                width: 600,
-                height: 800,
                 cropping: true,
                 includeBase64: true,
-                compressImageQuality: 0.4,
+                compressImageQuality: 0.3,
                 forceJpg: true,
             });
-            return { ...result, path: isIOS ? `file:///${result.path}` : result.path } as ICropedImage;
+            return { ...result } as ICropedImage;
         } catch (error) {
             console.warn('RNImageCropPicker -> onOpenPicker: ', error);
             return null;

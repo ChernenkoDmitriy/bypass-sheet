@@ -4,6 +4,10 @@ import Share from 'react-native-share';
 import { Buffer as NodeBuffer } from 'buffer';
 import { permissionsRN } from '../../../libs/permissions';
 import { bypassReportModel } from '../../shared/entities/bypassReport/BypassReportModel';
+import { imageKitIo } from '../../../libs/imageKitIo';
+import { googleSheet } from '../../../libs/google/googleSheet/GoogleSheet';
+import { userModel } from '../../shared/entities/user/userModel';
+import { uploadGoogleSheetUseCase } from './UpdateGoogleSheetUseCase';
 
 const generateShareableExcel = async (): Promise<string> => {
     await permissionsRN.writeFile();
@@ -93,6 +97,6 @@ const shareExcel = async () => {
     });
 }
 
-export const createReport = async () => {
+export const createLocalReport = async () => {
     await shareExcel();
 }

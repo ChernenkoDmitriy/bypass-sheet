@@ -15,7 +15,7 @@ export const ScreenContainer: FC<IProps> = ({ children, scrollEnabled = false, k
     const styles = useMemo(() => getStyle(colors), [colors]);
 
     return (
-        <SafeAreaView style={styles.container} edges={['bottom', 'left', 'right']}>
+        <SafeAreaView style={styles.container} edges={['bottom', 'left', 'right' ]}>
             {scrollEnabled
                 ? <ScrollView
                     scrollEnabled={!scrollEnabled}

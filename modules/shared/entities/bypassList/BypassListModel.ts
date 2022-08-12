@@ -135,7 +135,6 @@ class BypassListModel implements IBypassListModel {
 
     updateBypassSheet = (item: IBypassSheet) => {
         const bypassList = this.bypassList.map(list => list.id === item.id ? item : list);
-        console.log('bypassListbypassList ', bypassList)
         this.bypassList = bypassList;
     }
 

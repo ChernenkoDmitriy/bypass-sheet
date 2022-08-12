@@ -13,7 +13,6 @@ class BypassReportModel implements IBypassReportModel {
         this.load();
     }
 
-
     private persistReport = (data: IBypassSheet | null) => {
         if (data) {
             this.storage.set('report', data);

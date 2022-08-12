@@ -12,7 +12,8 @@ GoogleSignin.configure({
         "https://www.googleapis.com/auth/userinfo.profile",
         "https://www.googleapis.com/auth/userinfo.email",
         "https://www.googleapis.com/auth/drive.readonly",
-        'https://www.googleapis.com/auth/photoslibrary']
+        'https://www.googleapis.com/auth/spreadsheets'
+    ]
 });
 
 class GoogleSignInModule implements IGoogleSignInModule {

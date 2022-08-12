@@ -1,9 +1,11 @@
 import { useNavigation } from "@react-navigation/native";
 import { LayoutAnimation, NativeModules } from "react-native";
 import { ICropedImage } from "../../../libs/imagePicker/IImagePicker/ICropedImage";
+import { appStateModel } from "../../shared/entities/appState/AppStateModel";
 import { IBypassSheet } from "../../shared/entities/bypassList/IBypassSheet";
 import { bypassReportModel } from "../../shared/entities/bypassReport/BypassReportModel"
-import { createReport } from "../useCases/CreateReport";
+import { createLocalReport } from "../useCases/CreateReport";
+import { uploadGoogleSheetUseCase } from "../useCases/UpdateGoogleSheetUseCase";
 
 const { UIManager } = NativeModules;
 
@@ -77,10 +79,16 @@ export const useBypassSheet = () => {
         }
     };
 
-    const onCreateReport = () => {
-        createReport().then(() => { navigation.goBack() })
+    const onCreateReport = async () => {
+        appStateModel.isLoading = true;
+        await uploadGoogleSheetUseCase();
+        appStateModel.isLoading = false;
     };
 
-    return { bypassReport, onChangeComment, onChangeRate, onAddPhoto, onDeletePhoto, onCreateReport, onChangeIsDone }
+    const onCreateLocalReport = async () => {
+        await createLocalReport();
+    };
+
+    return { bypassReport, onCreateLocalReport, onChangeComment, onChangeRate, onAddPhoto, onDeletePhoto, onCreateReport, onChangeIsDone }
 }
 

@@ -9,9 +9,10 @@ export const getStyle = (colors: IColors) => {
             elevation: 4,
             minHeight: 48,
             justifyContent: 'center',
+            paddingHorizontal: 5,
         },
         text: {
-            fontSize: 18,
+            fontSize: 16,
             lineHeight: 22,
             color: colors.buttonText,
             fontWeight: 'bold',

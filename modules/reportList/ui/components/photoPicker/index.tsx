@@ -1,10 +1,9 @@
 
 import React, { FC, useCallback, useMemo } from 'react';
-import { View, TouchableOpacity, Text } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import { DeleteCircleIcon } from '../../../../../assets/icons/DeleteCircleIcon';
 import { ICropedImage } from '../../../../../libs/imagePicker/IImagePicker/ICropedImage';
-import { imagePicker } from '../../../../../libs/imagePicker/RNImageCropPicker';
 import { useUiContext } from '../../../../../src/UIProvider';
 import { getStyle } from './styles';
 

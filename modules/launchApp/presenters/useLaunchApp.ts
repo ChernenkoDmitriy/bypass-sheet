@@ -9,7 +9,7 @@ export const useLaunchApp = () => {
     useEffect(() => {
         timing(animValue, { toValue: 1, duration: 1000, easing: EasingNode.linear }).start();
         setTimeout(() => {
-            navigation.replace('BypassSheetListView');
+            navigation.replace('DashboardView');
         }, 1500);
     }, []);
 
