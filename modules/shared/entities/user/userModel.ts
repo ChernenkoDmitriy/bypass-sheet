@@ -21,13 +21,13 @@ class UserModel implements IUserModel {
     private load = () => {
         this.storage.get('USER')
             .then(data => { data && this.userRepository.save(data); })
-            .catch(error => console.warn('userStore -> load: ', error));
+            .catch(error => console.warn('userRepository -> load: ', error));
         this.storage.get('TOKENS')
             .then(data => { data && this.tokensRepository.save(data); })
-            .catch(error => console.warn('userStore -> load: ', error));
-        // this.storage.get('GOOGLE_SHEET')
-        //     .then(data => { data && this.tokensRepository.save(data); })
-        //     .catch(error => console.warn('userStore -> load: ', error));
+            .catch(error => console.warn('tokensRepository -> load: ', error));
+        this.storage.get('GOOGLE_SHEET')
+            .then(data => { data && this.googleSheetRepository.save(data); })
+            .catch(error => console.warn('googleSheetRepository -> load: ', error));
     }
 
     get user() {
@@ -56,11 +56,14 @@ class UserModel implements IUserModel {
         return this.googleSheetRepository.data ?? { sheetId: '', sheetName: '' };
     }
 
-    set googleSheet(data: IGoogleSheet) {
-        if (data && typeof data === 'object') {
-            this.storage.set('GOOGLE_SHEET', data);
-            this.googleSheetRepository.save(data);
-        }
+    onSetGoogleSheetId(value: string) {
+        this.googleSheetRepository.save({ ... this.googleSheet, sheetId: value });
+        this.storage.set('GOOGLE_SHEET', { ... this.googleSheet, sheetId: value });
+    }
+
+    onSetGoogleSheetName(value: string) {
+        this.googleSheetRepository.save({ ... this.googleSheet, sheetName: value });
+        this.storage.set('GOOGLE_SHEET', { ... this.googleSheet, sheetName: value });
     }
 
     clear = () => {

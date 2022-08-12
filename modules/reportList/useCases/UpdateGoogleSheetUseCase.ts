@@ -8,12 +8,12 @@ const generateReportSheet = async (range: string) => {
     const body: any = {
         range: `${userModel.googleSheet.sheetName}!${range}`,
         majorDimension: "ROWS",
-        values: [],
+        values: [[]],
     }
 
     if (reportItems) {
         for (let index = 0; index < reportItems.length; index++) {
-            const row = [];
+            const row: any[] = [];
             const item = reportItems[index];
             row.push(index ? '' : bypassReportModel.bypassReport?.title);
             row.push(item?.title || '');
@@ -62,14 +62,18 @@ export const uploadGoogleSheetUseCase = async () => {
     try {
         let result = null;
         const sheet = await googleSheet.read(userModel.googleSheet.sheetId, userModel.googleSheet.sheetName);
-        if (sheet?.values) {
-            const range = `A${sheet?.values.length + 1}`;
+        console.log('sheet ', sheet)
+        if (sheet?.majorDimension) {
+            const sheetLength = (sheet?.values?.length || 0);
+            const range = `A${sheetLength + 1}`;
             const body = await generateReportSheet(range);
-            await updateRowSize(sheet?.values.length, sheet?.values.length + (bypassReportModel.bypassReport?.items.length || 0));
+            console.log('body ', body)
+            await updateRowSize(sheetLength, sheetLength + (bypassReportModel.bypassReport?.items.length || 0));
             result = await googleSheet.update(userModel.googleSheet.sheetId, userModel.googleSheet.sheetName, body, range);
         }
         return result;
     } catch (error) {
+        console.log('uploadGoogleSheetUseCase: ', error)
         return null
     }
 }

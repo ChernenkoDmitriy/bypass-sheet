@@ -9,7 +9,7 @@ interface IProps {
     onChangeText: (text: string) => void;
 }
 
-export const ProfileInput: FC<IProps> = memo(({ onChangeText, title, value }) => {
+export const ProfileInput: FC<IProps> = ({ onChangeText, title, value }) => {
     const { colors } = useUiContext();
     const styles = useMemo(() => getStyle(colors), [colors]);
 
@@ -23,4 +23,4 @@ export const ProfileInput: FC<IProps> = memo(({ onChangeText, title, value }) =>
             />
         </View>
     );
-});
+};

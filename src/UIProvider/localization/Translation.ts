@@ -1,5 +1,12 @@
 export const translations = {
   ru: {
+    sheetName: 'Название таблицы',
+    googleSheet: 'ID гугл таблицы',
+    localReport: 'Локальный отчет',
+    cancel: 'Отмена',
+    ok: 'Ок',
+    signOutAccountText: 'Вы уверены что хотите выйти из аккаунта?',
+    signOut: 'Выйти',
     editObject: 'Редактировать  объект',
     criterialObject: 'Критерии оценивания',
     deleteObject: 'Удалить обьект',
@@ -22,10 +29,18 @@ export const translations = {
     addItem: 'Добавить поле',
     create: 'Создать',
     title: 'Заголовок',
-    emptyBypassSheetList: 'Чтобы добавить объект оценивания выберите “Новый объект” в верхнем меню',
-    appName: 'BypassSheet'
+    emptyBypassSheetList:
+      'Чтобы добавить объект оценивания выберите “Новый объект” в верхнем меню',
+    appName: 'BypassSheet',
   },
   en: {
+    sheetName: 'Sheet name',
+    googleSheet: 'Google sheet ID',
+    localReport: 'Local report',
+    cancel: 'Cancel',
+    ok: 'Ok',
+    signOutAccountText: 'Are you sure you want to log out of your account?',
+    signOut: 'Sign out',
     newObject: 'New object',
     objectsOfAssessment: 'Objects of assessment',
     update: 'Update',
@@ -43,7 +58,8 @@ export const translations = {
     addItem: 'Add item',
     create: 'Create',
     title: 'Title',
-    emptyBypassSheetList: 'You don\'t have bypass sheets. You can create a group and add bypasses to sheets',
-    appName: 'BypassSheet'
+    emptyBypassSheetList:
+      "You don't have bypass sheets. You can create a group and add bypasses to sheets",
+    appName: 'BypassSheet',
   },
 };

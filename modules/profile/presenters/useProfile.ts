@@ -28,11 +28,11 @@ export const useProfile = () => {
     }, [userModel.user]);
 
     const onChangeGoogleSheetId = (value: string) => {
-        userModel.googleSheet.sheetId = value;
+        userModel.onSetGoogleSheetId(value);
     }
 
     const onChangeGoogleSheetName = (value: string) => {
-        userModel.googleSheet.sheetName = value;
+        userModel.onSetGoogleSheetName(value)
     }
 
     return { onGoBack, onSignOut, onSignIn, onChangeGoogleSheetId, onChangeGoogleSheetName };
