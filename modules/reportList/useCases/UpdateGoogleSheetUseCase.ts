@@ -38,7 +38,7 @@ const generateReportSheet = async (range: string) => {
 
 const updateRowSize = async (start: number, end: number) => {
     const spreadSheet = await googleSheet.readSheet(userModel.googleSheet.sheetId);
-    const sheetId = spreadSheet.sheets.length - 1;
+    const sheetId = spreadSheet?.sheets?.length - 1 || 0;
     const body = {
         requests: [
             {
@@ -62,13 +62,11 @@ export const uploadGoogleSheetUseCase = async () => {
     try {
         let result = null;
         const sheet = await googleSheet.read(userModel.googleSheet.sheetId, userModel.googleSheet.sheetName);
-        console.log('sheet ', sheet)
         if (sheet?.majorDimension) {
             const sheetLength = (sheet?.values?.length || 0);
             const range = `A${sheetLength + 1}`;
             const body = await generateReportSheet(range);
-            console.log('body ', body)
-            await updateRowSize(sheetLength, sheetLength + (bypassReportModel.bypassReport?.items.length || 0));
+            await updateRowSize(sheetLength + 1, sheetLength + 1 + (bypassReportModel.bypassReport?.items?.length || 0));
             result = await googleSheet.update(userModel.googleSheet.sheetId, userModel.googleSheet.sheetName, body, range);
         }
         return result;
