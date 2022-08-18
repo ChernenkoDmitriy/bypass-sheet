@@ -35,11 +35,13 @@ export const ReportItem: FC<IProps> = ({ item, onChangeComment, onChangeRate, on
     }, []);
 
     const onHandleAddPhoto = () => {
-        Alert.alert('Добавить фото', 'Сделайте новое фото или  загрузите из галерии', [{
-            text: 'Загрузить фото',
+        Alert.alert(t('addPhoto'), t('newPhotoDescription'), [{
+            text: t('cancel')
+        }, {
+            text: t('uploadPhoto'),
             onPress: onOpenPicker
         }, {
-            text: 'Сделать фото',
+            text: t('takePhoto'),
             onPress: onLoadPhoto
         }])
     };

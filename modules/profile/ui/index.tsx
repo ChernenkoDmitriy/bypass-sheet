@@ -4,6 +4,7 @@ import { useUiContext } from '../../../src/UIProvider';
 import { userModel } from '../../shared/entities/user/userModel';
 import { ScreenContainer } from '../../shared/ui/screenContainer';
 import { useProfile } from '../presenters/useProfile';
+import { ChoseLanguage } from './components/choseLanguage';
 import { ProfileHeader } from './components/profileHeader';
 import { ProfileInput } from './components/profileInput';
 import { SignOutButton } from './components/signOutButton';
@@ -11,7 +12,7 @@ import { UserInfo } from './components/userInfo';
 import { getStyle } from './styles';
 
 export const ProfileView: FC = observer(() => {
-    const { colors, t } = useUiContext();
+    const { colors, t, setLocale } = useUiContext();
     const styles = useMemo(() => getStyle(colors), [colors]);
     const { onGoBack, onSignOut, onChangeGoogleSheetId, onChangeGoogleSheetName } = useProfile();
 
@@ -29,6 +30,7 @@ export const ProfileView: FC = observer(() => {
                 value={userModel.googleSheet.sheetName}
                 title={t('sheetName')}
             />
+            <ChoseLanguage onChangeLanguage={setLocale} />
             <SignOutButton onSignOut={onSignOut} />
         </ScreenContainer>
     )

@@ -21,9 +21,9 @@ class Localization implements ILocalization {
     }
 
     private load = () => {
-        // this.storage.get('LANGUAGE')
-        //     .then(data => { data && this.localizationStore.save(data); })
-        //     .catch(error => console.warn('Localization -> load: ', error));
+        this.storage.get('LANGUAGE')
+            .then(data => { data && this.localizationStore.save(data); })
+            .catch(error => console.warn('Localization -> load: ', error));
     }
 
     get locales() {
