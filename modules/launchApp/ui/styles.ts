@@ -12,7 +12,7 @@ export const getStyle = (colors: IColors) => {
         },
         logo: {
             width: scaleHorizontal(250),
-            height: scaleHorizontal(116),
+            height: scaleHorizontal(250),
         },
     });
     return styles;

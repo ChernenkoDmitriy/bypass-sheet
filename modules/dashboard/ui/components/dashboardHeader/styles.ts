@@ -11,8 +11,8 @@ export const getStyle = (colors: IColors) => {
         },
         logo: {
             marginLeft: scaleVertical(10),
-            width: scaleVertical(76),
-            height: scaleVertical(36),
+            width: scaleVertical(48),
+            height: scaleVertical(48),
         },
         button: {
             width: 48,
