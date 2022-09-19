@@ -1,5 +1,6 @@
 export const translations = {
   ru: {
+    googleSheetInstruction: '* Если ид и имя таблицы не были указаны, то в вашем Google  Drive  будет создана таблица с именем CompanyStandardsApp',
     addPhoto: 'Добавить фото',
     newPhotoDescription: 'Сделайте новое фото или  загрузите из галерии',
     uploadPhoto: 'Загрузить фото',
@@ -37,12 +38,14 @@ export const translations = {
     createBypassSheet: 'Обходной лист',
     addItem: 'Добавить поле',
     create: 'Создать',
+    createGoogleReport: 'Создать в Google таблице',
     title: 'Заголовок',
     emptyBypassSheetList:
       'Чтобы добавить объект оценивания выберите “Новый объект” в верхнем меню',
-    appName: 'BypassSheet',
+    appName: 'Company standards',
   },
   en: {
+    googleSheetInstruction: '* If the table id and name were not specified, then a table named CompanyStandardsApp will be created in your Google Drive',
     addPhoto: 'Add photo',
     newPhotoDescription: 'Take a new photo or upload from gallery',
     uploadPhoto: 'Upload Photo',
@@ -77,15 +80,15 @@ export const translations = {
     addBypassSheet: 'Add bypass sheet',
     enterGroupName: 'Enter group name',
     createGroup: 'Create group',
-    addPhoto: 'Add photo',
     addComment: 'Add comment',
     comment: 'Comment',
     taskDescribe: 'Enter task describe',
     createBypassSheet: 'Bypass sheet',
     addItem: 'Add item',
     create: 'Create',
+    createGoogleReport: 'Create in Google table',
     title: 'Title',
     emptyBypassSheetList: "You don't have bypass sheets. You can create a group and add bypasses to sheets",
-    appName: 'BypassSheet',
+    appName: 'Company standards',
   },
 };

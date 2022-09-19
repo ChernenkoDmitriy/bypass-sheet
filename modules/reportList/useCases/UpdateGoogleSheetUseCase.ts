@@ -19,7 +19,6 @@ const generateReportSheet = async (range: string) => {
             row.push(item?.title || '');
             row.push(item?.comment || '');
             row.push(item?.rate || '');
-
             if (item?.photos) {
                 for (let j = 0; j < item.photos.length; j++) {
                     const image = item.photos[j];
@@ -58,9 +57,24 @@ const updateRowSize = async (start: number, end: number) => {
     await googleSheet.editRow(userModel.googleSheet.sheetId, body);
 };
 
+const createSpreadsheetsIfNoExist = async () => {
+    try {
+        if (!userModel.googleSheet.sheetId || !userModel.googleSheet.sheetName) {
+            const spreadsheets = await googleSheet.createSheet();
+            if (spreadsheets.spreadsheetId && spreadsheets.properties?.title) {
+                userModel.onSetGoogleSheetId(spreadsheets.spreadsheetId);
+                userModel.onSetGoogleSheetName('Report');
+            }
+        }
+    } catch (error) {
+        console.log('createSpreadsheetsIfNoExist: ', error)
+    }
+}
+
 export const uploadGoogleSheetUseCase = async () => {
     try {
         let result = null;
+        await createSpreadsheetsIfNoExist();
         const sheet = await googleSheet.read(userModel.googleSheet.sheetId, userModel.googleSheet.sheetName);
         if (sheet?.majorDimension) {
             const sheetLength = (sheet?.values?.length || 0);

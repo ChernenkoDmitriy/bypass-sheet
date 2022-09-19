@@ -2,6 +2,7 @@ import { observer } from 'mobx-react';
 import React, { FC, useMemo } from 'react';
 import { View } from 'react-native';
 import { useUiContext } from '../../../src/UIProvider';
+import { userModel } from '../../shared/entities/user/userModel';
 import { HeaderWithBackButton } from '../../shared/ui/headerWithBackButton';
 import { MainButton } from '../../shared/ui/mainButton';
 import { ScreenContainer } from '../../shared/ui/screenContainer';
@@ -20,7 +21,7 @@ export const BypassSheetView: FC = observer(() => {
             <ReportList {...{ bypassReport, onChangeComment, onChangeRate, onAddPhoto, onDeletePhoto, onChangeIsDone }} />
             <View style={styles.buttonContainer}>
                 <MainButton title={t('localReport')} onPress={onCreateLocalReport} containerStyle={styles.button} />
-                <MainButton title={t('create')} onPress={onCreateReport} containerStyle={styles.button} />
+                <MainButton title={t('createGoogleReport')} onPress={onCreateReport} containerStyle={styles.button} disabled={!userModel.user} />
             </View>
         </ScreenContainer>
     )

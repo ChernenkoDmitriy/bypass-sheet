@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { IColors } from '../../../../src/UIProvider/colors/IColorsController';
+import { scaleHorizontal } from '../../../../src/utils/Utils';
 
 export const getStyle = (colors: IColors) => {
     return StyleSheet.create({
@@ -34,6 +35,11 @@ export const getStyle = (colors: IColors) => {
         button: {
             padding: 10,
             borderRadius: 8,
+        },
+        image: {
+            width: scaleHorizontal(330),
+            marginVertical: 20,
+            alignSelf: 'center',
         },
     });
 }

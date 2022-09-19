@@ -14,6 +14,17 @@ export const getStyle = (colors: IColors) => {
             width: scaleVertical(48),
             height: scaleVertical(48),
         },
+        logoWrapper: {
+            flex: 1,
+            flexDirection: 'row',
+            alignItems: 'center',
+        },
+        appName: {
+            fontSize: 20,
+            color: colors.titleText,
+            fontFamily: 'Roboto-Bold',
+            marginLeft: 6,
+        },
         button: {
             width: 48,
             justifyContent: 'center',

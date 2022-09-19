@@ -1,10 +1,11 @@
 import React, { FC, useMemo, memo } from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, Text, View, Image } from 'react-native';
 import ReactNativeModal from 'react-native-modal';
 import { useUiContext } from '../../../../src/UIProvider';
 import { getStyle } from './styles';
 
 interface IProps {
+    image?: number;
     title?: string;
     text?: string;
     isVisible: boolean;
@@ -12,7 +13,7 @@ interface IProps {
     onConfirm?: () => void;
 }
 
-export const ModalPopup: FC<IProps> = memo(({ title, text, isVisible, onCancel, onConfirm }) => {
+export const ModalPopup: FC<IProps> = memo(({ image, title, text, isVisible, onCancel, onConfirm }) => {
     const { colors, t } = useUiContext();
     const styles = useMemo(() => getStyle(colors), [colors]);
 
@@ -26,6 +27,7 @@ export const ModalPopup: FC<IProps> = memo(({ title, text, isVisible, onCancel, 
             <View style={styles.modalContainer} >
                 {!!title && <Text style={styles.title}>{title}</Text>}
                 {!!text && <Text style={styles.text}>{text}</Text>}
+                {!!image && <Image source={image} style={styles.image} resizeMode='contain' />}
                 <View style={styles.buttonWrapper}>
                     {!!onCancel && <Pressable
                         onPress={onCancel}

@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { IColors } from '../../../../../src/UIProvider/colors/IColorsController';
+import { scaleVertical } from '../../../../../src/utils/Utils';
 
 export const getStyle = (colors: IColors) => {
     const styles = StyleSheet.create({
@@ -23,6 +24,16 @@ export const getStyle = (colors: IColors) => {
             fontWeight: '500',
             color: colors.titleText,
         },
+        button: {
+            width: scaleVertical(32),
+            height: scaleVertical(32),
+            justifyContent: 'center',
+            alignItems: 'center',
+        },
+        titleWrapper: {
+            flexDirection: 'row',
+            alignItems: 'center',
+        }
     });
     return styles;
 }
