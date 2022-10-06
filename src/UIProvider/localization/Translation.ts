@@ -19,7 +19,7 @@ export const translations = {
     signOut: 'Выйти',
     editObject: 'Редактировать  объект',
     criterialObject: 'Критерии оценивания',
-    deleteObject: 'Удалить обьект',
+    deleteObject: 'Удалить объект',
     update: 'Обновить',
     criterial: 'Критерии оценивания',
     groupName: 'Навание объекта',
@@ -45,6 +45,8 @@ export const translations = {
     appName: 'Company standards',
   },
   en: {
+    deleteObject: 'Delete object',
+    editObject: 'Edit object',
     googleSheetInstruction: '* If the table id and name were not specified, then a table named CompanyStandardsApp will be created in your Google Drive',
     addPhoto: 'Add photo',
     newPhotoDescription: 'Take a new photo or upload from gallery',
