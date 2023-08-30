@@ -1,6 +1,6 @@
 import { IStorage, storage } from "../../../libs/storage";
-import { IRepository } from "../../../modules/shared/repository/IRepository";
-import { MobXRepository } from "../../../modules/shared/repository/MobXRepository";
+import { IRepository } from "../../modules/shared/repository/IRepository";
+import { MobXRepository } from "../../modules/shared/repository/MobXRepository";
 import { allColors } from "./AllColors";
 import { IColorsController, IColors } from "./IColorsController";
 

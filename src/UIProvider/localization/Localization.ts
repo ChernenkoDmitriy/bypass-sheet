@@ -1,7 +1,7 @@
 import i18n from 'i18n-js';
 import { IStorage, storage } from '../../../libs/storage';
-import { IRepository } from '../../../modules/shared/repository/IRepository';
-import { MobXRepository } from '../../../modules/shared/repository/MobXRepository';
+import { IRepository } from '../../modules/shared/repository/IRepository';
+import { MobXRepository } from '../../modules/shared/repository/MobXRepository';
 import { ILocalization } from './ILocalization';
 import { translations } from './Translation';
 

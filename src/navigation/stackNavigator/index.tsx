@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { observer } from 'mobx-react';
-import { LaunchAppView } from '../../../modules/launchApp/ui';
-import { DashboardView } from '../../../modules/dashboard/ui';
-import { BypassSheetCreateView } from '../../../modules/bypassSheetCreate/ui';
-import { BypassSheetView } from '../../../modules/reportList/ui';
-import { BypassCompanyView } from '../../../modules/company/ui';
-import { ProfileView } from '../../../modules/profile/ui';
+import { LaunchAppView } from '../../modules/launchApp/ui';
+import { DashboardView } from '../../modules/dashboard/ui';
+import { BypassSheetCreateView } from '../../modules/bypassSheetCreate/ui';
+import { BypassSheetView } from '../../modules/reportList/ui';
+import { BypassCompanyView } from '../../modules/company/ui';
+import { ProfileView } from '../../modules/profile/ui';
 
 const Stack = createStackNavigator();
 

@@ -1,5 +1,7 @@
 export const allColors = {
     light: {
+        primary:'',
+        text:'',
         accentText: '#3489E4',
         buttonText: '#FFFFFF',
         regularText: '#666666',

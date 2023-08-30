@@ -5,7 +5,7 @@ import { StackNavigator } from '../stackNavigator';
 import { observer } from 'mobx-react';
 import { isIOS } from '../../utils/Utils';
 import { useUiContext } from '../../UIProvider';
-import { LoadingView } from '../../../modules/shared/ui/loadingView';
+import { LoadingView } from '../../modules/shared/ui/loadingView';
 
 export const RootNavigator: FC = observer(() => {
     const { colors, theme } = useUiContext();

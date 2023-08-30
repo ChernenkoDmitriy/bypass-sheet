@@ -1,6 +1,6 @@
 import Axios from "axios";
 import { IRequester } from ".";
-import { userModel } from "../../modules/shared/entities/user/User";
+import { userModel } from "../../src/modules/shared/entities/user/User";
 
 export class AxiosRequester implements IRequester {
     private static instance: AxiosRequester;
