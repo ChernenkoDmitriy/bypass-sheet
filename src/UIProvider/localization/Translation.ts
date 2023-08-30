@@ -60,9 +60,13 @@ export const translations = {
     phoneError: "Неверный номер",
     passwordError:'Не может быть пустым',
     fullNameError:'Введите ваше полное имя',
-    signIn:'Войти'
+    signIn:'Войти',
+    firstName:'Фамилия',
+    lastName:'Имя',
   },
   en: {
+    firstName:'First name',
+    lastName:'Last name',
     signIn:'Sign in',
     fullNameError:'Enter your full name',
     phoneError: "Wrong number.",

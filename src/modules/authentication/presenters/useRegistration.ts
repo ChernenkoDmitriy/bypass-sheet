@@ -8,21 +8,25 @@ const phoneNumberRegex = /^\+380\d{6,11}$/;
 export const useRegistration = () => {
     const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
-    const [fullName, setFullName] = useState('');
-    const [isValidFullName, setIsValidFullName] = useState(true);
-    const [errorFullName, setErrorFullName] = useState('');
     const [isValid, setIsValid] = useState(true);
     const [isValidPassword, setIsValidPassword] = useState(true);
     const [errorPhone, setErrorPhone] = useState('');
     const [errorPassword, setErrorPassword] = useState('');
+    const [firstName,setFirstName] = useState('');
+    const [isValidFirstName, setIsValidFirstName] = useState(true);
+    const [errorFirstName, setErrorFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [isValidLastName, setIsValidLastName] = useState(true);
+    const [errorLastName, setErrorLastName] = useState('');
     const { t } = useUiContext();
     const isDisabled = useMemo(() => !phoneNumberRegex.test('+380' + phone), [phone]);
     const isContinue = useMemo(() => isDisabled || !password.length, [phone, password]);
     const phonePrefix = useMemo(() => !phone ? '' : "+380", [phone]);
     const isPassword = useMemo(() => password.length === 0, [password]);
-    const isFullName = useMemo(() => fullName.length === 0, [fullName]);
+    const isFirstName = useMemo(() => firstName.length === 0, [firstName]);
+    const isLastName = useMemo(() => lastName.length === 0, [lastName]);
     const navigation = useNavigation<StackNavigationProp<any>>();
-
+   
     useEffect(() => {
         if (isPassword) {
             setErrorPassword('');
@@ -38,11 +42,18 @@ export const useRegistration = () => {
     }, [isDisabled]);
 
     useEffect(() => {
-        if (!isFullName) {
-            setErrorFullName('');
-            setIsValidFullName(true);
+        if (!isFirstName) {
+            setErrorFirstName('');
+            setIsValidFirstName(true);
         };
-    }, [isFullName]);
+    }, [isFirstName]);
+
+    useEffect(() => {
+        if (!isLastName) {
+            setErrorLastName('');
+            setIsValidLastName(true);
+        };
+    }, [isLastName]);
 
     const onBlurPassword = useCallback(() => {
         setIsValidPassword(!isPassword);
@@ -62,22 +73,35 @@ export const useRegistration = () => {
         };
     }, [isDisabled]);
 
-    const onBlurFullName = useCallback(() => {
-        setIsValidFullName(!isFullName);
-        if (isFullName) {
-            setErrorFullName(t('fullNameError'));
+    const onBlurFirstName = useCallback(() => {
+        setIsValidFirstName(!isFirstName);
+        if (isFirstName) {
+            setErrorFirstName(t('passwordError'));
         } else {
-            setErrorFullName('');
+            setErrorFirstName('');
         };
-    }, [isFullName]);
+    }, [isFirstName]);
+
+    const onBlurLastName = useCallback(() => {
+        setIsValidLastName(!isLastName);
+        if (isLastName) {
+            setErrorLastName(t('passwordError'));
+        } else {
+            setErrorLastName('');
+        };
+    }, [isLastName]);
 
     const onSetPhone = (value: string) => {
         const newValue = value.replace(/[^0-9]/g, '');
         setPhone(newValue);
     };
 
-    const onFullName = (value: string) => {
-        if (!/\d/.test(value)) setFullName(value);
+    const onFirstName = (value: string) => {
+        if (!/\d/.test(value)) setFirstName(value);
+    };
+    
+    const onLastName = (value: string) => {
+        if (!/\d/.test(value)) setLastName(value);
     };
 
     const onCreateAccount = () => {
@@ -87,9 +111,10 @@ export const useRegistration = () => {
         } else {
             onBlur();
             onBlurPassword();
-            onBlurFullName();
+            onBlurFirstName();
+            onBlurLastName();
         };
     };
 
-    return { phonePrefix, isValid, errorPhone, phone, password, errorPassword, isValidPassword, fullName, isValidFullName, errorFullName, onBlurFullName, onFullName, onBlurPassword, onCreateAccount, setPassword, onBlur, onSetPhone };
+    return {firstName,lastName, phonePrefix,isValidLastName,errorLastName, isValid,errorFirstName, errorPhone, phone,isValidFirstName, password, errorPassword, isValidPassword,onFirstName,onBlurLastName, onBlurPassword,onLastName,onBlurFirstName, onCreateAccount, setPassword, onBlur, onSetPhone };
 };

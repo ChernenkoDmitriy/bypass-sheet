@@ -11,7 +11,7 @@ import { useRegistration } from "../../presenters/useRegistration";
 export const RegistrationView: FC = () => {
     const { t, colors } = useUiContext();
     const styles = useMemo(() => getStyle(colors), [colors]);
-    const { isValid, phonePrefix, errorPhone, phone, password, errorPassword, isValidPassword, fullName, isValidFullName, errorFullName, onBlurFullName, onFullName, onBlurPassword, onCreateAccount, setPassword, onBlur, onSetPhone } = useRegistration();
+    const { firstName,lastName, phonePrefix,isValidLastName,errorLastName, isValid,errorFirstName, errorPhone, phone,isValidFirstName, password, errorPassword, isValidPassword,onFirstName,onBlurLastName, onBlurPassword,onLastName,onBlurFirstName, onCreateAccount, setPassword, onBlur, onSetPhone  } = useRegistration();
 
     return (
         <ScreenContainer containerStyle={styles.container} headerComponent={<HeaderWithBackButton title={t('registration')} />}>
@@ -43,14 +43,25 @@ export const RegistrationView: FC = () => {
                 onSubmitEditing={onCreateAccount}
             />
             <MainInput
-                inputWrapperStyle={{ borderBottomColor: isValidFullName ? colors.primary : 'red' }}
-                title={t('fullName')}
+                inputWrapperStyle={{ borderBottomColor: isValidFirstName ? colors.primary : 'red' }}
+                title={t('firstName')}
                 keyboardType='twitter'
-                value={fullName}
-                onBlur={onBlurFullName}
-                isValid={isValidFullName}
-                onChangeText={onFullName}
-                errorText={errorFullName}
+                value={firstName}
+                onBlur={onBlurFirstName}
+                isValid={isValidFirstName}
+                onChangeText={onFirstName}
+                errorText={errorFirstName}
+                onSubmitEditing={onCreateAccount}
+            />
+            <MainInput
+                inputWrapperStyle={{ borderBottomColor: isValidLastName ? colors.primary : 'red' }}
+                title={t('lastName')}
+                keyboardType='twitter'
+                value={lastName}
+                onBlur={onBlurLastName}
+                isValid={isValidLastName}
+                onChangeText={onLastName}
+                errorText={errorLastName}
                 onSubmitEditing={onCreateAccount}
             />
             <MainButton containerStyle={styles.button} title={t("createAnAccount")} onPress={onCreateAccount} />

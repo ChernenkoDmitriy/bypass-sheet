@@ -20,15 +20,14 @@ export const getStyle = (colors: IColors) => {
             color: colors.subText,
             fontFamily:'Roboto-Regular',
             textAlign: "center",
-            marginTop: scaleVertical(10)
+            marginVertical:scaleVertical(2)
         },
         titleStyle: {
             marginBottom: 0,
-            marginTop: scaleVertical(40),
             fontFamily:'Roboto-Regular'
         },
         button: {
-            marginTop: scaleVertical(40)
+            marginTop: scaleVertical(10)
         },
         policyText: {
             fontSize: scaleFontSize(12),
