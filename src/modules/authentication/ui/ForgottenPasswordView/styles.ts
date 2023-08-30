@@ -4,6 +4,13 @@ import { IColors } from '../../../../UIProvider/colors/IColorsController';
 
 export const getStyle = (colors: IColors) => {
     const styles = StyleSheet.create({
+        container: {
+            flex: 1,
+            marginHorizontal: scaleHorizontal(25),
+        },
+        inputContainer:{
+            marginTop:scaleVertical(40),
+        }
     });
     return styles;
 };

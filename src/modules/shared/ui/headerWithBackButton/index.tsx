@@ -28,7 +28,7 @@ export const HeaderWithBackButton: FC<Props> = ({ children, onPressTittle, title
                     style={({ pressed }) => [styles.buttonBack, { opacity: pressed ? 0.5 : 1 }]}
                     onPress={onGoBack}
                 >
-                    <ArrowBackIcon color={colors.icon} />
+                    <ArrowBackIcon color={colors.primary} />
                 </Pressable>}
                 {!!title &&
                     <View style={styles.titleContainer}>

@@ -1,6 +1,7 @@
 export type IColors = {
     primary: string;
     text: string;
+    subText:string,
     lightButton: string;
     accentText: string;
     textAccentButton: string;

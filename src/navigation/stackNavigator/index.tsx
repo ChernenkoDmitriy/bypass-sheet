@@ -7,13 +7,18 @@ import { BypassSheetCreateView } from '../../modules/bypassSheetCreate/ui';
 import { BypassSheetView } from '../../modules/reportList/ui';
 import { BypassCompanyView } from '../../modules/company/ui';
 import { ProfileView } from '../../modules/profile/ui';
+import { AuthorizationView } from '../../modules/authentication/ui/AuthorizationView';
+import { RegistrationView } from '../../modules/authentication/ui/RegistrationView';
+import { ForgottenPasswordView } from '../../modules/authentication/ui/ForgottenPasswordView';
 
 const Stack = createStackNavigator();
 
 export const StackNavigator: FC = observer(() => {
-
     return (
         <Stack.Navigator initialRouteName='LaunchAppView' screenOptions={{ headerShown: false }} >
+            <Stack.Screen name='AuthorizationView' component={AuthorizationView} />
+            <Stack.Screen name='RegistrationView' component={RegistrationView} />
+            <Stack.Screen name='ForgottenPasswordView' component={ForgottenPasswordView} />
             <Stack.Screen name='LaunchAppView' component={LaunchAppView} />
             <Stack.Screen name='DashboardView' component={DashboardView} />
             <Stack.Screen name='BypassCompanyView' component={BypassCompanyView} />

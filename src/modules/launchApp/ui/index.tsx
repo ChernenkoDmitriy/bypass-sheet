@@ -13,7 +13,7 @@ export const LaunchAppView: FC = observer(() => {
     return (
         <View style={styles.container}>
             <Animated.Image
-                source={require('../../../assets/img/logo.png')}
+                source={require('../../../../assets/img/logo.png')}
                 style={styles.logo}
             />
         </View>

@@ -22,13 +22,13 @@ export const ProfileView: FC = observer(() => {
             <ProfileHeader onClose={onGoBack} photo={userModel.user?.photo} />
             <UserInfo user={userModel.user} />
             <ProfileInput
-                image={require('../../../assets/img/tableId.png')}
+                image={require('../../../../assets/img/tableId.png')}
                 onChangeText={onChangeGoogleSheetId}
                 value={userModel.googleSheet.sheetId}
                 title={t('googleSheet')}
             />
             <ProfileInput
-                image={require('../../../assets/img/tableName.png')}
+                image={require('../../../../assets/img/tableName.png')}
                 onChangeText={onChangeGoogleSheetName}
                 value={userModel.googleSheet.sheetName}
                 title={t('sheetName')}

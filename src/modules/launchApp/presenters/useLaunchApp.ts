@@ -6,7 +6,7 @@ export const useLaunchApp = () => {
 
     useEffect(() => {
         setTimeout(() => {
-            navigation.replace('DashboardView');
+            navigation.replace('AuthorizationView');
         }, 1500);
     }, []);
 };
