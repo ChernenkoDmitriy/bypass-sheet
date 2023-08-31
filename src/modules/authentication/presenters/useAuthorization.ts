@@ -2,6 +2,7 @@ import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useUiContext } from "../../../UIProvider";
+import { authorizationUseCase } from "../useCase/authorizationUseCase";
 
 const phoneNumberRegex = /^\+380\d{6,11}$/;
 
@@ -16,8 +17,8 @@ export const UseAuthorization = () => {
     const { t } = useUiContext();
     const isDisabled = useMemo(() => !phoneNumberRegex.test('+380' + phone), [phone]);
     const isContinue = useMemo(() => isDisabled || !password.length, [phone, password]);
-    const phonePrefix = useMemo(() => !phone ? '' : "+380", [phone])
-    const isPassword = useMemo(() => password.length === 0, [password])
+    const phonePrefix = useMemo(() => !phone ? '' : "+380", [phone]);
+    const isPassword = useMemo(() => password.length === 0, [password]);
 
     useEffect(() => {
         if (isPassword) {
@@ -36,7 +37,7 @@ export const UseAuthorization = () => {
     const onBlurPassword = useCallback(() => {
         setIsValidPassword(!isPassword);
         if (isPassword) {
-            setErrorPassword(t('passwordError'))
+            setErrorPassword(t('passwordError'));
         } else {
             setErrorPassword('');
         };
@@ -45,7 +46,7 @@ export const UseAuthorization = () => {
     const onBlur = useCallback(() => {
         setIsValid(!isDisabled);
         if (isDisabled) {
-            setErrorPhone(t('phoneError'))
+            setErrorPhone(t('phoneError'));
         } else {
             setErrorPhone('');
         };
@@ -56,14 +57,16 @@ export const UseAuthorization = () => {
         setPhone(newValue);
     };
 
-    const onContinue = () => {
+    const onContinue = async () => {
+        const value = '+380' + phone;
         if (!isContinue) {
-            setErrorPhone('')
+            const { message } = await authorizationUseCase(value, password);
+            setErrorPhone('');
             setErrorPassword('');
         } else {
             onBlur();
             onBlurPassword();
-        }
+        };
     };
 
     const onRegistration = () => navigation.navigate('RegistrationView');

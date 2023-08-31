@@ -2,6 +2,8 @@ import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useUiContext } from "../../../UIProvider";
+import { registrationUseCase } from "../useCase/registrationUseCase";
+import { userModel } from "../../shared/entities/user/userModel";
 
 const phoneNumberRegex = /^\+380\d{6,11}$/;
 
@@ -12,7 +14,7 @@ export const useRegistration = () => {
     const [isValidPassword, setIsValidPassword] = useState(true);
     const [errorPhone, setErrorPhone] = useState('');
     const [errorPassword, setErrorPassword] = useState('');
-    const [firstName,setFirstName] = useState('');
+    const [firstName, setFirstName] = useState('');
     const [isValidFirstName, setIsValidFirstName] = useState(true);
     const [errorFirstName, setErrorFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -26,7 +28,7 @@ export const useRegistration = () => {
     const isFirstName = useMemo(() => firstName.length === 0, [firstName]);
     const isLastName = useMemo(() => lastName.length === 0, [lastName]);
     const navigation = useNavigation<StackNavigationProp<any>>();
-   
+
     useEffect(() => {
         if (isPassword) {
             setErrorPassword('');
@@ -99,15 +101,18 @@ export const useRegistration = () => {
     const onFirstName = (value: string) => {
         if (!/\d/.test(value)) setFirstName(value);
     };
-    
+
     const onLastName = (value: string) => {
         if (!/\d/.test(value)) setLastName(value);
     };
 
-    const onCreateAccount = () => {
+    const onCreateAccount = async () => {
+        const value = '+380' + phone;
         if (!isContinue) {
+            const { message } = await registrationUseCase(firstName, lastName, value, password);
             setErrorPhone('');
             setErrorPassword('');
+            console.log(userModel.user);
         } else {
             onBlur();
             onBlurPassword();
@@ -116,5 +121,5 @@ export const useRegistration = () => {
         };
     };
 
-    return {firstName,lastName, phonePrefix,isValidLastName,errorLastName, isValid,errorFirstName, errorPhone, phone,isValidFirstName, password, errorPassword, isValidPassword,onFirstName,onBlurLastName, onBlurPassword,onLastName,onBlurFirstName, onCreateAccount, setPassword, onBlur, onSetPhone };
+    return { firstName, lastName, phonePrefix, isValidLastName, errorLastName, isValid, errorFirstName, errorPhone, phone, isValidFirstName, password, errorPassword, isValidPassword, onFirstName, onBlurLastName, onBlurPassword, onLastName, onBlurFirstName, onCreateAccount, setPassword, onBlur, onSetPhone };
 };

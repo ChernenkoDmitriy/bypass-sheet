@@ -1,8 +1,9 @@
 import Axios from "axios";
 import { IRequester } from ".";
-import { userModel } from "../../src/modules/shared/entities/user/User";
+import { userModel } from "../../src/modules/shared/entities/user/userModel";
+import { loggerModel } from "../../src/UIKit/logger/entity/loggerModel";
 
-export class AxiosRequester implements IRequester {
+class AxiosRequester implements IRequester {
     private static instance: AxiosRequester;
 
     constructor() {
@@ -12,18 +13,26 @@ export class AxiosRequester implements IRequester {
         AxiosRequester.instance = this;
     }
 
+    private serverError = (status: number) => {
+        if (status >= 500) {
+        }
+    }
+
     postFormData = async (url: string, data: FormData) => {
         try {
             const response = await fetch(url, {
                 method: 'POST',
-                headers: { 'Accept': '*/*', 'Content-Type': 'multipart/form-data', 'authorization': `Bearer ${userModel?.token}` },
+                headers: { 'Accept': '*/*', 'Content-Type': 'multipart/form-data', 'authorization': `Bearer ${userModel?.tokens}` },
                 body: data,
             });
-            const result = await response.json()
+            const result = await response.json();
+            loggerModel.add('response', `AxiosRequester -> postFormData -> ${url}: `, JSON.stringify(response));
             return { data: result, status: response.status };
-        } catch (error) {
+        } catch (error: any) {
+            this.serverError(error?.status);
+            loggerModel.add('error', `AxiosRequester -> postFormData -> ${url}: `, JSON.stringify(error));
             console.warn('AxiosRequester -> postFormData: ', error);
-            return error;
+            return error?.response || {};
         }
     }
 
@@ -34,7 +43,7 @@ export class AxiosRequester implements IRequester {
                 headers: {
                     'Cache-Control': 'no-cache',
                     'Content-Type': 'application/json',
-                    'authorization': `Bearer ${userModel?.token}`
+                    'authorization': `Bearer ${userModel?.tokens}`
                 },
                 url,
                 timeout: timeoutMS || 60000
@@ -42,35 +51,50 @@ export class AxiosRequester implements IRequester {
             headers && (config.headers = headers);
             data && (config.data = JSON.stringify(data));
             const response = await Axios(config);
+            loggerModel.add('response', `AxiosRequester -> post -> ${url}: `, JSON.stringify(response.data));
             return response;
-        } catch (error) {
-            if (error.response) {
-                // The request was made and the server responded with a status code
-                // that falls out of the range of 2xx
-                console.log(error.response.data);
-                console.log(error.response.status);
-                console.log(error.response.headers);
-            } else if (error.request) {
-                // The request was made but no response was received
-                // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-                // http.ClientRequest in node.js
-                console.log(error.request);
-            } else {
-                // Something happened in setting up the request that triggered an Error
-                console.log('Error', error.message);
-            }
-            console.warn('AxiosRequester -> post: ', error.message);
-            return error?.response?.data || error;
+        } catch (error: any) {
+            this.serverError(error?.status);
+            loggerModel.add('error', `AxiosRequester -> post:  -> ${url} ${JSON.stringify(data)}: `, JSON.stringify(error));
+            console.warn('AxiosRequester -> post: ', error);
+            return error?.response || {};
+        }
+    }
+
+    put = async (url: string, data?: object, headers?: object, timeoutMS?: number): Promise<any> => {
+        try {
+            const config: any = {
+                method: 'PUT',
+                headers: {
+                    'Cache-Control': 'no-cache',
+                    'Content-Type': 'application/json',
+                    'authorization': `Bearer ${userModel?.tokens}`
+                },
+                url,
+                timeout: timeoutMS || 60000
+            };
+            headers && (config.headers = headers);
+            data && (config.data = JSON.stringify(data));
+            const response = await Axios(config);
+            loggerModel.add('response', `AxiosRequester -> post -> ${url}: `, JSON.stringify(response.data));
+            return response;
+        } catch (error: any) {
+            this.serverError(error?.status);
+            loggerModel.add('error', `AxiosRequester -> post:  -> ${url} ${JSON.stringify(data)}: `, JSON.stringify(error));
+            console.warn('AxiosRequester -> post: ', error);
+            return error?.response || {};
         }
     }
 
     get = async (url: string, params?: object, headers?: object, timeoutMS?: number): Promise<any> => {
+        
         try {
             const config: any = {
                 method: 'GET',
                 headers: {
                     'Cache-Control': 'no-cache',
                     'Content-Type': 'application/json',
+                    'authorization': `Bearer DtpjiEWGnvOLZHpcxF9SuPAm6R0aT2xDMsFLlDoa`
                 },
                 url,
                 timeout: timeoutMS || 60000
@@ -78,11 +102,40 @@ export class AxiosRequester implements IRequester {
             headers && (config.headers = headers);
             params && (config.params = params);
             const response = await Axios(config);
+            loggerModel.add('response', `AxiosRequester -> get -> ${url}: `, JSON.stringify(response.data));
             return response;
-        } catch (error) {
+        } catch (error: any) {
+            this.serverError(error?.status);
+            loggerModel.add('error', `AxiosRequester -> get -> ${url}: `, JSON.stringify(error));
             console.warn('AxiosRequester -> get: ', error);
-            return error?.response?.data || error;
+            return error?.response || {};
         }
     }
 
+    delete = async (url: string, data?: object, headers?: object, timeoutMS?: number): Promise<any> => {
+        try {
+            const config: any = {
+                method: 'DELETE',
+                headers: {
+                    'Cache-Control': 'no-cache',
+                    'Content-Type': 'application/json',
+                    'authorization': `Bearer ${userModel?.tokens}`
+                },
+                url,
+                timeout: timeoutMS || 60000
+            };
+            headers && (config.headers = headers);
+            data && (config.data = JSON.stringify(data));
+            console.log(config)
+            const response = await Axios(config);
+            return response;
+        } catch (error: any) {
+            this.serverError(error?.status);
+            loggerModel.add('error', `AxiosRequester -> delete:  -> ${url} ${JSON.stringify(data)}: `, JSON.stringify(error));
+            console.warn('AxiosRequester -> delete: ', error);
+            return error?.response || {};
+        }
+    }
 }
+
+export const requester = new AxiosRequester();

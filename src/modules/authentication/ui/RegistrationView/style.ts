@@ -6,7 +6,6 @@ export const getStyle = (colors: IColors) => {
     const styles = StyleSheet.create({
         container: {
             flex: 1,
-            paddingHorizontal: scaleHorizontal(25)
         },
         title: {
             fontSize: scaleFontSize(22),
@@ -18,13 +17,13 @@ export const getStyle = (colors: IColors) => {
         text: {
             fontSize: scaleFontSize(16),
             color: colors.subText,
-            fontFamily:'Roboto-Regular',
+            fontFamily: 'Roboto-Regular',
             textAlign: "center",
-            marginVertical:scaleVertical(2)
+            marginVertical: scaleVertical(2)
         },
         titleStyle: {
             marginBottom: 0,
-            fontFamily:'Roboto-Regular'
+            fontFamily: 'Roboto-Regular'
         },
         button: {
             marginTop: scaleVertical(10)
@@ -32,10 +31,10 @@ export const getStyle = (colors: IColors) => {
         policyText: {
             fontSize: scaleFontSize(12),
             color: colors.text,
-            fontFamily:'Roboto-Regular',
+            fontFamily: 'Roboto-Regular',
             textAlign: "center",
             marginTop: scaleVertical(20)
-        }
+        },
     });
     return styles;
 };
