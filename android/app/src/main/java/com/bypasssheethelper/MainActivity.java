@@ -2,14 +2,16 @@ package com.bypasssheethelper;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
-import com.facebook.react.ReactRootView;
+import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint;
+import com.facebook.react.defaults.DefaultReactActivityDelegate;
 import android.os.Bundle;
 
 public class MainActivity extends ReactActivity {
 
   /**
-   * Returns the name of the main component registered from JavaScript. This is used to schedule
-   * rendering of the component.
+  * Returns the instance of the {@link ReactActivityDelegate}. Here we use a util class {@link
+   * DefaultReactActivityDelegate} which allows you to easily enable Fabric and Concurrent React
+   * (aka React 18) with two boolean flags.
    */
   @Override
   protected String getMainComponentName() {
@@ -22,25 +24,15 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected ReactActivityDelegate createReactActivityDelegate() {
-    return new MainActivityDelegate(this, getMainComponentName());
-  }
-
-  public static class MainActivityDelegate extends ReactActivityDelegate {
-    public MainActivityDelegate(ReactActivity activity, String mainComponentName) {
-      super(activity, mainComponentName);
-    }
-
+    return new DefaultReactActivityDelegate(
+        this,
+        getMainComponentName(),
+        // If you opted-in for the New Architecture, we enable the Fabric Renderer.
+        DefaultNewArchitectureEntryPoint.getFabricEnabled());
+     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(null);
     }
-
-    @Override
-    protected ReactRootView createRootView() {
-      ReactRootView reactRootView = new ReactRootView(getContext());
-      // If you opted-in for the New Architecture, we enable the Fabric Renderer.
-      reactRootView.setIsFabric(BuildConfig.IS_NEW_ARCHITECTURE_ENABLED);
-      return reactRootView;
-    }
-  }
+  
 }

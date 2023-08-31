@@ -1,4 +1,4 @@
-import { userModel } from "../../../modules/shared/entities/user/userModel";
+import { userModel } from "../../../src/modules/shared/entities/user/userModel";
 import { ISpreadsheet } from "./ISpreadsheet";
 
 const API_KEY = 'AIzaSyCLgCXpD2pNBKDkVSOP3nUderJZiFj5SDI';

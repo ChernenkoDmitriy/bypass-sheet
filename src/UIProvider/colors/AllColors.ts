@@ -1,9 +1,12 @@
 export const allColors = {
     light: {
+        primary:'#e7ad24',
+        text:'#29251d',
         accentText: '#3489E4',
         buttonText: '#FFFFFF',
         regularText: '#666666',
         titleText: '#000000',
+        subText:'#64748B',
         textAccentButton: '#155249',
         modalBackground: '#00000080',
         icon: '#000000',
