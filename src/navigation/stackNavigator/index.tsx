@@ -10,16 +10,18 @@ import { ProfileView } from '../../modules/profile/ui';
 import { AuthorizationView } from '../../modules/authentication/ui/AuthorizationView';
 import { RegistrationView } from '../../modules/authentication/ui/RegistrationView';
 import { ForgottenPasswordView } from '../../modules/authentication/ui/ForgottenPasswordView';
+import { CompanyListView } from '../../modules/сompanyList/ui/CompanyListView';
 
 const Stack = createStackNavigator();
 
 export const StackNavigator: FC = observer(() => {
     return (
         <Stack.Navigator initialRouteName='LaunchAppView' screenOptions={{ headerShown: false }} >
+            <Stack.Screen name='LaunchAppView' component={LaunchAppView} />
             <Stack.Screen name='AuthorizationView' component={AuthorizationView} />
             <Stack.Screen name='RegistrationView' component={RegistrationView} />
             <Stack.Screen name='ForgottenPasswordView' component={ForgottenPasswordView} />
-            <Stack.Screen name='LaunchAppView' component={LaunchAppView} />
+            <Stack.Screen name='CompanyListView' component={CompanyListView} />
             <Stack.Screen name='DashboardView' component={DashboardView} />
             <Stack.Screen name='BypassCompanyView' component={BypassCompanyView} />
             <Stack.Screen name='BypassSheetCreateView' component={BypassSheetCreateView} />

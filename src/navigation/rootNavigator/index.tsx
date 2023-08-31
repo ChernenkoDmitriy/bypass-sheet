@@ -10,6 +10,8 @@ import { InternetConnection } from '../../UIKit/internetConnection';
 import { Logger } from '../../UIKit/logger/ui/logger';
 import { userModel } from '../../modules/shared/entities/user/userModel';
 import { loggerModel } from '../../UIKit/logger/entity/loggerModel';
+import Toast from 'react-native-toast-message';
+import { ToastView } from '../../UIKit/toast';
 
 export const RootNavigator: FC = observer(() => {
     const { colors, theme } = useUiContext();
@@ -27,6 +29,7 @@ export const RootNavigator: FC = observer(() => {
                 <StackNavigator />
             </NavigationContainer>
             <Logger />
+            <Toast config={{ success: (props) => <ToastView {...props} />, error: (props) => <ToastView error {...props} /> }} />
             <InternetConnection />
             <LoadingView />
         </KeyboardAvoidingView>

@@ -5,14 +5,14 @@ import { userModel } from "../../shared/entities/user/userModel";
 import Toast from "react-native-toast-message";
 
 const processResponse = (response: IResponse) => {
-    if (response.error) {
+    if (response.data.message) {
         Toast.show({
             type: 'error',
             text1: 'error',
-            text2: response.messageKey,
+            text2: response.data.message,
             visibilityTime: 5000,
         });
-        return { message: response.messageKey };
+        return { message: response.data.message };
     };
     userModel.user = response.data;
     return { message: '' };
