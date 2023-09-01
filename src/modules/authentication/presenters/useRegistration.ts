@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { useUiContext } from "../../../UIProvider";
 import { registrationUseCase } from "../useCase/registrationUseCase";
 import { userModel } from "../../shared/entities/user/userModel";
+import { useShowToast } from "../../shared/hooks/useShowToast";
 
 const phoneNumberRegex = /^\+380\d{6,11}$/;
 
@@ -28,6 +29,7 @@ export const useRegistration = () => {
     const isFirstName = useMemo(() => firstName.length === 0, [firstName]);
     const isLastName = useMemo(() => lastName.length === 0, [lastName]);
     const navigation = useNavigation<StackNavigationProp<any>>();
+    const { showSuccess } = useShowToast();
 
     useEffect(() => {
         if (isPassword) {
@@ -110,6 +112,10 @@ export const useRegistration = () => {
         const value = '+380' + phone;
         if (!isContinue) {
             const { message } = await registrationUseCase(firstName, lastName, value, password);
+            if (!message) {
+                navigation.navigate('CompanyListView');
+                showSuccess(t('successfulRegistration'))
+            };
             setErrorPhone('');
             setErrorPassword('');
             console.log(userModel.user);

@@ -3,6 +3,7 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useUiContext } from "../../../UIProvider";
 import { authorizationUseCase } from "../useCase/authorizationUseCase";
+import { useShowToast } from "../../shared/hooks/useShowToast";
 
 const phoneNumberRegex = /^\+380\d{6,11}$/;
 
@@ -19,6 +20,7 @@ export const UseAuthorization = () => {
     const isContinue = useMemo(() => isDisabled || !password.length, [phone, password]);
     const phonePrefix = useMemo(() => !phone ? '' : "+380", [phone]);
     const isPassword = useMemo(() => password.length === 0, [password]);
+    const { showError } = useShowToast();
 
     useEffect(() => {
         if (isPassword) {
@@ -61,6 +63,12 @@ export const UseAuthorization = () => {
         const value = '+380' + phone;
         if (!isContinue) {
             const { message } = await authorizationUseCase(value, password);
+            if (!message) {
+                console.log(message);
+                navigation.navigate('CompanyListView');
+            } else {
+                showError(t('errorToast'), t('userNotFound'));
+            };
             setErrorPhone('');
             setErrorPassword('');
         } else {
