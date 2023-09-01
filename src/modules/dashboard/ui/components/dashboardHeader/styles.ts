@@ -1,13 +1,13 @@
 import { StyleSheet } from 'react-native';
 import { IColors } from '../../../../../UIProvider/colors/IColorsController';
-import { scaleVertical } from '../../../../../utils/Utils';
+import { scaleFontSize, scaleVertical } from '../../../../../utils/Utils';
 
 export const getStyle = (colors: IColors) => {
     const styles = StyleSheet.create({
         container: {
             flexDirection: 'row',
             justifyContent: 'space-between',
-            alignItems:'center',
+            alignItems: 'center',
             flex: 1,
         },
         logo: {
@@ -36,7 +36,13 @@ export const getStyle = (colors: IColors) => {
             height: scaleVertical(32),
             borderRadius: 50
         },
-        settingsButton:{
+        createButton: {
+            paddingVertical: scaleVertical(10)
+        },
+        text: {
+            fontSize: scaleFontSize(14),
+            fontFamily: 'Roboto-Regular',
+            color: colors.text,
         }
     });
     return styles;

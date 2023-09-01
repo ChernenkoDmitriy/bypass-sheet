@@ -19,7 +19,7 @@ export const CompanyListView: FC = () => {
 
     return (
         <ScreenContainer edges={['bottom']} containerStyle={styles.container} headerComponent={<DashboardHeader isBackAvailable={false} settings/>}>
-            <Text>Company List</Text>
+            <CompanyItem/>
             <FlatList
                 data={[]}
                 renderItem={renderItem}
