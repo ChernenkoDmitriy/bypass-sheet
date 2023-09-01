@@ -8,13 +8,12 @@ import { HeaderWithBackButton } from '../../../shared/ui/headerWithBackButton';
 import { MainInput } from '../../../../UIKit/mainInput';
 import { MainButton } from '../../../../UIKit/mainButton';
 
-
 export const ForgottenPasswordView: FC = observer(() => {
     const { colors, t } = useUiContext();
     const styles = useMemo(() => getStyle(colors), [colors]);
 
     return (
-        <ScreenContainer containerStyle={styles.container} headerComponent={<HeaderWithBackButton title='Сброс пароля' />} edges={['top']}>
+        <ScreenContainer containerStyle={styles.container} headerComponent={<HeaderWithBackButton title='Сброс пароля' />} edges={['bottom']}>
             <MainInput
             containerStyle={styles.inputContainer}
                 title={t('phoneNumber')}

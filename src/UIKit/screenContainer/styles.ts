@@ -15,7 +15,7 @@ export const getStyle = (colors: IColors) => {
         },
         default:{
             flex:1,
-            backgroundColor:colors.primary
+            backgroundColor:colors.background
         },
     });
     return styles;

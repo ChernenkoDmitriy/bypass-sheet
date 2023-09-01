@@ -6,7 +6,7 @@ import { registrationUseCase } from "../useCase/registrationUseCase";
 import { userModel } from "../../shared/entities/user/userModel";
 import { useShowToast } from "../../shared/hooks/useShowToast";
 
-const phoneNumberRegex = /^\+380\d{6,11}$/;
+const phoneNumberRegex = /^\+380\d{9}$/;
 
 export const useRegistration = () => {
     const [phone, setPhone] = useState('');
@@ -22,9 +22,8 @@ export const useRegistration = () => {
     const [isValidLastName, setIsValidLastName] = useState(true);
     const [errorLastName, setErrorLastName] = useState('');
     const { t } = useUiContext();
-    const isDisabled = useMemo(() => !phoneNumberRegex.test('+380' + phone), [phone]);
-    const isContinue = useMemo(() => isDisabled || !password.length, [phone, password]);
-    const phonePrefix = useMemo(() => !phone ? '' : "+380", [phone]);
+    const isDisabled = useMemo(() => !phoneNumberRegex.test(phone), [phone]);
+    const phonePrefix = useMemo(() => phone ? '' : "+380", [phone]);
     const isPassword = useMemo(() => password.length === 0, [password]);
     const isFirstName = useMemo(() => firstName.length === 0, [firstName]);
     const isLastName = useMemo(() => lastName.length === 0, [lastName]);
@@ -96,7 +95,7 @@ export const useRegistration = () => {
     }, [isLastName]);
 
     const onSetPhone = (value: string) => {
-        const newValue = value.replace(/[^0-9]/g, '');
+        const newValue = value.replace(/[^+0-9]/g, '');
         setPhone(newValue);
     };
 
@@ -108,24 +107,28 @@ export const useRegistration = () => {
         if (!/\d/.test(value)) setLastName(value);
     };
 
+    const onFocus = () => {
+        if (phone === "") {
+            setPhone(phonePrefix);
+        };
+    };
+
     const onCreateAccount = async () => {
-        const value = '+380' + phone;
-        if (!isContinue) {
-            const { message } = await registrationUseCase(firstName, lastName, value, password);
-            if (!message) {
-                navigation.navigate('CompanyListView');
-                showSuccess(t('successfulRegistration'))
-            };
-            setErrorPhone('');
-            setErrorPassword('');
-            console.log(userModel.user);
-        } else {
+        if (!firstName || !lastName || isDisabled || !password) {
             onBlur();
             onBlurPassword();
             onBlurFirstName();
             onBlurLastName();
+        } else {
+            const { message } = await registrationUseCase(firstName, lastName, phone, password);
+            if (!message) {
+                navigation.navigate('CompanyListView');
+                showSuccess(t('successfulRegistration'));
+            };
+            setErrorPhone('');
+            setErrorPassword('');
         };
     };
 
-    return { firstName, lastName, phonePrefix, isValidLastName, errorLastName, isValid, errorFirstName, errorPhone, phone, isValidFirstName, password, errorPassword, isValidPassword, onFirstName, onBlurLastName, onBlurPassword, onLastName, onBlurFirstName, onCreateAccount, setPassword, onBlur, onSetPhone };
+    return { firstName, lastName, phonePrefix, isValidLastName, errorLastName, isValid, errorFirstName, errorPhone, phone, isValidFirstName, password, errorPassword, isValidPassword, onFocus, onFirstName, onBlurLastName, onBlurPassword, onLastName, onBlurFirstName, onCreateAccount, setPassword, onBlur, onSetPhone };
 };

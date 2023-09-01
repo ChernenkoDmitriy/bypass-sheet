@@ -5,15 +5,17 @@ import { IColors } from '../../UIProvider/colors/IColorsController';
 export const getStyle = (colors: IColors) => {
     const styles = StyleSheet.create({
         container: {
+            position: 'absolute',
+            backgroundColor: colors.background,
             width: size.width,
             height: size.height,
-            position: 'absolute',
+            bottom: 0
         },
         contentWrapper: {
             flex: 1,
             alignItems: 'center',
-            justifyContent:'center',
-            paddingHorizontal:scaleHorizontal(30),
+            justifyContent: 'center',
+            paddingHorizontal: scaleHorizontal(30),
         },
         backgroundImage: {
             width: '100%',
@@ -21,8 +23,8 @@ export const getStyle = (colors: IColors) => {
             position: 'absolute',
         },
         image: {
-            width: scaleHorizontal(200),
-            height: scaleVertical(150),
+            width: scaleVertical(250),
+            height: scaleVertical(200),
         },
         title: {
             fontFamily: 'Roboto-Regular',
@@ -30,8 +32,8 @@ export const getStyle = (colors: IColors) => {
             color: colors.text,
             marginBottom: scaleVertical(50),
         },
-        containerButton:{
-            width:'100%'
+        containerButton: {
+            width: '100%'
         }
     });
     return styles;

@@ -5,7 +5,7 @@ import { useUiContext } from "../../../UIProvider";
 import { authorizationUseCase } from "../useCase/authorizationUseCase";
 import { useShowToast } from "../../shared/hooks/useShowToast";
 
-const phoneNumberRegex = /^\+380\d{6,11}$/;
+const phoneNumberRegex = /^\+380\d{9}$/;
 
 export const UseAuthorization = () => {
     const [phone, setPhone] = useState('');
@@ -16,10 +16,10 @@ export const UseAuthorization = () => {
     const [errorPassword, setErrorPassword] = useState('');
     const navigation = useNavigation<StackNavigationProp<any>>();
     const { t } = useUiContext();
-    const isDisabled = useMemo(() => !phoneNumberRegex.test('+380' + phone), [phone]);
+    const isDisabled = useMemo(() => !phoneNumberRegex.test(phone), [phone]);
     const isContinue = useMemo(() => isDisabled || !password.length, [phone, password]);
-    const phonePrefix = useMemo(() => !phone ? '' : "+380", [phone]);
-    const isPassword = useMemo(() => password.length === 0, [password]);
+    const phonePrefix = useMemo(() => phone ? '' : "+380", [phone]);
+    const isPassword = useMemo(() => password.length === 0 , [password]);
     const { showError } = useShowToast();
 
     useEffect(() => {
@@ -55,14 +55,19 @@ export const UseAuthorization = () => {
     }, [isDisabled]);
 
     const onSetPhone = (value: string) => {
-        const newValue = value.replace(/[^0-9]/g, '');
+        const newValue = value.replace(/[^+0-9]/g, '');
         setPhone(newValue);
     };
 
+    const onFocus = () => {
+        if (phone === "") {
+            setPhone(phonePrefix);
+        }
+    };
+
     const onContinue = async () => {
-        const value = '+380' + phone;
         if (!isContinue) {
-            const { message } = await authorizationUseCase(value, password);
+            const { message } = await authorizationUseCase(phone, password);
             if (!message) {
                 console.log(message);
                 navigation.navigate('CompanyListView');
@@ -80,5 +85,5 @@ export const UseAuthorization = () => {
     const onRegistration = () => navigation.navigate('RegistrationView');
     const onForgottenPassword = () => navigation.navigate('ForgottenPasswordView');
 
-    return { isValid, errorPhone, phone, password, phonePrefix, errorPassword, isValidPassword, onBlurPassword, onContinue, setPassword, onBlur, onSetPhone, onRegistration, onForgottenPassword };
+    return { isValid, errorPhone, phone, password, errorPassword, isValidPassword,onFocus, onBlurPassword, onContinue, setPassword, onBlur, onSetPhone, onRegistration, onForgottenPassword };
 };
