@@ -11,6 +11,9 @@ import { AuthorizationView } from '../../modules/authentication/ui/Authorization
 import { RegistrationView } from '../../modules/authentication/ui/RegistrationView';
 import { ForgottenPasswordView } from '../../modules/authentication/ui/ForgottenPasswordView';
 import { CompanyListView } from '../../modules/сompanyList/ui/CompanyListView';
+import { ConnectToCompanyView } from '../../modules/сompanyList/ui/ConnectToCompanyView';
+import { CreateCompanyView } from '../../modules/сompanyList/ui/CreateCompanyView';
+import { SettingsView } from '../../modules/settings/ui/SettingsView';
 
 const Stack = createStackNavigator();
 
@@ -22,6 +25,9 @@ export const StackNavigator: FC = observer(() => {
             <Stack.Screen name='RegistrationView' component={RegistrationView} />
             <Stack.Screen name='ForgottenPasswordView' component={ForgottenPasswordView} />
             <Stack.Screen name='CompanyListView' component={CompanyListView} />
+            <Stack.Screen name='ConnectToCompanyView' component={ConnectToCompanyView} />
+            <Stack.Screen name='CreateCompanyView' component={CreateCompanyView} />
+            <Stack.Screen name='SettingsView' component={SettingsView} />
             <Stack.Screen name='DashboardView' component={DashboardView} />
             <Stack.Screen name='BypassCompanyView' component={BypassCompanyView} />
             <Stack.Screen name='BypassSheetCreateView' component={BypassSheetCreateView} />

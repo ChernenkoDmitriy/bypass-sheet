@@ -68,8 +68,12 @@ export const translations = {
     successfulRegistration: 'Успешная регистрация!',
     createCompany: 'Создать компанию',
     connectToCompany: 'Присоединится к компании',
+    noConnection: 'Проблемы с интернетом',
+    refresh: 'Обновить',
   },
   en: {
+    refresh: 'Refresh',
+    noConnection: 'Internet problems',
     createCompany: 'Create a company',
     connectToCompany: 'Join the company',
     successfulRegistration: 'Successful registration!',

@@ -7,6 +7,7 @@ export const getStyle = (colors: IColors) => {
         container: {
             flexDirection: 'row',
             justifyContent: 'space-between',
+            alignItems:'center',
             flex: 1,
         },
         logo: {
@@ -35,6 +36,8 @@ export const getStyle = (colors: IColors) => {
             height: scaleVertical(32),
             borderRadius: 50
         },
+        settingsButton:{
+        }
     });
     return styles;
 };

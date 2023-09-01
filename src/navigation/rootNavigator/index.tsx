@@ -24,7 +24,7 @@ export const RootNavigator: FC = observer(() => {
 
     return (
         <KeyboardAvoidingView style={{ flex: 1, backgroundColor: colors.background }} behavior={isIOS ? 'padding' : undefined}>
-            <StatusBar backgroundColor={colors.card} barStyle={theme === 'dark' ? 'light-content' : 'dark-content'} />
+            <StatusBar backgroundColor={colors.background} barStyle={theme === 'dark' ? 'light-content' : 'dark-content'} />
             <NavigationContainer>
                 <StackNavigator />
             </NavigationContainer>

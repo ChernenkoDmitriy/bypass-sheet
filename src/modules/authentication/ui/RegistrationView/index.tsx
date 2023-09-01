@@ -11,10 +11,10 @@ import { useRegistration } from "../../presenters/useRegistration";
 export const RegistrationView: FC = () => {
     const { t, colors } = useUiContext();
     const styles = useMemo(() => getStyle(colors), [colors]);
-    const { firstName, lastName, phonePrefix, isValidLastName, errorLastName, isValid, errorFirstName, errorPhone, phone, isValidFirstName, password, errorPassword, isValidPassword, onFirstName, onBlurLastName, onBlurPassword, onLastName, onBlurFirstName, onCreateAccount, setPassword, onBlur, onSetPhone } = useRegistration();
+    const { firstName, lastName, phonePrefix, isValidLastName, errorLastName, isValid, errorFirstName, errorPhone, phone, isValidFirstName, password, errorPassword, isValidPassword, onFocus, onFirstName, onBlurLastName, onBlurPassword, onLastName, onBlurFirstName, onCreateAccount, setPassword, onBlur, onSetPhone } = useRegistration();
 
     return (
-        <ScreenContainer scrollEnabled containerStyle={styles.container} headerComponent={<HeaderWithBackButton title={t('registration')} />}>
+        <ScreenContainer scrollEnabled containerStyle={styles.container} edges={['bottom']} headerComponent={<HeaderWithBackButton title={t('registration')} />}>
             <Text style={styles.title}>{t('createProfile')}</Text>
             <Text style={styles.text}>{t('personalization')}</Text>
             <MainInput
@@ -22,14 +22,14 @@ export const RegistrationView: FC = () => {
                 titleStyle={styles.titleStyle}
                 title={t('workPhoneNumber')}
                 value={phone}
-                defaultPrefix={phonePrefix}
-                maxLength={9}
+                maxLength={13}
                 onChangeText={onSetPhone}
                 keyboardType={'phone-pad'}
                 isValid={isValid}
                 onBlur={onBlur}
                 errorText={errorPhone}
                 onSubmitEditing={onCreateAccount}
+                onFocus={onFocus}
             />
             <MainInput
                 inputWrapperStyle={{ borderBottomColor: isValidPassword ? colors.primary : 'red' }}

@@ -11,7 +11,7 @@ const LOGO = require('../../../../../assets/img/logo.png')
 
 export const AuthorizationView: FC = () => {
     const { colors, t } = useUiContext();
-    const { isValid, errorPhone, phone, password, phonePrefix, errorPassword, isValidPassword, onBlurPassword, onContinue, setPassword, onBlur, onSetPhone, onRegistration, onForgottenPassword } = UseAuthorization();
+    const { isValid, errorPhone, phone, password, errorPassword, isValidPassword, onFocus, onBlurPassword, onContinue, setPassword, onBlur, onSetPhone, onRegistration, onForgottenPassword } = UseAuthorization();
     const styles = useMemo(() => getStyle(colors, isValid, isValidPassword), [colors, isValid, isValidPassword]);
 
     return (
@@ -21,12 +21,12 @@ export const AuthorizationView: FC = () => {
                 inputWrapperStyle={{ borderBottomColor: isValid ? colors.primary : 'red' }}
                 title={t('phoneNumber')}
                 value={phone}
-                defaultPrefix={phonePrefix}
-                maxLength={9}
+                maxLength={13}
                 onChangeText={onSetPhone}
                 keyboardType={'phone-pad'}
                 isValid={isValid}
                 onBlur={onBlur}
+                onFocus={onFocus}
                 errorText={errorPhone}
             />
             <MainInput
@@ -54,9 +54,9 @@ export const AuthorizationView: FC = () => {
                     </Text>
                 </TouchableOpacity>
                 <Image
-                source={LOGO}
-                style={styles.logo}
-            />
+                    source={LOGO}
+                    style={styles.logo}
+                />
             </View>
         </ScreenContainer>
     );

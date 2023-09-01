@@ -7,9 +7,11 @@ import { scaleVertical } from "../../../../../utils/Utils";
 import { MenuView } from "@react-native-menu/menu";
 
 interface IProps {
+    onConnectToCompany: () => void;
+    onCreateCompany: () => void;
 };
 
-export const AddCompanyButton: FC<IProps> = () => {
+export const AddCompanyButton: FC<IProps> = ({ onCreateCompany, onConnectToCompany }) => {
     const { colors, t } = useUiContext();
     const styles = useMemo(() => getStyle(colors), [colors]);
 
@@ -17,7 +19,7 @@ export const AddCompanyButton: FC<IProps> = () => {
         <MenuView
             style={styles.container}
             onPressAction={({ nativeEvent }) => {
-                console.warn(JSON.stringify(nativeEvent));
+                nativeEvent.event === '1' ? onConnectToCompany() : onCreateCompany();
             }}
             actions={[
                 {
