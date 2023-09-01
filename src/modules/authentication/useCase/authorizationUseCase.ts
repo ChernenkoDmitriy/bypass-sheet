@@ -14,7 +14,7 @@ const processResponse = (response: IResponse) => {
         });
         return { message: response.data.message };
     };
-    userModel.user = response.data;
+    userModel.user = response.data.user;
     return { message: '' };
 };
 
