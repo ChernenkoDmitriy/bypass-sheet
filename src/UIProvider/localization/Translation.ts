@@ -79,10 +79,28 @@ export const translations = {
     title: 'Title',
     emptyBypassSheetList: "You don't have bypass sheets. You can create a group and add bypasses to sheets",
     appName: 'Company standards',
-    settings:'Settings'
+    settings: 'Settings',
+    dashboard: 'Dashboard',
+    company: 'My company',
+    profile: 'Profile',
+    english: 'English',
+    ukrainian: 'Ukrainian',
+    dark: 'Dark',
+    light: 'Light',
+    employees:'Employees'
   },
   uk: {
-    settings:'Налаштування',
+    edit:'Редагувати',
+    delete:'Видалити',
+    employees:'Сотрудников',
+    dark: 'Темна',
+    light: 'Світла',
+    english: 'Англійська',
+    ukrainian: 'Українська',
+    dashboard: 'Приборна панель',
+    company: 'Мої компаниї',
+    profile: 'Профіль',
+    settings: 'Налаштування',
     googleSheetInstruction: '* Якщо ID та ім\'я таблиці не вказані, то буде створено таблицю з іменем CompanyStandardsApp у вашому Google Drive',
     addPhoto: 'Додати фото',
     newPhotoDescription: 'Зробіть нове фото або завантажте з галереї',
@@ -155,6 +173,6 @@ export const translations = {
     companyName: 'Назва компанії',
     successCreateCompany: 'Компанію успішно створено!',
     theme: 'Тема',
-}
+  }
 
 };

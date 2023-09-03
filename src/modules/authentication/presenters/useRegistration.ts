@@ -122,7 +122,7 @@ export const useRegistration = () => {
         } else {
             const { message } = await registrationUseCase(firstName, lastName, phone, password);
             if (!message) {
-                navigation.navigate('CompanyListView');
+                navigation.navigate('TabNavigator');
                 showSuccess(t('successfulRegistration'));
             };
             setErrorPhone('');

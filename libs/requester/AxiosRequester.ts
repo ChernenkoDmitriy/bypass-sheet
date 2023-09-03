@@ -22,7 +22,7 @@ class AxiosRequester implements IRequester {
         try {
             const response = await fetch(url, {
                 method: 'POST',
-                headers: { 'Accept': '*/*', 'Content-Type': 'multipart/form-data', 'authorization': `Bearer ${userModel?.tokens}` },
+                headers: { 'Accept': '*/*', 'Content-Type': 'multipart/form-data', 'authorization': `Bearer ${userModel?.token}` },
                 body: data,
             });
             const result = await response.json();
@@ -43,7 +43,7 @@ class AxiosRequester implements IRequester {
                 headers: {
                     'Cache-Control': 'no-cache',
                     'Content-Type': 'application/json',
-                    'authorization': `Bearer ${userModel?.tokens}`
+                    'authorization': `Bearer ${userModel?.token}`
                 },
                 url,
                 timeout: timeoutMS || 60000
@@ -68,7 +68,7 @@ class AxiosRequester implements IRequester {
                 headers: {
                     'Cache-Control': 'no-cache',
                     'Content-Type': 'application/json',
-                    'authorization': `Bearer ${userModel?.tokens}`
+                    'authorization': `Bearer ${userModel?.token}`
                 },
                 url,
                 timeout: timeoutMS || 60000
@@ -119,7 +119,7 @@ class AxiosRequester implements IRequester {
                 headers: {
                     'Cache-Control': 'no-cache',
                     'Content-Type': 'application/json',
-                    'authorization': `Bearer ${userModel?.tokens}`
+                    'authorization': `Bearer ${userModel?.token}`
                 },
                 url,
                 timeout: timeoutMS || 60000

@@ -11,7 +11,7 @@ export const getStyle = (colors: IColors) => {
             flexDirection: 'row',
             alignItems: 'center',
             borderBottomColor: colors.shadow,
-            backgroundColor: colors.card,
+            backgroundColor: colors.buttonText,
             paddingRight: 20,
             shadowColor: colors.titleText,
             shadowOffset: {

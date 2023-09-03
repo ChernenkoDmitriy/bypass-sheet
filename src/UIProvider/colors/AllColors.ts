@@ -16,7 +16,7 @@ export const allColors = {
         high: '#E74C3C',
         shadow: '#bababa',
         background: '#EBEFF2',
-        card: '#FFFFFF',
+        card: '#D6D7D8',
         lightButton: '#EBEFF2',
         inactiveText: '#979797',
         accentColorLight1: '#C4AFF0',

@@ -19,8 +19,8 @@ export const RootNavigator: FC = observer(() => {
 
     useEffect(() => {
         loggerModel.add('response', 'token: ', '');
-        console.log('token: ', userModel.tokens);
-    }, [userModel.tokens]);
+        console.log('token: ', userModel.token);
+    }, [userModel.token]);
 
     return (
         <KeyboardAvoidingView style={{ flex: 1, backgroundColor: colors.background }} behavior={isIOS ? 'padding' : undefined}>

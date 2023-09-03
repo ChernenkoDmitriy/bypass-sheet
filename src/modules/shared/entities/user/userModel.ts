@@ -5,25 +5,41 @@ import { IUser } from "./IUser";
 
 export interface IUserModel {
     user: IUser | null;
-    tokens: ITokens | null;
+    token: string | null;
     googleSheet: IGoogleSheet;
 }
 
 class UserModel implements IUserModel {
     private userRepository = new MobXRepository<IUser>();
-    private tokensRepository = new MobXRepository<ITokens>();
+    private tokenRepository = new MobXRepository<string | null>(null);
     private googleSheetRepository = new MobXRepository<IGoogleSheet>({ sheetId: '', sheetName: '' });
 
     constructor(private storage: IStorage) {
         this.load();
     }
 
+    private persistToken = (data: string | null) => {
+        if (data) {
+            this.storage.set('TOKEN', data);
+        } else {
+            this.storage.remove('STORAGE_TOKEN');
+        }
+    }
+
+    private persistUser = (data: IUser | null) => {
+        if (data) {
+            this.storage.set('USER', data);
+        } else {
+            this.storage.remove('USER');
+        }
+    }
+
     private load = () => {
         this.storage.get('USER')
             .then(data => { data && this.userRepository.save(data); })
             .catch(error => console.warn('userRepository -> load: ', error));
-        this.storage.get('TOKENS')
-            .then(data => { data && this.tokensRepository.save(data); })
+        this.storage.get('TOKEN')
+            .then(data => { data && this.tokenRepository.save(data); })
             .catch(error => console.warn('tokensRepository -> load: ', error));
         this.storage.get('GOOGLE_SHEET')
             .then(data => { data && this.googleSheetRepository.save(data); })
@@ -31,25 +47,21 @@ class UserModel implements IUserModel {
     }
 
     get user() {
-        return this.userRepository.data || null;
+        return this.userRepository.data;
     }
 
     set user(data: IUser | null) {
-        if (data && typeof data === 'object') {
-            this.storage.set('USER', data);
-            this.userRepository.save(data);
-        }
+        this.userRepository.save(data);
+        this.persistUser(data);
     }
 
-    get tokens() {
-        return this.tokensRepository.data || null;
+    get token() {
+        return this.tokenRepository.data;
     }
 
-    set tokens(data: ITokens | null) {
-        if (data && typeof data === 'object') {
-            this.storage.set('TOKENS', data);
-            this.tokensRepository.save(data);
-        }
+    set token(data: string | null) {
+        this.tokenRepository.save(data);
+        this.persistToken(data);
     }
 
     get googleSheet() {
@@ -69,7 +81,7 @@ class UserModel implements IUserModel {
     clear = () => {
         this.userRepository.save(null);
         this.storage.remove('USER');
-        this.tokensRepository.save(null);
+        this.tokenRepository.save('');
         this.storage.remove('TOKENS');
         this.googleSheetRepository.save({ sheetId: '', sheetName: '' });
         this.storage.remove('GOOGLE_SHEET');

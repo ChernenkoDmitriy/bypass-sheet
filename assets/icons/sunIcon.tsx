@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import Svg, { G, Path, Defs, ClipPath } from "react-native-svg"
+import { scaleVertical } from "../../src/utils/Utils";
 
 interface IProps {
     width?: number,
@@ -7,8 +8,8 @@ interface IProps {
     color?: string,
 };
 
-export const SunIcon: FC<IProps> = ({ width, height, color }) => (
-    <Svg width={width || 26} height={height || 26} viewBox="0 0 24 24" fill={'none'}>
+export const SunIcon: FC<IProps> = ({ width, height }) => (
+    <Svg width={width || scaleVertical(34)} height={height || scaleVertical(34)} viewBox="0 0 24 24" fill={'none'}>
         <Path
             d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
             stroke="#000"

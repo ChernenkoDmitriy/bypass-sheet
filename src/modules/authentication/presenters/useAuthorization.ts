@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { useUiContext } from "../../../UIProvider";
 import { authorizationUseCase } from "../useCase/authorizationUseCase";
 import { useShowToast } from "../../shared/hooks/useShowToast";
+import { userModel } from "../../shared/entities/user/userModel";
 
 const phoneNumberRegex = /^\+380\d{9}$/;
 
@@ -62,15 +63,14 @@ export const UseAuthorization = () => {
     const onFocus = () => {
         if (phone === "") {
             setPhone(phonePrefix);
-        }
+        };
     };
 
     const onContinue = async () => {
         if (!isContinue) {
-            const { message } = await authorizationUseCase(phone, password);
+            const { message } = await authorizationUseCase(phone, password);            
             if (!message) {
-                console.log(message);
-                navigation.navigate('CompanyListView');
+                navigation.navigate('TabNavigator');
             } else {
                 showError(t('errorToast'), t('userNotFound'));
             };
