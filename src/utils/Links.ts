@@ -4,7 +4,8 @@ export interface ILinks {
     companyList: string;
     createCompany: string;
     deleteCompany: string;
-    updateCompany:string;
+    updateCompany: string;
+    getLocaleDetails: string;
 };
 
 class Links implements ILinks {
@@ -14,8 +15,9 @@ class Links implements ILinks {
         registration: '/company-standards/user-auth/registration',
         companyList: '/company-standards/company/list',
         createCompany: '/company-standards/company/create',
-        deleteCompany:'/company-standards/company/delete',
-        updateCompany:'/company-standards/company/update'
+        deleteCompany: '/company-standards/company/delete',
+        updateCompany: '/company-standards/company/update',
+        getLocaleDetails: 'https://maps.googleapis.com/maps/api/geocode/json',
     }
 
     get login() {
@@ -40,6 +42,10 @@ class Links implements ILinks {
 
     get updateCompany() {
         return this._authorizationDomain + this._urls.updateCompany;
+    }
+
+    get getLocaleDetails() {
+        return this._urls.getLocaleDetails;
     }
 };
 

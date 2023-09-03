@@ -6,4 +6,6 @@ export interface IUser {
     avatar: string | null;
     first_name: string | null;
     last_name: string | null;
+    latitude: number;
+    longitude: number;
 };
