@@ -57,11 +57,11 @@ export const useCompanyList = () => {
         const { message } = await useCompanyListUseCase(Number(userModel.user?.id));
     };
 
-    const getEditCompany = (id: number, companyName: string) => {
-        navigation.navigate('EditCompanyView', { id: id, companyName: companyName });
+    const onEditCompany = (id: number , companyName: string) => {
+        navigation.navigate('EditCompanyView', { id: id , companyName : companyName});
     };
 
     const onConnectToCompany = () => navigation.navigate('ConnectToCompanyView');
     const onCreateCompany = () => navigation.navigate('CreateCompanyView');
-    return { onConnectToCompany, onCreateCompany, deleteCompany, getEditCompany, requestPermission }
+    return { onConnectToCompany, onCreateCompany, deleteCompany, onEditCompany, requestPermission }
 };

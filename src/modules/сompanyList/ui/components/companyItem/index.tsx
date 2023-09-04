@@ -11,10 +11,10 @@ import { StackNavigationProp } from "@react-navigation/stack";
 interface IProps {
     item: { id: number, name: string, avatar: string };
     deleteCompany: (id: number) => void;
-    getEditCompany: (id: number, name: string) => void;
+    onEditCompany: (id: number, name: string) => void;
 };
 
-export const CompanyItem: FC<IProps> = ({ item, deleteCompany, getEditCompany }) => {
+export const CompanyItem: FC<IProps> = ({ item, deleteCompany, onEditCompany }) => {
     const { colors } = useUiContext();
     const { t } = useUiContext();
     const styles = useMemo(() => getStyle(colors), [colors]);
@@ -29,7 +29,7 @@ export const CompanyItem: FC<IProps> = ({ item, deleteCompany, getEditCompany })
             <MenuView
                 style={styles.optionsButton}
                 onPressAction={({ nativeEvent }) => {
-                    nativeEvent.event === '2' ? deleteCompany(item.id) : getEditCompany(item.id, item.name);
+                    nativeEvent.event === '2' ? deleteCompany(item.id) : onEditCompany(item.id, item.name);
                 }}
                 actions={[
                     {
@@ -43,7 +43,7 @@ export const CompanyItem: FC<IProps> = ({ item, deleteCompany, getEditCompany })
                         titleColor: colors.text,
                     },
                 ]}
-                shouldOpenOnLongPress={false}
+                shouldOpenOnLongPress={true}
             >
                 <OptionsIcon color={colors.buttonText} />
             </MenuView>
