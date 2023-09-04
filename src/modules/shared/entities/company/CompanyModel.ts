@@ -40,6 +40,7 @@ class CompanyModel implements ICompanyModel {
     clear = () => {
         this.offset = 0;
         this.limit = 0;
+        this.companyList = [];
     }
 }
 

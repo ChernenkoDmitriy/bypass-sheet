@@ -5,7 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { useCreateCompanyUseCase } from "../useCase/useCreateCompanyUseCase";
 
-export const UseCompanyView = () => {
+export const useCompanyView = () => {
     const [companyName, setCompanyName] = useState('');
     const [isValid, setIsValid] = useState(true);
     const [errorName, setErrorName] = useState('');

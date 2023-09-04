@@ -5,12 +5,12 @@ import { getStyle } from "./style";
 import { DashboardHeader } from "../../../dashboard/ui/components/dashboardHeader";
 import { Text } from 'react-native'
 import { MainInput } from "../../../../UIKit/mainInput";
-import { UseCompanyView } from "../../presenters/useCompanyView";
+import { useCompanyView } from "../../presenters/useCompanyView";
 
 export const CreateCompanyView: FC = () => {
     const { colors, t } = useUiContext();
     const styles = useMemo(() => getStyle(colors), [colors]);
-    const { isValid, companyName, errorName, onSetName, onBlur, onCreate, } = UseCompanyView();
+    const { isValid, companyName, errorName, onSetName, onBlur, onCreate, } = useCompanyView();
 
     return (
         <ScreenContainer edges={['bottom']} containerStyle={styles.container} headerComponent={<DashboardHeader title={t('newCompany')} logo={false} onCreate={onCreate} isBackAvailable create />}>
