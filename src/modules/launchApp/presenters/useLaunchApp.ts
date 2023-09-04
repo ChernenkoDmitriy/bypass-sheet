@@ -8,7 +8,7 @@ export const useLaunchApp = () => {
     useEffect(() => {
         setTimeout(() => {
             if (userModel.user) {
-                navigation.reset({ index: 0, routes: [{ name: 'TabNavigator' }] });
+                navigation.reset({ index: 0, routes: [{ name: 'CompanyListView' }] });
             } else {
                 navigation.reset({ index: 0, routes: [{ name: 'AuthorizationView' }] });
             };

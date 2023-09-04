@@ -90,9 +90,10 @@ export const translations = {
     employees: 'Employees',
     attention: 'Attention: ',
     geolocationMustBeEnabled: 'Geolocation must be enabled for the app to work.',
-
+    requestPermission: 'Request Permission',
   },
   uk: {
+    requestPermission: 'Запитати дозвіл',
     geolocationMustBeEnabled: 'Для роботи програми має бути ввімкнена геолокація.',
     attention: 'Увага: ',
     edit: 'Редагувати',

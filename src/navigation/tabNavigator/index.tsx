@@ -6,6 +6,7 @@ import { SettingsView } from '../../modules/settings/ui/SettingsView';
 import { CompanyListView } from '../../modules/сompanyList/ui/CompanyListView';
 import { DashboardView } from '../../modules/dashboard/ui';
 import { ProfileIcon } from '../../../assets/icons/ProffileIcon';
+import { TabulationView } from '../../modules/tabulation/ui/TabulationView';
 
 const Tab = createBottomTabNavigator();
 const { t } = useUiContext();
@@ -26,7 +27,7 @@ export const TabNavigator: FC = () => {
             },
         }}>
             <Tab.Screen name={t("dashboard")} component={DashboardView} />
-            <Tab.Screen name={t("company")} component={CompanyListView} />
+            <Tab.Screen name={t("tabulation")} component={TabulationView} />
             <Tab.Screen name={t("profile")} component={SettingsView} options={{ tabBarIcon: ({ focused }) => <ProfileIcon color={focused ? colors.text : colors.icon} /> }} />
         </Tab.Navigator>
     );

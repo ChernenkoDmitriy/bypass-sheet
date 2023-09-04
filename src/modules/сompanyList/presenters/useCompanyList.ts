@@ -27,6 +27,7 @@ export const useCompanyList = () => {
 
     const requestPermission = async () => {
         const permissionStatus = await request(isIOS ? PERMISSIONS.IOS.LOCATION_WHEN_IN_USE : PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION);
+        console.log('request',permissionStatus);
         userModel.location = { ...userModel.location, permissionStatus };
         await onGetLocation(permissionStatus);
     };
@@ -62,5 +63,5 @@ export const useCompanyList = () => {
 
     const onConnectToCompany = () => navigation.navigate('ConnectToCompanyView');
     const onCreateCompany = () => navigation.navigate('CreateCompanyView');
-    return { onConnectToCompany, onCreateCompany, deleteCompany, getEditCompany }
+    return { onConnectToCompany, onCreateCompany, deleteCompany, getEditCompany, requestPermission }
 };
