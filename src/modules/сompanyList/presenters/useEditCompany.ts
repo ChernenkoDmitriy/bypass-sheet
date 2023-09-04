@@ -1,17 +1,15 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { useUpdateCompanyUseCase } from "../useCase/useUpdateCompanyUseCase";
 import { useUiContext } from "../../../UIProvider";
-import { useShowToast } from "../../shared/hooks/useShowToast";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { useCreateCompanyUseCase } from "../useCase/useCreateCompanyUseCase";
 
-export const useCompanyView = () => {
-    const [companyName, setCompanyName] = useState('');
+export const useEditCompany = () => {
+    const [name, setName] = useState('');
     const [isValid, setIsValid] = useState(true);
     const [errorName, setErrorName] = useState('');
-    const isCompanyName = useMemo(() => companyName.length <= 2, [companyName]);
     const { t } = useUiContext();
-    const { showSuccess } = useShowToast();
+    const isCompanyName = useMemo(() => name.length <= 2, [name]);
     const navigation = useNavigation<StackNavigationProp<any>>();
 
     useEffect(() => {
@@ -31,17 +29,16 @@ export const useCompanyView = () => {
     }, [isCompanyName]);
 
     const onSetName = (value: string) => {
-        if (!/\d/.test(value)) setCompanyName(value);
+        if (!/\d/.test(value)) setName(value);
     };
 
-    const onCreate = async () => {
+    const getSelectedCompany = async (id: number, name: string, description: 'Description') => {
         if (!isCompanyName) {
-            const { message } = await useCreateCompanyUseCase(companyName);
+            const { message } = await useUpdateCompanyUseCase(id, name, description);
             navigation.navigate('TabNavigator');
         } else {
             onBlur();
         };
     };
-
-    return { isValid, companyName, errorName, onSetName, onBlur, onCreate, };
+    return { isValid, name, errorName, onSetName, onBlur, getSelectedCompany, };
 };

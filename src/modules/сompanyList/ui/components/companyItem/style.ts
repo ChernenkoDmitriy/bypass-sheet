@@ -5,20 +5,20 @@ import { scaleFontSize, scaleHorizontal, scaleVertical } from "../../../../../ut
 export const getStyle = (colors: IColors) => {
     const styles = StyleSheet.create({
         container: {
-            marginTop: scaleVertical(20),
+            marginTop: scaleVertical(10),
             width: '100%',
             height: scaleVertical(155),
             borderRadius: 9,
-            backgroundColor: colors.inactiveText,
-
-            shadowColor: "#000000",
+            backgroundColor: colors.card,
+            shadowColor: "#000",
             shadowOffset: {
                 width: 0,
-                height: 18,
+                height: 3,
             },
-            shadowOpacity: 0.25,
-            shadowRadius: 20.00,
-            elevation: 24
+            shadowOpacity: 0.23,
+            shadowRadius: 2.62,
+
+            elevation: 4,
         },
         informationWrapper: {
             width: '70%',

@@ -16,16 +16,22 @@ export const getStyle = (colors: IColors) => {
             fontSize: scaleFontSize(18),
             fontFamily: 'Roboto-Regular',
             color: colors.text,
-            marginLeft: scaleHorizontal(15)
+            marginLeft: scaleHorizontal(25),
+            marginRight: scaleHorizontal(10)
         },
         text: {
             fontSize: scaleFontSize(16),
             color: colors.text,
+            marginRight: scaleHorizontal(10)
         },
         switchWrapper: {
             flexDirection: 'row',
             alignItems: 'center',
         },
+        languageWrapper:{
+            flexDirection:'row',
+            alignItems:'center'
+        }
     });
     return styles;
 };

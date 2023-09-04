@@ -3,22 +3,25 @@ import { useUiContext } from "../../../../UIProvider";
 import { ScreenContainer } from "../../../../UIKit/screenContainer";
 import { getStyle } from "./style";
 import { DashboardHeader } from "../../../dashboard/ui/components/dashboardHeader";
-import { Text } from 'react-native'
+import { useRoute } from "@react-navigation/native";
+import { useEditCompany } from "../../presenters/useEditCompany";
+import { MainButton } from "../../../shared/ui/mainButton";
 import { MainInput } from "../../../../UIKit/mainInput";
-import { useCompanyView } from "../../presenters/useCompanyView";
 
-export const CreateCompanyView: FC = () => {
+export const EditCompanyView: FC = () => {
     const { colors, t } = useUiContext();
     const styles = useMemo(() => getStyle(colors), [colors]);
-    const { isValid, companyName, errorName, onSetName, onBlur, onCreate, } = useCompanyView();
+    const route = useRoute();
+    const { isValid, name, errorName, onSetName, onBlur, getSelectedCompany, } = useEditCompany();
+    const { id, companyName } = route?.params;
 
     return (
-        <ScreenContainer edges={['bottom']} containerStyle={styles.container} headerComponent={<DashboardHeader title={t('newCompany')} logo={false} onCreate={onCreate} isBackAvailable create />}>
+        <ScreenContainer edges={['bottom']} containerStyle={styles.container} headerComponent={<DashboardHeader title={companyName} logo={false} isBackAvailable />}>
             <MainInput
-                containerStyle={{ marginTop: 20 }}
+                containerStyle={{ marginVertical: 20 }}
                 inputWrapperStyle={{ borderBottomColor: isValid ? colors.primary : 'red' }}
                 title={t('companyName')}
-                value={companyName}
+                value={name}
                 maxLength={50}
                 onChangeText={onSetName}
                 keyboardType={'default'}
@@ -26,6 +29,7 @@ export const CreateCompanyView: FC = () => {
                 onBlur={onBlur}
                 errorText={errorName}
             />
+            <MainButton title={t('refresh')} onPress={() => getSelectedCompany(id, name, 'Description')} />
         </ScreenContainer>
     );
 };

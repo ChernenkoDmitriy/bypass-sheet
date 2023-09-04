@@ -5,26 +5,25 @@ import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 
 export const UseSetting = () => {
-    const { theme, t, setLocale, saveTheme } = useUiContext();
-    const [isReminderOn, onSetIsReminderOn] = useState(false);
+    const { theme, t, locale, saveTheme } = useUiContext();
     const isEnabled = theme === 'dark';
-    const selectedLanguage = useMemo(() => isReminderOn ? 'EN' : 'UA', [isReminderOn]);
     const navigation = useNavigation<StackNavigationProp<any>>();
-
-    const handleLocaleChange = (isEn: boolean) => {
-        const locale = isEn ? 'en' : 'uk';
-        setLocale(locale);
-        onSetIsReminderOn(isEn);
-    };
-
-    const handleTheme = () => {
-        saveTheme(theme === "light" ? 'dark' : 'light');
-    };
+    const activeLanguage = useMemo(() => locale === 'en' ? t('english') : t('ukrainian'), [locale]);
+    const activeTheme = useMemo(() => theme === 'dark' ? t('dark') : t('light'), [theme]);
+    
+    const handleTheme = () => saveTheme(theme === "light" ? 'dark' : 'light');
 
     const LogOut = () => {
         userModel.clear();
-        navigation.navigate('AuthorizationView');
+        navigation.reset({
+            index: 0,
+            routes: [{ name: 'AuthorizationView' }],
+        });
     };
 
-    return { isReminderOn, isEnabled, selectedLanguage, handleTheme, handleLocaleChange, LogOut }
+    const getSelectLanguage = () => {
+        navigation.navigate('SelectLanguageView');
+    };
+
+    return { isEnabled, activeLanguage, activeTheme, handleTheme, LogOut, getSelectLanguage }
 };

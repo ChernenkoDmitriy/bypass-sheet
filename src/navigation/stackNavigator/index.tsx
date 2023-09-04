@@ -14,12 +14,16 @@ import { CompanyListView } from '../../modules/сompanyList/ui/CompanyListView';
 import { ConnectToCompanyView } from '../../modules/сompanyList/ui/ConnectToCompanyView';
 import { CreateCompanyView } from '../../modules/сompanyList/ui/CreateCompanyView';
 import { SettingsView } from '../../modules/settings/ui/SettingsView';
+import { TabNavigator } from '../tabNavigator';
+import { SelectLanguageView } from '../../modules/settings/ui/SelectLanguageView';
+import { EditCompanyView } from '../../modules/сompanyList/ui/EditCompanyView';
 
 const Stack = createStackNavigator();
 
 export const StackNavigator: FC = observer(() => {
     return (
         <Stack.Navigator initialRouteName='LaunchAppView' screenOptions={{ headerShown: false }} >
+            <Stack.Screen name='TabNavigator' component={TabNavigator} />
             <Stack.Screen name='LaunchAppView' component={LaunchAppView} />
             <Stack.Screen name='AuthorizationView' component={AuthorizationView} />
             <Stack.Screen name='RegistrationView' component={RegistrationView} />
@@ -27,7 +31,9 @@ export const StackNavigator: FC = observer(() => {
             <Stack.Screen name='CompanyListView' component={CompanyListView} />
             <Stack.Screen name='ConnectToCompanyView' component={ConnectToCompanyView} />
             <Stack.Screen name='CreateCompanyView' component={CreateCompanyView} />
+            <Stack.Screen name='EditCompanyView' component={EditCompanyView} />
             <Stack.Screen name='SettingsView' component={SettingsView} />
+            <Stack.Screen name='SelectLanguageView' component={SelectLanguageView} />
             <Stack.Screen name='DashboardView' component={DashboardView} />
             <Stack.Screen name='BypassCompanyView' component={BypassCompanyView} />
             <Stack.Screen name='BypassSheetCreateView' component={BypassSheetCreateView} />

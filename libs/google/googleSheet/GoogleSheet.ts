@@ -12,7 +12,7 @@ interface ISheet {
 class GoogleSheet {
 
     private request = async (url: string, method: 'POST' | 'GET' | 'PUT', body?: string): Promise<any> => {
-        const headers = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + userModel.tokens?.accessToken };
+        const headers = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + userModel.token?.accessToken };
         const response = await fetch(url, { method, body, headers });
         return await response;
     }

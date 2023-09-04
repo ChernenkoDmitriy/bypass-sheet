@@ -21,8 +21,8 @@ export const useProfile = () => {
             const user = await googleSignInModule.signIn();
             if (user?.user) {
                 userModel.user = user.user;
-                const tokens = await googleSignInModule.getTokens();
-                userModel.tokens = tokens;
+                const token = await googleSignInModule.getTokens();
+                userModel.token = token;
             }
         }
     }, [userModel.user]);
