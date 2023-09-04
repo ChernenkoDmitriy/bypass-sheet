@@ -6,7 +6,6 @@ import { userModel } from "../../shared/entities/user/userModel";
 import { useDeleteCompanyUseCase } from "../useCase/useDeleteCompanyUseCase";
 import { PERMISSIONS, PermissionStatus, request } from "react-native-permissions";
 import { isIOS } from "../../../utils/Utils";
-import { getLocation } from "../useCase/getLocation";
 import { Alert, Linking } from "react-native";
 import { useUiContext } from "../../../UIProvider";
 
@@ -22,32 +21,32 @@ export const useCompanyList = () => {
         }, [])
     );
 
-    useEffect(() => {
-        requestPermission();
-    }, []);
+    // useEffect(() => {
+    //     requestPermission();
+    // }, []);
 
-    const requestPermission = async () => {
-        const permissionStatus = await request(isIOS ? PERMISSIONS.IOS.LOCATION_WHEN_IN_USE : PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION);
-        console.log('request', permissionStatus);
-        userModel.location = { ...userModel.location, permissionStatus };
-        await onGetLocation(permissionStatus);
-    };
+    // const requestPermission = async () => {
+    //     const permissionStatus = await request(isIOS ? PERMISSIONS.IOS.LOCATION_WHEN_IN_USE : PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION);
+    //     console.log('request', permissionStatus);
+    //     userModel.location = { ...userModel.location, permissionStatus };
+    //     await onGetLocation(permissionStatus);
+    // };
 
-    const onGetLocation = async (permissionStatus: PermissionStatus) => {
-        if (permissionStatus === 'granted') {
-            await getLocation();
-        } else {
-            const isBlocked = permissionStatus === 'blocked';
-            Alert.alert(
-                t('attention'),
-                t('geolocationMustBeEnabled'),
-                [{
-                    text: isBlocked ? t('settings') : t('requestPermission'),
-                    onPress: isBlocked ? Linking.openSettings : requestPermission,
-                }]
-            );
-        };
-    };
+    // const onGetLocation = async (permissionStatus: PermissionStatus) => {
+    //     if (permissionStatus === 'granted') {
+    //         await getLocation();
+    //     } else {
+    //         const isBlocked = permissionStatus === 'blocked';
+    //         Alert.alert(
+    //             t('attention'),
+    //             t('geolocationMustBeEnabled'),
+    //             [{
+    //                 text: isBlocked ? t('settings') : t('requestPermission'),
+    //                 onPress: isBlocked ? Linking.openSettings : requestPermission,
+    //             }]
+    //         );
+    //     };
+    // };
 
     const deleteCompany = async (id: number) => {
         Alert.alert(
@@ -78,5 +77,5 @@ export const useCompanyList = () => {
 
     const onConnectToCompany = () => navigation.navigate('ConnectToCompanyView');
     const onCreateCompany = () => navigation.navigate('CreateCompanyView');
-    return { onConnectToCompany, onCreateCompany, deleteCompany, onEditCompany, requestPermission }
+    return { onConnectToCompany, onCreateCompany, deleteCompany, onEditCompany }
 };

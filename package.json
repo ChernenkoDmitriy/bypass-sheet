@@ -40,7 +40,6 @@
     "react-native-device-info": "8.7.0",
     "react-native-fast-image": "8.5.11",
     "react-native-fs": "^2.20.0",
-    "react-native-geolocation-service": "^5.3.1",
     "react-native-gesture-handler": "2.12.1",
     "react-native-image-crop-picker": "0.37.3",
     "react-native-input-outline": "^1.5.2",

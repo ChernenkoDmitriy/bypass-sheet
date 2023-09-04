@@ -1,5 +1,4 @@
 import { MobXRepository } from "../../repository/MobXRepository"
-import { IUser } from "../user/IUser";
 import { ICompany } from "./ICompany";
 
 export interface ICompanyModel {

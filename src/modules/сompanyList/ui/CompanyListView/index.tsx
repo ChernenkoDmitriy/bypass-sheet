@@ -13,7 +13,6 @@ import { useCompanyListUseCase } from "../../useCase/useCompanyListUseCase";
 import { companyModel } from "../../../shared/entities/company/CompanyModel";
 import { ICompany } from "../../../shared/entities/company/ICompany";
 import { useFocusEffect } from '@react-navigation/native';
-import { getLocation } from "../../useCase/getLocation";
 
 export const CompanyListView: FC = observer(() => {
     const { colors, t } = useUiContext();
@@ -22,7 +21,6 @@ export const CompanyListView: FC = observer(() => {
 
     const renderItem = useCallback(({ item }: any) => <CompanyItem item={item} deleteCompany={deleteCompany} onEditCompany={onEditCompany}/> , []);
     const keyExtractor = useCallback((item: ICompany) => item.id, []);
-    getLocation();
     
     return (
         <ScreenContainer edges={['bottom']} containerStyle={styles.container} headerComponent={<DashboardHeader isBackAvailable={false} settings />}>
