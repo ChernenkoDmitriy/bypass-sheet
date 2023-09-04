@@ -35,6 +35,8 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Allow this application to track your geolocation to display on the map</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Create user avatar with camera</string>
 	<key>NSLocationWhenInUseUsageDescription</key>

@@ -37,7 +37,7 @@ export const useCompanyView = () => {
     const onCreate = async () => {
         if (!isCompanyName) {
             const { message } = await useCreateCompanyUseCase(companyName);
-            navigation.navigate('TabNavigator');
+            navigation.navigate('CompanyListView');
         } else {
             onBlur();
         };

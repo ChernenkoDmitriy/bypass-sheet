@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { Platform, StyleSheet } from "react-native";
 import { IColors } from "../../../../../UIProvider/colors/IColorsController";
 import { scaleHorizontal, scaleVertical } from "../../../../../utils/Utils";
 
@@ -9,7 +9,7 @@ export const getStyle = (colors: IColors) => {
             backgroundColor: colors.buttonText,
             width: scaleVertical(60),
             height: scaleVertical(60),
-            borderRadius: 50,
+            borderRadius: Platform.OS === 'ios' ? 32 : 50,
             position:'absolute',
             bottom: scaleVertical(30),
             right: scaleHorizontal(10),

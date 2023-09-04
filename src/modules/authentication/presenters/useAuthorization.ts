@@ -70,7 +70,7 @@ export const UseAuthorization = () => {
         if (!isContinue) {
             const { message } = await authorizationUseCase(phone, password);            
             if (!message) {
-                navigation.navigate('TabNavigator');
+                navigation.navigate('CompanyListView');
             } else {
                 showError(t('errorToast'), t('userNotFound'));
             };

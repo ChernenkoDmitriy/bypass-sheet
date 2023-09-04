@@ -3,7 +3,6 @@ import { useUiContext } from "../../../../UIProvider";
 import { ScreenContainer } from "../../../../UIKit/screenContainer";
 import { getStyle } from "./style";
 import { DashboardHeader } from "../../../dashboard/ui/components/dashboardHeader";
-import { useRoute } from "@react-navigation/native";
 import { useEditCompany } from "../../presenters/useEditCompany";
 import { MainButton } from "../../../shared/ui/mainButton";
 import { MainInput } from "../../../../UIKit/mainInput";
@@ -11,12 +10,10 @@ import { MainInput } from "../../../../UIKit/mainInput";
 export const EditCompanyView: FC = () => {
     const { colors, t } = useUiContext();
     const styles = useMemo(() => getStyle(colors), [colors]);
-    const route = useRoute();
-    const { isValid, name, errorName, onSetName, onBlur, getSelectedCompany, } = useEditCompany();
-    const { id, companyName } = route?.params;
+    const { isValid, name, errorName, id, companyName, onSetName, onBlur, getSelectedCompany, } = useEditCompany();
 
     return (
-        <ScreenContainer edges={['bottom']} containerStyle={styles.container} headerComponent={<DashboardHeader title={companyName} logo={false} isBackAvailable />}>
+        <ScreenContainer edges={['bottom']} containerStyle={styles.container} headerComponent={<DashboardHeader title={t('edit') + ': ' + companyName} logo={false} isBackAvailable />}>
             <MainInput
                 containerStyle={{ marginVertical: 20 }}
                 inputWrapperStyle={{ borderBottomColor: isValid ? colors.primary : 'red' }}

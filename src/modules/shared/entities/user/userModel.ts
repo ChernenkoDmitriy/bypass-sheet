@@ -1,18 +1,21 @@
 import { IStorage, storage } from "../../../../../libs/storage";
 import { MobXRepository } from "../../repository/MobXRepository";
 import { IGoogleSheet } from "./IGoogleSheet";
+import { ILocation } from "./ILocation";
 import { IUser } from "./IUser";
 
 export interface IUserModel {
     user: IUser | null;
     token: string | null;
     googleSheet: IGoogleSheet;
+    location: ILocation;
 }
 
 class UserModel implements IUserModel {
     private userRepository = new MobXRepository<IUser>();
     private tokenRepository = new MobXRepository<string | null>(null);
     private googleSheetRepository = new MobXRepository<IGoogleSheet>({ sheetId: '', sheetName: '' });
+    private locationRepository = new MobXRepository<ILocation>({} as ILocation);
 
     constructor(private storage: IStorage) {
         this.load();
@@ -66,6 +69,14 @@ class UserModel implements IUserModel {
 
     get googleSheet() {
         return this.googleSheetRepository.data ?? { sheetId: '', sheetName: '' };
+    }
+
+    get location() {
+        return this.locationRepository.data || {} as ILocation;
+    }
+
+    set location(data: ILocation) {
+        this.locationRepository.save(data);
     }
 
     onSetGoogleSheetId(value: string) {

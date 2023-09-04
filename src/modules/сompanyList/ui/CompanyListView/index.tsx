@@ -21,7 +21,7 @@ export const CompanyListView: FC = observer(() => {
 
     const renderItem = useCallback(({ item }: any) => <CompanyItem item={item} deleteCompany={deleteCompany} onEditCompany={onEditCompany}/> , []);
     const keyExtractor = useCallback((item: ICompany) => item.id, []);
-
+    
     return (
         <ScreenContainer edges={['bottom']} containerStyle={styles.container} headerComponent={<DashboardHeader isBackAvailable={false} settings />}>
             <FlatList
