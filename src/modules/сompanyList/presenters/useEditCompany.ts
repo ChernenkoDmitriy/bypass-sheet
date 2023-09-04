@@ -1,11 +1,13 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useUpdateCompanyUseCase } from "../useCase/useUpdateCompanyUseCase";
 import { useUiContext } from "../../../UIProvider";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 
 export const useEditCompany = () => {
-    const [name, setName] = useState('');
+    const route = useRoute();
+    const { id, companyName } = route?.params;
+    const [name, setName] = useState(companyName);
     const [isValid, setIsValid] = useState(true);
     const [errorName, setErrorName] = useState('');
     const { t } = useUiContext();
@@ -35,10 +37,10 @@ export const useEditCompany = () => {
     const getSelectedCompany = async (id: number, name: string, description: 'Description') => {
         if (!isCompanyName) {
             const { message } = await useUpdateCompanyUseCase(id, name, description);
-            navigation.navigate('TabNavigator');
+            navigation.navigate('CompanyListView');
         } else {
             onBlur();
         };
     };
-    return { isValid, name, errorName, onSetName, onBlur, getSelectedCompany, };
+    return { isValid, name, errorName, id, companyName, onSetName, onBlur, getSelectedCompany, };
 };

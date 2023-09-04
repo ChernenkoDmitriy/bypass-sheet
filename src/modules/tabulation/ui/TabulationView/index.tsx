@@ -10,7 +10,7 @@ export const TabulationView: FC = () => {
     const styles = useMemo(() => getStyle(colors), [colors]);
 
     return (
-        <ScreenContainer edges={['bottom']} containerStyle={styles.container} headerComponent={<DashboardHeader isBackAvailable={true} />}>
+        <ScreenContainer edges={['bottom']} containerStyle={styles.container} headerComponent={<DashboardHeader isBackAvailable={false} />}>
             <Text>Tabulation</Text>
         </ScreenContainer>
     );

@@ -10,7 +10,7 @@ export const UseSetting = () => {
     const navigation = useNavigation<StackNavigationProp<any>>();
     const activeLanguage = useMemo(() => locale === 'en' ? t('english') : t('ukrainian'), [locale]);
     const activeTheme = useMemo(() => theme === 'dark' ? t('dark') : t('light'), [theme]);
-    
+
     const handleTheme = () => saveTheme(theme === "light" ? 'dark' : 'light');
 
     const LogOut = () => {
@@ -21,9 +21,16 @@ export const UseSetting = () => {
         });
     };
 
+    const onChangeCompany = () => {
+        navigation.reset({
+            index: 0,
+            routes: [{ name: 'CompanyListView' }],
+        });
+    };
+
     const getSelectLanguage = () => {
         navigation.navigate('SelectLanguageView');
     };
 
-    return { isEnabled, activeLanguage, activeTheme, handleTheme, LogOut, getSelectLanguage }
+    return { isEnabled, activeLanguage, activeTheme, handleTheme, LogOut, getSelectLanguage, onChangeCompany }
 };

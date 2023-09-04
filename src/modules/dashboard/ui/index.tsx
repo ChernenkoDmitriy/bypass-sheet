@@ -8,18 +8,15 @@ import { BypassItemCreator } from './components/bypassItemCreator';
 import { ContinueReport } from './components/continueReport';
 import { getStyle } from './styles';
 import { DashboardHeader } from './components/dashboardHeader';
-import { useProfile } from '../../profile/presenters/useProfile';
-import { userModel } from '../../shared/entities/user/userModel';
 
 export const DashboardView: FC = observer(() => {
     const { t, colors } = useUiContext();
     const styles = useMemo(() => getStyle(colors), [colors]);
     const { onGoCreateBypassList, bypassList, onChoseItem, onEditItem } = useBypassSheetList();
-    const { onSignIn } = useProfile();
 
     return (
         <ScreenContainer>
-            <DashboardHeader onAuth={onSignIn} photo={userModel.user?.photo}/>
+            <DashboardHeader isBackAvailable={false}/>
             <ContinueReport />
             <BypassItemCreator title={t('objectsOfAssessment')} buttonText={t('newObject')} onPress={onGoCreateBypassList} />
             <BypassSheetsList bypassList={bypassList} onChoseRoom={onChoseItem} onEditItem={onEditItem} />

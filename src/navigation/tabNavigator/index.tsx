@@ -20,15 +20,15 @@ export const TabNavigator: FC = () => {
             tabBarShowLabel: true,
             tabBarHideOnKeyboard: true,
             tabBarStyle: {
-                height: scaleVertical(50),
+                height: scaleVertical(65),
                 backgroundColor: colors.buttonText,
                 borderTopColor: colors.buttonText,
-                paddingBottom:scaleVertical(5)
+                paddingTop:scaleVertical(5)
             },
         }}>
             <Tab.Screen name={t("dashboard")} component={DashboardView} />
             <Tab.Screen name={t("tabulation")} component={TabulationView} />
-            <Tab.Screen name={t("profile")} component={SettingsView} options={{ tabBarIcon: ({ focused }) => <ProfileIcon color={focused ? colors.text : colors.icon} /> }} />
+            <Tab.Screen name={t("settings")} component={SettingsView} options={{ tabBarIcon: ({ focused }) => <ProfileIcon color={focused ? colors.text : colors.icon} /> }} />
         </Tab.Navigator>
     );
 };

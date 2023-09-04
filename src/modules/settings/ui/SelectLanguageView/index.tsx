@@ -16,19 +16,13 @@ export const SelectLanguageView: FC = observer(() => {
     const handleLocaleChangeUk = () => {
         const locale = 'uk';
         setLocale(locale);
-        navigation.reset({
-            index: 0,
-            routes: [{ name: 'TabNavigator' }],
-        });
+        navigation.goBack();
     };
 
     const handleLocaleChangeEn = () => {
         const locale = 'en';
         setLocale(locale);
-        navigation.reset({
-            index: 0,
-            routes: [{ name: 'TabNavigator' }],
-        });
+        navigation.goBack();
     };
 
     return (

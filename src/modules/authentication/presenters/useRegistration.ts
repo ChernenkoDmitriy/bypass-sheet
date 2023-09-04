@@ -28,7 +28,7 @@ export const useRegistration = () => {
     const isFirstName = useMemo(() => firstName.length === 0, [firstName]);
     const isLastName = useMemo(() => lastName.length === 0, [lastName]);
     const navigation = useNavigation<StackNavigationProp<any>>();
-    const { showSuccess } = useShowToast();
+    const { showSuccess, showError } = useShowToast();
 
     useEffect(() => {
         if (isPassword) {
@@ -122,8 +122,10 @@ export const useRegistration = () => {
         } else {
             const { message } = await registrationUseCase(firstName, lastName, phone, password);
             if (!message) {
-                navigation.navigate('TabNavigator');
+                navigation.navigate('CompanyListView');
                 showSuccess(t('successfulRegistration'));
+            } else {
+                showError('errorToast',t('suchUserAlreadyExists'))
             };
             setErrorPhone('');
             setErrorPassword('');

@@ -20,8 +20,15 @@ export const CompanyItem: FC<IProps> = ({ item, deleteCompany, onEditCompany }) 
     const styles = useMemo(() => getStyle(colors), [colors]);
     const navigation = useNavigation<StackNavigationProp<any>>();
 
+    const onPress = () => {
+        navigation.reset({
+            index: 0,
+            routes: [{ name: 'TabNavigator' }],
+        });
+    };
+
     return (
-        <TouchableOpacity style={styles.container} onPress={() => navigation.navigate('TabNavigator')}>
+        <TouchableOpacity style={styles.container} onPress={onPress}>
             <View style={styles.informationWrapper}>
                 <Text style={styles.text}>{item.name}</Text>
                 <Text style={styles.text}>{item.id} {t('employees')}</Text>
@@ -43,9 +50,11 @@ export const CompanyItem: FC<IProps> = ({ item, deleteCompany, onEditCompany }) 
                         titleColor: colors.text,
                     },
                 ]}
-                shouldOpenOnLongPress={true}
+                shouldOpenOnLongPress={false}
             >
-                <OptionsIcon color={colors.buttonText} />
+                <TouchableOpacity>
+                    <OptionsIcon color={colors.buttonText} />
+                </TouchableOpacity>
             </MenuView>
         </TouchableOpacity>
     );
