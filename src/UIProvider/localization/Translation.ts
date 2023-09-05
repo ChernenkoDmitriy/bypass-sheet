@@ -101,8 +101,10 @@ export const translations = {
     timeEnd: 'Time end',
     addUser: 'Add user',
     editWorkShift: 'Edit work shift',
+    searchPlaceholder:'Search number',
   },
   uk: {
+    searchPlaceholder:'Пошук за номером',
     editWorkShift: 'Редагувати графік',
     addUser: 'Додати користувача',
     timeStart: 'Time start',

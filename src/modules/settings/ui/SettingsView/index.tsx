@@ -21,8 +21,8 @@ export const SettingsView: FC = observer(() => {
     return (
         <ScreenContainer containerStyle={styles.container} edges={['bottom']} headerComponent={<DashboardHeader isBackAvailable={false} title={t('settings')} />}>
             <ProfileWrapper />
-            <SettingsItem icon={!isEnabled ? <SunIcon /> : <MoonIcon />} title={t('theme')} text={activeTheme} switchV={true} value={isEnabled} onSwitchValueChange={handleTheme} />
-            <SettingsItem icon={<LanguageIcon />} title={t('language')} switchV={false} arrow activeLanguage={activeLanguage} onPress={getSelectLanguage} />
+            <SettingsItem icon={!isEnabled ? <SunIcon /> : <MoonIcon color={colors.icon}/>} title={t('theme')} text={activeTheme} switchV={true} value={isEnabled} onSwitchValueChange={handleTheme} />
+            <SettingsItem icon={<LanguageIcon  color={colors.icon}/>} title={t('language')} switchV={false} arrow activeLanguage={activeLanguage} onPress={getSelectLanguage} />
             <MainButton title={t('changeCompany')} onPress={onChangeCompany} containerStyle={styles.button}/>
             <MainButton title={'log out'} onPress={LogOut} />
         </ScreenContainer>

@@ -44,7 +44,7 @@ export const WorkShiftItem: FC<IProps> = observer(({ workShift, deleteWorkShift,
                 shouldOpenOnLongPress={false}
             >
                 <TouchableOpacity >
-                    <OptionsIcon />
+                    <OptionsIcon color={colors.icon} />
                 </TouchableOpacity>
             </MenuView>
         </View>

@@ -52,7 +52,7 @@ export const CompanyItem: FC<IProps> = ({ companyItem, deleteCompany, onEditComp
                 shouldOpenOnLongPress={false}
             >
                 <TouchableOpacity>
-                    <OptionsIcon color={colors.buttonText} />
+                    <OptionsIcon color={colors.icon} />
                 </TouchableOpacity>
             </MenuView>
         </TouchableOpacity>

@@ -23,7 +23,7 @@ export const UserListItem: FC<IProps> = ({ userListItem }) => {
                 <Text style={styles.text}></Text>
             </View>
             <TouchableOpacity>
-                <AddUserIcon />
+                <AddUserIcon color={colors.icon}/>
             </TouchableOpacity>
         </TouchableOpacity>
     );
