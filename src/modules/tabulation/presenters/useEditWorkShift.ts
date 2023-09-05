@@ -79,7 +79,7 @@ export const useEditWorkShift = () => {
 
     const onEdit = async () => {
         if (!isCompanyName && selectTime) {
-            await useUpdateWorkShiftUseCase(companyModel.chosenCompany?.id || 0, id, startTime, endTime , companyName, ' ' );
+            await useUpdateWorkShiftUseCase(companyModel.chosenCompany?.id || 0, id, selectedTimeStart, selectedTimeEnd, companyName, ' ');
             navigation.goBack();
         } else {
             onBlur();

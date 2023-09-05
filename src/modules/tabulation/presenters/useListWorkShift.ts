@@ -20,7 +20,7 @@ export const UseListWorkShift = () => {
     const deleteWorkShift = async (id: number, company_id: number) => {
         Alert.alert(
             t('attention'),
-            t('geolocationMustBeEnabled'),
+            t('doDelete'),
             [{
                 text: t('cancel'),
                 onPress: () => null,

@@ -4,6 +4,8 @@ import { useShowToast } from "../../shared/hooks/useShowToast";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { useCreateCompanyUseCase } from "../useCase/useCreateCompanyUseCase";
+import { useCompanyListUseCase } from "../useCase/useCompanyListUseCase";
+import { userModel } from "../../shared/entities/user/userModel";
 
 export const useCompanyView = () => {
     const [companyName, setCompanyName] = useState('');
@@ -37,6 +39,7 @@ export const useCompanyView = () => {
     const onCreate = async () => {
         if (!isCompanyName) {
             const { message } = await useCreateCompanyUseCase(companyName);
+            await useCompanyListUseCase(Number(userModel.user?.id));
             navigation.navigate('CompanyListView');
         } else {
             onBlur();

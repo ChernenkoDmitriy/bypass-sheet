@@ -17,10 +17,18 @@ export const getStyle = (colors: IColors, selectTime: boolean) => {
             marginBottom: scaleVertical(5)
         },
         text: {
+            color: colors.text,
             fontSize: scaleFontSize(20),
             marginTop: scaleVertical(40),
             alignItems: 'center',
-            textAlign: 'center'
+            textAlign: 'center',
+        },
+        title:{
+            color: colors.error,
+            marginTop: scaleVertical(15),
+            fontSize: scaleFontSize(16),
+            alignItems: 'center',
+            textAlign: 'center',
         },
     });
     return styles;

@@ -22,8 +22,8 @@ export const EditWorkShiftView: FC = () => {
             <MainInput
                 containerStyle={{ marginTop: 20 }}
                 inputWrapperStyle={{ borderBottomColor: isValid ? colors.primary : 'red' }}
-                title={t('name')}
-                value={companyName || name}
+                title={t('newName')}
+                value={companyName}
                 maxLength={50}
                 onChangeText={onSetName}
                 keyboardType={'default'}
@@ -54,6 +54,10 @@ export const EditWorkShiftView: FC = () => {
                 onCancel={hideTimePickerStart}
             />
             <MainButton containerStyle={{ marginTop: scaleVertical(100) }} title={t('edit')} onPress={onEdit} />
+            {!selectTime
+                ? <Text style={[styles.title]}>{t('timeInputError')}</Text>
+                : null
+            }
         </ScreenContainer>
     );
 };

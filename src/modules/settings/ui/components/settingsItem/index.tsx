@@ -40,7 +40,7 @@ export const SettingsItem: FC<IProps> = ({ title, switchV, containerStyle, activ
             {arrow
                 ? <View style={styles.languageWrapper}>
                     <Text style={styles.title}>{activeLanguage}</Text>
-                    <ArrowIosRight />
+                    <ArrowIosRight color={colors.icon}/>
                 </View>
                 : null
             }
