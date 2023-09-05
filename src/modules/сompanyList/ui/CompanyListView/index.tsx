@@ -17,11 +17,11 @@ import { useFocusEffect } from '@react-navigation/native';
 export const CompanyListView: FC = observer(() => {
     const { colors, t } = useUiContext();
     const styles = useMemo(() => getStyle(colors), [colors]);
-    const { onConnectToCompany, onCreateCompany , deleteCompany , onEditCompany } = useCompanyList();
+    const { onConnectToCompany, onCreateCompany, deleteCompany, onEditCompany, onPressEvent } = useCompanyList();
 
-    const renderItem = useCallback(({ item }: any) => <CompanyItem item={item} deleteCompany={deleteCompany} onEditCompany={onEditCompany}/> , []);
-    const keyExtractor = useCallback((item: ICompany) => item.id, []);
-    
+    const renderItem = useCallback(({ item }: any) => <CompanyItem onPress={onPressEvent} companyItem={item} deleteCompany={deleteCompany} onEditCompany={onEditCompany} />, []);
+    const keyExtractor = useCallback((item: { id: string; }) => item.id, []);
+
     return (
         <ScreenContainer edges={['bottom']} containerStyle={styles.container} headerComponent={<DashboardHeader isBackAvailable={false} settings />}>
             <FlatList
@@ -31,7 +31,7 @@ export const CompanyListView: FC = observer(() => {
                 keyExtractor={keyExtractor}
                 style={styles.container}
             />
-            <AddCompanyButton onConnectToCompany={onConnectToCompany} onCreateCompany={onCreateCompany}/>
+            <AddCompanyButton onConnectToCompany={onConnectToCompany} onCreateCompany={onCreateCompany} />
         </ScreenContainer>
     );
 });

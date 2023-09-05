@@ -5,7 +5,10 @@ export interface ILinks {
     createCompany: string;
     deleteCompany: string;
     updateCompany: string;
-    getLocaleDetails: string;
+    createWorkShift: string;
+    deleteWorkShift: string;
+    updateWorkShift: string;
+    listWorkShift: string;
 };
 
 class Links implements ILinks {
@@ -17,7 +20,10 @@ class Links implements ILinks {
         createCompany: '/company-standards/company/create',
         deleteCompany: '/company-standards/company/delete',
         updateCompany: '/company-standards/company/update',
-        getLocaleDetails: 'https://maps.googleapis.com/maps/api/geocode/json',
+        createWorkShift: '/company-standards/work-shift/create',
+        deleteWorkShift: '/company-standards/work-shift/delete',
+        updateWorkShift: '/company-standards/work-shift/update',
+        listWorkShift: '/company-standards/work-shift/list'
     }
 
     get login() {
@@ -44,8 +50,17 @@ class Links implements ILinks {
         return this._authorizationDomain + this._urls.updateCompany;
     }
 
-    get getLocaleDetails() {
-        return this._urls.getLocaleDetails;
+    get createWorkShift() {
+        return this._authorizationDomain + this._urls.createWorkShift;
+    }
+    get deleteWorkShift() {
+        return this._authorizationDomain + this._urls.deleteWorkShift;
+    }
+    get updateWorkShift() {
+        return this._authorizationDomain + this._urls.updateWorkShift;
+    }
+    get listWorkShift() {
+        return this._authorizationDomain + this._urls.listWorkShift;
     }
 };
 

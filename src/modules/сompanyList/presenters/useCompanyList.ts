@@ -4,14 +4,14 @@ import { useCallback, useEffect } from "react";
 import { useCompanyListUseCase } from "../useCase/useCompanyListUseCase";
 import { userModel } from "../../shared/entities/user/userModel";
 import { useDeleteCompanyUseCase } from "../useCase/useDeleteCompanyUseCase";
-import { PERMISSIONS, PermissionStatus, request } from "react-native-permissions";
 import { isIOS } from "../../../utils/Utils";
 import { Alert, Linking } from "react-native";
 import { useUiContext } from "../../../UIProvider";
+import { ICompany } from "../../shared/entities/company/ICompany";
+import { companyModel } from "../../shared/entities/company/CompanyModel";
 
 
 export const useCompanyList = () => {
-
     const navigation = useNavigation<StackNavigationProp<any>>();
     const { t } = useUiContext();
 
@@ -48,6 +48,11 @@ export const useCompanyList = () => {
     //     };
     // };
 
+    const onPressEvent = (company: ICompany) => {
+            companyModel.chosenCompany = company;
+            navigation.navigate('TabNavigator');
+    };
+
     const deleteCompany = async (id: number) => {
         Alert.alert(
             t('attention'),
@@ -77,5 +82,5 @@ export const useCompanyList = () => {
 
     const onConnectToCompany = () => navigation.navigate('ConnectToCompanyView');
     const onCreateCompany = () => navigation.navigate('CreateCompanyView');
-    return { onConnectToCompany, onCreateCompany, deleteCompany, onEditCompany }
+    return { onConnectToCompany, onCreateCompany, deleteCompany, onEditCompany, onPressEvent }
 };

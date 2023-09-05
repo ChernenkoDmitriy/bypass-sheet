@@ -17,6 +17,9 @@ import { SettingsView } from '../../modules/settings/ui/SettingsView';
 import { TabNavigator } from '../tabNavigator';
 import { SelectLanguageView } from '../../modules/settings/ui/SelectLanguageView';
 import { EditCompanyView } from '../../modules/сompanyList/ui/EditCompanyView';
+import { WorkShiftView } from '../../modules/tabulation/ui/workShiftView';
+import { CreateWorkShiftView } from '../../modules/tabulation/ui/createWorkShiftView';
+import { EditWorkShiftView } from '../../modules/tabulation/ui/editWorkShiftView';
 
 const Stack = createStackNavigator();
 
@@ -38,6 +41,9 @@ export const StackNavigator: FC = observer(() => {
             <Stack.Screen name='BypassCompanyView' component={BypassCompanyView} />
             <Stack.Screen name='BypassSheetCreateView' component={BypassSheetCreateView} />
             <Stack.Screen name='BypassSheetView' component={BypassSheetView} />
+            <Stack.Screen name='WorkShiftView' component={WorkShiftView} />
+            <Stack.Screen name='CreateWorkShiftView' component={CreateWorkShiftView} />
+            <Stack.Screen name='EditWorkShiftView' component={EditWorkShiftView} />
             <Stack.Screen name='ProfileView' component={ProfileView} options={{ presentation: 'modal' }} />
         </Stack.Navigator >
     );

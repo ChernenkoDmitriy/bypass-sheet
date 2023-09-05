@@ -14,7 +14,6 @@ class CompanyService {
     getCompanyList = async (offset: number, limit?: number): Promise<IResponse> => {
         try {
             const response = await this.requester.post(this.links.companyList, { offset });
-            console.log('response', response);
             const result = processingResponse(response);
             return result;
         } catch (error) {
@@ -27,7 +26,6 @@ class CompanyService {
     createCompany = async (name: string): Promise<IResponse> => {
         try {
             const response = await this.requester.post(this.links.createCompany, { name });
-            console.log('response', response);
             const result = processingResponse(response);
             return result;
         } catch (error) {

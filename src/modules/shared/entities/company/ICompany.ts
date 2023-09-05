@@ -1,5 +1,6 @@
 export interface ICompany {
-    id: string;
+    id: number;
     name: string;
     avatar: string | null;
+    offset: number | 2;
 };

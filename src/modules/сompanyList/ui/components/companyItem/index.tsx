@@ -1,4 +1,4 @@
-import React, { FC, useMemo } from "react";
+import React, { FC, useCallback, useMemo } from "react";
 
 import { getStyle } from "./style";
 import { TouchableOpacity, Text, View } from 'react-native';
@@ -7,36 +7,35 @@ import { OptionsIcon } from "../../../../../../assets/icons/optionsIcon";
 import { MenuView } from "@react-native-menu/menu";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
+import { ICompany } from "../../../../shared/entities/company/ICompany";
 
 interface IProps {
-    item: { id: number, name: string, avatar: string };
+    companyItem: ICompany;
     deleteCompany: (id: number) => void;
     onEditCompany: (id: number, name: string) => void;
+    onPress: (companyItem: ICompany) => void;
 };
 
-export const CompanyItem: FC<IProps> = ({ item, deleteCompany, onEditCompany }) => {
+export const CompanyItem: FC<IProps> = ({ companyItem, deleteCompany, onEditCompany,onPress }) => {
     const { colors } = useUiContext();
     const { t } = useUiContext();
     const styles = useMemo(() => getStyle(colors), [colors]);
     const navigation = useNavigation<StackNavigationProp<any>>();
 
-    const onPress = () => {
-        navigation.reset({
-            index: 0,
-            routes: [{ name: 'TabNavigator' }],
-        });
-    };
+    const onHandlePress = useCallback(() => {
+        onPress(companyItem);
+    }, [companyItem]);
 
     return (
-        <TouchableOpacity style={styles.container} onPress={onPress}>
+        <TouchableOpacity style={styles.container} onPress={onHandlePress}>
             <View style={styles.informationWrapper}>
-                <Text style={styles.text}>{item.name}</Text>
-                <Text style={styles.text}>{item.id} {t('employees')}</Text>
+                <Text style={styles.text}>{companyItem.name}</Text>
+                <Text style={styles.text}>{companyItem.id} {t('employees')}</Text>
             </View>
             <MenuView
                 style={styles.optionsButton}
                 onPressAction={({ nativeEvent }) => {
-                    nativeEvent.event === '2' ? deleteCompany(item.id) : onEditCompany(item.id, item.name);
+                    nativeEvent.event === '2' ? deleteCompany(companyItem.id) : onEditCompany(companyItem.id, companyItem.name);
                 }}
                 actions={[
                     {

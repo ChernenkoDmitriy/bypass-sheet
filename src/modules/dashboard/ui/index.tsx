@@ -8,6 +8,7 @@ import { BypassItemCreator } from './components/bypassItemCreator';
 import { ContinueReport } from './components/continueReport';
 import { getStyle } from './styles';
 import { DashboardHeader } from './components/dashboardHeader';
+import { companyModel } from '../../shared/entities/company/CompanyModel';
 
 export const DashboardView: FC = observer(() => {
     const { t, colors } = useUiContext();
@@ -16,7 +17,7 @@ export const DashboardView: FC = observer(() => {
 
     return (
         <ScreenContainer>
-            <DashboardHeader isBackAvailable={false}/>
+            <DashboardHeader isBackAvailable={false} />
             <ContinueReport />
             <BypassItemCreator title={t('objectsOfAssessment')} buttonText={t('newObject')} onPress={onGoCreateBypassList} />
             <BypassSheetsList bypassList={bypassList} onChoseRoom={onChoseItem} onEditItem={onEditItem} />
