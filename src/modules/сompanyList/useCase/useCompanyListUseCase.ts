@@ -1,9 +1,6 @@
 import { IResponse } from "../../../../libs/requester/IRequester/IResponse";
-import { appStateModel } from "../../shared/entities/appState/AppStateModel";
-import { authorizationService } from "../../shared/entities/authorization/AuthorizationService";
 import { companyModel } from "../../shared/entities/company/CompanyModel";
 import { companyService } from "../../shared/entities/company/CompanyService";
-import { userModel } from "../../shared/entities/user/userModel";
 import Toast from "react-native-toast-message";
 
 const processResponse = (response: IResponse) => {

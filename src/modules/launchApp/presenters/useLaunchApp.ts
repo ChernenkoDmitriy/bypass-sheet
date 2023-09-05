@@ -1,6 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import { useEffect } from "react";
 import { userModel } from "../../shared/entities/user/userModel";
+import { companyModel } from "../../shared/entities/company/CompanyModel";
 
 export const useLaunchApp = () => {
     const navigation = useNavigation<any>();
@@ -8,7 +9,11 @@ export const useLaunchApp = () => {
     useEffect(() => {
         setTimeout(() => {
             if (userModel.user) {
-                navigation.reset({ index: 0, routes: [{ name: 'CompanyListView' }] });
+                if (companyModel.chosenCompany) {
+                    navigation.reset({ index: 0, routes: [{ name: 'TabNavigator' }] });
+                } else {
+                    navigation.reset({ index: 0, routes: [{ name: 'CompanyListView' }] });
+                };
             } else {
                 navigation.reset({ index: 0, routes: [{ name: 'AuthorizationView' }] });
             };

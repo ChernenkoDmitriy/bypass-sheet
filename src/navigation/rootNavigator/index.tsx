@@ -12,11 +12,13 @@ import { userModel } from '../../modules/shared/entities/user/userModel';
 import { loggerModel } from '../../UIKit/logger/entity/loggerModel';
 import Toast from 'react-native-toast-message';
 import { ToastView } from '../../UIKit/toast';
+import { companyModel } from '../../modules/shared/entities/company/CompanyModel';
 
 export const RootNavigator: FC = observer(() => {
     const { colors, theme } = useUiContext();
     userModel;
-
+    companyModel;
+    
     useEffect(() => {
         loggerModel.add('response', 'token: ', '');
         console.log('token: ', userModel.token);
