@@ -11,12 +11,12 @@ import { observer } from "mobx-react";
 export const TabulationView: FC = observer(() => {
     const { colors, t } = useUiContext();
     const styles = useMemo(() => getStyle(colors), [colors]);
-    const { onWorkShift } = useTabulation();
+    const { onWorkShift, onAddUser } = useTabulation();
 
     return (
         <ScreenContainer edges={['bottom']} containerStyle={styles.container} headerComponent={<DashboardHeader isBackAvailable={false} />}>
             <AdminButton title={t('workShift')} onPress={onWorkShift} />
-            <AdminButton title={t('users')} />
+            <AdminButton title={t('users')} onPress={onAddUser} />
         </ScreenContainer>
     );
 });

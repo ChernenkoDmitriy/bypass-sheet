@@ -9,6 +9,7 @@ export interface ILinks {
     deleteWorkShift: string;
     updateWorkShift: string;
     listWorkShift: string;
+    userList: string;
 };
 
 class Links implements ILinks {
@@ -23,7 +24,8 @@ class Links implements ILinks {
         createWorkShift: '/company-standards/work-shift/create',
         deleteWorkShift: '/company-standards/work-shift/delete',
         updateWorkShift: '/company-standards/work-shift/update',
-        listWorkShift: '/company-standards/work-shift/list'
+        listWorkShift: '/company-standards/work-shift/list',
+        userList: '/company-standards/user/list'
     }
 
     get login() {
@@ -53,14 +55,21 @@ class Links implements ILinks {
     get createWorkShift() {
         return this._authorizationDomain + this._urls.createWorkShift;
     }
+
     get deleteWorkShift() {
         return this._authorizationDomain + this._urls.deleteWorkShift;
     }
+
     get updateWorkShift() {
         return this._authorizationDomain + this._urls.updateWorkShift;
     }
+
     get listWorkShift() {
         return this._authorizationDomain + this._urls.listWorkShift;
+    }
+
+    get userList() {
+        return this._authorizationDomain + this._urls.userList;
     }
 };
 

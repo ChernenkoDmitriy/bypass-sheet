@@ -7,9 +7,8 @@ import { StackNavigationProp } from "@react-navigation/stack";
 export const useTabulation = () => {
     const navigation = useNavigation<StackNavigationProp<any>>();
 
-    const onWorkShift = () => {
-        navigation.navigate('WorkShiftView');
-    }; 
+    const onWorkShift = () => navigation.navigate('WorkShiftView');
+    const onAddUser = () => navigation.navigate('AddUserView');
 
-    return { onWorkShift };
+    return { onWorkShift , onAddUser};
 };

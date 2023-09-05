@@ -9,6 +9,7 @@ export interface IUserModel {
     token: string | null;
     googleSheet: IGoogleSheet;
     location: ILocation;
+    userList: IUser[] | null;
 }
 
 class UserModel implements IUserModel {
@@ -16,6 +17,7 @@ class UserModel implements IUserModel {
     private tokenRepository = new MobXRepository<string | null>(null);
     private googleSheetRepository = new MobXRepository<IGoogleSheet>({ sheetId: '', sheetName: '' });
     private locationRepository = new MobXRepository<ILocation>({} as ILocation);
+    private userListRepository = new MobXRepository<IUser[] | null>(null);
 
     constructor(private storage: IStorage) {
         this.load();
@@ -77,6 +79,14 @@ class UserModel implements IUserModel {
 
     set location(data: ILocation) {
         this.locationRepository.save(data);
+    }
+
+    get userList() {
+        return this.userListRepository.data || [];
+    }
+
+    set userList(data: IUser[]) {
+        this.userListRepository.save(data);
     }
 
     onSetGoogleSheetId(value: string) {
