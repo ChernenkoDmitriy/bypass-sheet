@@ -1,6 +1,4 @@
 export const translations = {
-  ru: {
-  },
   en: {
     theme: 'Theme',
     successCreateCompany: 'The company is successfully created!',
@@ -99,12 +97,16 @@ export const translations = {
     workShiftEmptyList: 'You can create a work shift template',
     createWorkShift: 'Create work shift',
     name: 'Name',
-    timeStart:'Time start',
-    timeEnd:'Time end',
+    timeStart: 'Time start',
+    timeEnd: 'Time end',
+    addUser: 'Add user',
+    editWorkShift: 'Edit work shift',
   },
   uk: {
-    timeStart:'Time start',
-    timeEnd:'Time end',
+    editWorkShift: 'Редагувати графік',
+    addUser: 'Додати користувача',
+    timeStart: 'Time start',
+    timeEnd: 'Time end',
     name: 'Назва',
     createWorkShift: 'Створення графіку',
     workShiftEmptyList: 'Ви можете створити шаблон робочої зміни',

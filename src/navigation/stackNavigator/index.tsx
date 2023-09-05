@@ -20,6 +20,7 @@ import { EditCompanyView } from '../../modules/сompanyList/ui/EditCompanyView';
 import { WorkShiftView } from '../../modules/tabulation/ui/workShiftView';
 import { CreateWorkShiftView } from '../../modules/tabulation/ui/createWorkShiftView';
 import { EditWorkShiftView } from '../../modules/tabulation/ui/editWorkShiftView';
+import { AddUserView } from '../../modules/tabulation/ui/addUserView';
 
 const Stack = createStackNavigator();
 
@@ -44,6 +45,7 @@ export const StackNavigator: FC = observer(() => {
             <Stack.Screen name='WorkShiftView' component={WorkShiftView} />
             <Stack.Screen name='CreateWorkShiftView' component={CreateWorkShiftView} />
             <Stack.Screen name='EditWorkShiftView' component={EditWorkShiftView} />
+            <Stack.Screen name='AddUserView' component={AddUserView} />
             <Stack.Screen name='ProfileView' component={ProfileView} options={{ presentation: 'modal' }} />
         </Stack.Navigator >
     );
