@@ -20,7 +20,7 @@ export const UseAuthorization = () => {
     const isDisabled = useMemo(() => !phoneNumberRegex.test(phone), [phone]);
     const isContinue = useMemo(() => isDisabled || !password.length, [phone, password]);
     const phonePrefix = useMemo(() => phone ? '' : "+380", [phone]);
-    const isPassword = useMemo(() => password.length === 0 , [password]);
+    const isPassword = useMemo(() => password.length === 0, [password]);
     const { showError } = useShowToast();
 
     useEffect(() => {
@@ -68,11 +68,14 @@ export const UseAuthorization = () => {
 
     const onContinue = async () => {
         if (!isContinue) {
-            const { message } = await authorizationUseCase(phone, password);            
+            const { message } = await authorizationUseCase(phone, password);
             if (!message) {
-                navigation.navigate('CompanyListView');
+                navigation.reset({
+                    index: 0,
+                    routes: [{ name: 'CompanyListView' }],
+                });
             } else {
-                showError(t('errorToast'), t('userNotFound'));
+                showError('errorToast', t('userNotFound'));
             };
             setErrorPhone('');
             setErrorPassword('');
@@ -85,5 +88,5 @@ export const UseAuthorization = () => {
     const onRegistration = () => navigation.navigate('RegistrationView');
     const onForgottenPassword = () => navigation.navigate('ForgottenPasswordView');
 
-    return { isValid, errorPhone, phone, password, errorPassword, isValidPassword,onFocus, onBlurPassword, onContinue, setPassword, onBlur, onSetPhone, onRegistration, onForgottenPassword };
+    return { isValid, errorPhone, phone, password, errorPassword, isValidPassword, onFocus, onBlurPassword, onContinue, setPassword, onBlur, onSetPhone, onRegistration, onForgottenPassword };
 };

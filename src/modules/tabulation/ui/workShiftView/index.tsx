@@ -15,13 +15,17 @@ import { ButtonAddItem } from "../../../bypassSheetCreate/ui/components/buttonAd
 export const WorkShiftView: FC = observer(() => {
     const { colors, t } = useUiContext();
     const styles = useMemo(() => getStyle(colors), [colors]);
-    const { deleteWorkShift, onEditWorkShift ,onCreateWorkShift} = UseListWorkShift();
+    const { deleteWorkShift, onEditWorkShift, onCreateWorkShift } = UseListWorkShift();
 
-    const renderItem = useCallback(({ item }: any) => <WorkShiftItem workShift={item} deleteWorkShift={deleteWorkShift} onEditWorkShift={onEditWorkShift}/>, []);
+    const renderItem = useCallback(({ item }: any) => <WorkShiftItem workShift={item} deleteWorkShift={deleteWorkShift} onEditWorkShift={onEditWorkShift} />, []);
     const keyExtractor = useCallback((item: { id: string; }) => item.id, []);
 
     return (
         <ScreenContainer edges={['bottom']} containerStyle={styles.container} headerComponent={<DashboardHeader title={t('workShift')} isBackAvailable={true} />}>
+            {workShiftModel.workShift.length
+                ? <ButtonAddItem onPress={onCreateWorkShift} />
+                : null
+            }
             <FlatList
                 ListEmptyComponent={<WorkShiftEmptyList />}
                 showsVerticalScrollIndicator={false}
@@ -30,7 +34,6 @@ export const WorkShiftView: FC = observer(() => {
                 keyExtractor={keyExtractor}
                 style={styles.container}
             />
-            <ButtonAddItem onPress={onCreateWorkShift}/>
         </ScreenContainer>
     );
 });

@@ -34,6 +34,7 @@ export const allColors = {
         textAccentButton: '#155249',
         modalBackground: '#00000080',
         icon: '#e9e9f0',
+        subText:'#fff',
         error: '#FF5010',
         low: '#2ECC71',
         medium: '#F7DC6F',

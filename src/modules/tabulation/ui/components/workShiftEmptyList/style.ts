@@ -5,15 +5,17 @@ import { scaleFontSize, scaleHorizontal, scaleVertical } from "../../../../../ut
 export const getStyle = (colors: IColors) => {
     const styles = StyleSheet.create({
         container: {
-            flex: 1,
-            alignItems:'center'
+            height: '100%',
+            alignItems: 'center',
+            zIndex: 20,
         },
         title: {
             fontSize: scaleFontSize(18),
             color: colors.text,
             fontFamily: 'Roboto-Regular',
-            marginTop:scaleVertical(240),
-            marginBottom:scaleVertical(20)
+            marginTop: scaleVertical(240),
+            marginBottom: scaleVertical(20),
+            textAlign:"center",
         },
     });
     return styles;

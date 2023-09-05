@@ -56,7 +56,7 @@ export const useCompanyList = () => {
     const deleteCompany = async (id: number) => {
         Alert.alert(
             t('attention'),
-            t('geolocationMustBeEnabled'),
+            t('doDelete'),
             [{
                 text: t('cancel'),
                 onPress: () => null,

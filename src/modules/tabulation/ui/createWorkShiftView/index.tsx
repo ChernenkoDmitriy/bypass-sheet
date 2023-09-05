@@ -13,7 +13,7 @@ import { scaleVertical } from "../../../../utils/Utils";
 export const CreateWorkShiftView: FC = () => {
     const { colors, t } = useUiContext();
     const { isTimePickerVisibleEnd, isValid, selectedTimeStart, selectTime, selectedTimeEnd, companyName, errorName, isTimePickerVisibleStart, handleConfirm, hideTimePickerStart,
-    showTimePickerStart, hideTimePicker, showTimePicker, handleConfirmStart, onSetName, onBlur, onCreate } = useCreateWorkShift();
+        showTimePickerStart, hideTimePicker, showTimePicker, handleConfirmStart, onSetName, onBlur, onCreate } = useCreateWorkShift();
     const styles = useMemo(() => getStyle(colors, selectTime), [colors, selectTime]);
 
     return (
@@ -53,6 +53,10 @@ export const CreateWorkShiftView: FC = () => {
                 onCancel={hideTimePickerStart}
             />
             <MainButton containerStyle={{ marginTop: scaleVertical(100) }} title={t('create')} onPress={onCreate} />
+            {!selectTime
+                ? <Text style={[styles.title]}>{t('timeInputError')}</Text>
+                : null
+            }
         </ScreenContainer>
     );
 };

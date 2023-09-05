@@ -16,9 +16,9 @@ export const useCreateWorkShift = () => {
     const [errorName, setErrorName] = useState('');
     const isCompanyName = useMemo(() => companyName.length <= 2, [companyName]);
     const { t } = useUiContext();
-    const { showSuccess } = useShowToast();
     const navigation = useNavigation<StackNavigationProp<any>>();
     const selectTime = useMemo(()=>!!selectedTimeStart  && !!selectedTimeEnd ,[selectedTimeStart,selectedTimeEnd ]);    
+console.log(selectTime);
 
     useEffect(() => {
         if (isCompanyName) {

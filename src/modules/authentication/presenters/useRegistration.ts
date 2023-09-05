@@ -122,7 +122,10 @@ export const useRegistration = () => {
         } else {
             const { message } = await registrationUseCase(firstName, lastName, phone, password);
             if (!message) {
-                navigation.navigate('CompanyListView');
+                navigation.reset({
+                    index: 0,
+                    routes: [{ name: 'CompanyListView' }],
+                });
                 showSuccess(t('successfulRegistration'));
             } else {
                 showError('errorToast',t('suchUserAlreadyExists'))
