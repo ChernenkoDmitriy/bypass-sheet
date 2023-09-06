@@ -10,6 +10,10 @@ export interface ILinks {
     updateWorkShift: string;
     listWorkShift: string;
     userList: string;
+    acceptInvite: string;
+    addUser: string;
+    getMembers: string;
+    deleteMember:string;
 };
 
 class Links implements ILinks {
@@ -25,7 +29,11 @@ class Links implements ILinks {
         deleteWorkShift: '/company-standards/work-shift/delete',
         updateWorkShift: '/company-standards/work-shift/update',
         listWorkShift: '/company-standards/work-shift/list',
-        userList: '/company-standards/user/list'
+        userList: '/company-standards/user/list',
+        acceptInvite: '/company-standards/user-company/accept-invite',
+        addUser: '/company-standards/user-company/add-user',
+        getMembers:'/company-standards/company/members',
+        deleteMember:'/company-standards/user-company/remove-user'
     }
 
     get login() {
@@ -66,6 +74,22 @@ class Links implements ILinks {
 
     get listWorkShift() {
         return this._authorizationDomain + this._urls.listWorkShift;
+    }
+
+    get acceptInvite() {
+        return this._authorizationDomain + this._urls.acceptInvite;
+    }
+
+    get addUser() {
+        return this._authorizationDomain + this._urls.addUser;
+    }
+
+    get getMembers() {
+        return this._authorizationDomain + this._urls.getMembers;
+    }
+
+    get deleteMember() {
+        return this._authorizationDomain + this._urls.deleteMember;
     }
 
     get userList() {

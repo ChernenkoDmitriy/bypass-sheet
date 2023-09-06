@@ -4,7 +4,6 @@ import { ScreenContainer } from "../../../../UIKit/screenContainer";
 import { getStyle } from "./style";
 import { DashboardHeader } from "../../../dashboard/ui/components/dashboardHeader";
 import { FlatList } from "react-native";
-import { companyModel } from "../../../shared/entities/company/CompanyModel";
 import { WorkShiftItem } from "../components/workShiftItem";
 import { WorkShiftEmptyList } from "../components/workShiftEmptyList";
 import { workShiftModel } from "../../../shared/entities/workShift/WorkShiftModel";
@@ -15,7 +14,7 @@ import { ButtonAddItem } from "../../../bypassSheetCreate/ui/components/buttonAd
 export const WorkShiftView: FC = observer(() => {
     const { colors, t } = useUiContext();
     const styles = useMemo(() => getStyle(colors), [colors]);
-    const { deleteWorkShift, onEditWorkShift, onCreateWorkShift } = UseListWorkShift();
+    const { containerListRefresh, onRefresh, deleteWorkShift, onEditWorkShift, onCreateWorkShift } = UseListWorkShift();
 
     const renderItem = useCallback(({ item }: any) => <WorkShiftItem workShift={item} deleteWorkShift={deleteWorkShift} onEditWorkShift={onEditWorkShift} />, []);
     const keyExtractor = useCallback((item: { id: string; }) => item.id, []);
@@ -27,6 +26,8 @@ export const WorkShiftView: FC = observer(() => {
                 : null
             }
             <FlatList
+                refreshing={containerListRefresh}
+                onRefresh={onRefresh}
                 ListEmptyComponent={<WorkShiftEmptyList />}
                 showsVerticalScrollIndicator={false}
                 data={workShiftModel.workShift}

@@ -1,4 +1,5 @@
 import { IResponse } from "../../../../libs/requester/IRequester/IResponse";
+import { appStateModel } from "../../shared/entities/appState/AppStateModel";
 import { companyService } from "../../shared/entities/company/CompanyService";
 import Toast from "react-native-toast-message";
 
@@ -17,11 +18,13 @@ const processResponse = (response: IResponse) => {
 
 export const useDeleteCompanyUseCase = async (id: number) => {
     try {
+        appStateModel.isLoading = true;
         const response = await companyService.deleteCompany(id);
-        const result = processResponse(response.data);
+        const result = processResponse(response.data.settings);
         return result;
     } catch (error) {
         return { message: 'error' };
     } finally {
+        appStateModel.isLoading = false;
     };
 };

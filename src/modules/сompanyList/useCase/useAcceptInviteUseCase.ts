@@ -17,9 +17,9 @@ const processResponse = (response: IResponse) => {
     return { message: '' };
 };
 
-export const useCompanyListUseCase = async (offset?: number) => {
+export const useAcceptInviteUseCase = async (company_id: number, isAccept: boolean) => {
     try {
-        const response = await companyService.getCompanyList(offset); 
+        const response = await companyService.acceptInvite(company_id,isAccept);
         const result = processResponse(response.data);
         return result;
     } catch (error) {

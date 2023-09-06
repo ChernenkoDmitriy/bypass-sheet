@@ -6,7 +6,7 @@ export const getStyle = (colors: IColors) => {
     const styles = StyleSheet.create({
         container: {
             flex: 1,
-            paddingHorizontal: scaleHorizontal(15),
+            justifyContent:'center'
         },
         buttonWrapper: {
             flexDirection: 'row',

@@ -13,13 +13,14 @@ const processResponse = (response: IResponse) => {
         });
         return { message: response.data.message };
     };
-    companyModel.companyList = response.data
+    companyModel.companyListMembers = response.data
     return { message: '' };
 };
 
-export const useCompanyListUseCase = async (offset?: number) => {
+export const useGetMembersUseCase = async (company_id: number) => {
     try {
-        const response = await companyService.getCompanyList(offset); 
+        const response = await companyService.getMembers(company_id);
+        console.log(response.data);
         const result = processResponse(response.data);
         return result;
     } catch (error) {
