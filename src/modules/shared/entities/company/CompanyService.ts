@@ -35,26 +35,26 @@ class CompanyService {
         }
     }
 
-    deleteCompany = async (id: number): Promise<IResponse> => {
+    deleteCompany = async (company_id: number): Promise<IResponse> => {
         try {
-            const response = await this.requester.delete(this.links.deleteCompany, { id });
+            const response = await this.requester.delete(this.links.deleteCompany, { company_id });
             const result = processingResponse(response);
             return result;
         } catch (error) {
-            loggerModel.add('error', 'CompanyService -> deleteCompany: ' + this.links.deleteCompany + { id }, JSON.stringify(error));
-            console.warn('CompanyService -> deleteCompany: ', this.links.deleteCompany, { id }, error);
+            loggerModel.add('error', 'CompanyService -> deleteCompany: ' + this.links.deleteCompany + { company_id }, JSON.stringify(error));
+            console.warn('CompanyService -> deleteCompany: ', this.links.deleteCompany, { company_id }, error);
             return { isError: true, data: null, message: '' } as any;
         }
     }
 
-    updateCompany = async (id: number, name: string, description: 'Description'): Promise<IResponse> => {
+    updateCompany = async (company_id: number, name: string, description: 'Description'): Promise<IResponse> => {
         try {
-            const response = await this.requester.put(this.links.updateCompany, { id, name, description });
+            const response = await this.requester.put(this.links.updateCompany, { company_id, name, description });
             const result = processingResponse(response);
             return result;
         } catch (error) {
-            loggerModel.add('error', 'CompanyService -> updateCompany: ' + this.links.updateCompany + { id, name, description }, JSON.stringify(error));
-            console.warn('CompanyService -> updateCompany: ', this.links.updateCompany, { id, name, description }, error);
+            loggerModel.add('error', 'CompanyService -> updateCompany: ' + this.links.updateCompany + { company_id, name, description }, JSON.stringify(error));
+            console.warn('CompanyService -> updateCompany: ', this.links.updateCompany, { company_id, name, description }, error);
             return { isError: true, data: null, message: '' } as any;
         }
     }

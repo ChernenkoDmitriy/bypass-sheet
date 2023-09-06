@@ -16,15 +16,13 @@ const processResponse = (response: IResponse) => {
     return { message: '' };
 };
 
-export const useDeleteCompanyUseCase = async (id: number) => {
+export const useDeleteCompanyUseCase = async (company_id: number) => {
     try {
-        appStateModel.isLoading = true;
-        const response = await companyService.deleteCompany(id);
-        const result = processResponse(response.data.settings);
+        const response = await companyService.deleteCompany(company_id);
+        const result = processResponse(response.data);
         return result;
     } catch (error) {
         return { message: 'error' };
     } finally {
-        appStateModel.isLoading = false;
     };
 };

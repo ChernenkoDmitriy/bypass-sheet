@@ -9,7 +9,7 @@ export const useLaunchApp = () => {
     useEffect(() => {
         setTimeout(() => {
             if (userModel.user) {
-                if (companyModel.chosenCompany) {
+                if (companyModel.chosenCompany === null) {
                     navigation.reset({ index: 0, routes: [{ name: 'TabNavigator' }] });
                 } else {
                     navigation.reset({ index: 0, routes: [{ name: 'CompanyListView' }] });
