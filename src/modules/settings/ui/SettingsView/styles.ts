@@ -8,6 +8,10 @@ export const getStyle = (colors: IColors) => {
         },
         button:{
             marginVertical:scaleVertical(10),
+        },
+        buttonWrapper:{
+            marginVertical:scaleVertical(30),
+            paddingHorizontal:scaleHorizontal(40)
         }
     });
     return styles;

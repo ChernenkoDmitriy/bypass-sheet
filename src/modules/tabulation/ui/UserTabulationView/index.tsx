@@ -13,6 +13,7 @@ import { TimeIcon } from "../../../../../assets/icons/TimeIcon";
 import { companyModel } from "../../../shared/entities/company/CompanyModel";
 import { UserListItem } from "../components/userListItem";
 import { MembersListItem } from "../components/membersListItem";
+import { MainButton } from "../../../shared/ui/mainButton";
 
 export const UserTabulationView: FC = observer(() => {
     const { colors, t } = useUiContext();
@@ -20,7 +21,7 @@ export const UserTabulationView: FC = observer(() => {
 
     return (
         <View style={styles.container}>
-           <Text style={styles.title}>я Юзер тут</Text>
+            <MainButton  title="Відкрити зміну" onPress={()=>{}}/>
         </View>
     );
 });

@@ -25,12 +25,12 @@ export const AddCompanyButton: FC<IProps> = ({ onCreateCompany, onConnectToCompa
                 {
                     id: '1',
                     title: t('connectToCompany'),
-                    titleColor: colors.text,
+                    titleColor: '#000',
                 },
                 {
                     id: '2',
                     title: t('createCompany'),
-                    titleColor: colors.text,
+                    titleColor: '#000',
                 },
             ]}
             shouldOpenOnLongPress={false}

@@ -13,7 +13,11 @@ export interface ILinks {
     acceptInvite: string;
     addUser: string;
     getMembers: string;
-    deleteMember:string;
+    deleteMember: string;
+    createWorkPlace: string;
+    deleteWorkPlace: string;
+    updateWorkPlace: string;
+    getWorkPlaceList: string;
 };
 
 class Links implements ILinks {
@@ -32,8 +36,12 @@ class Links implements ILinks {
         userList: '/company-standards/user/list',
         acceptInvite: '/company-standards/user-company/accept-invite',
         addUser: '/company-standards/user-company/add-user',
-        getMembers:'/company-standards/company/members',
-        deleteMember:'/company-standards/user-company/remove-user'
+        getMembers: '/company-standards/company/members',
+        deleteMember: '/company-standards/user-company/remove-user',
+        createWorkPlace: '/company-standards/work-place/create',
+        deleteWorkPlace: '/company-standards/work-place/delete',
+        updateWorkPlace: '/company-standards/work-place/update',
+        getWorkPlaceList: '/company-standards/work-place/list',
     }
 
     get login() {
@@ -90,6 +98,22 @@ class Links implements ILinks {
 
     get deleteMember() {
         return this._authorizationDomain + this._urls.deleteMember;
+    }
+
+    get createWorkPlace() {
+        return this._authorizationDomain + this._urls.createWorkPlace;
+    }
+
+    get deleteWorkPlace() {
+        return this._authorizationDomain + this._urls.deleteWorkPlace;
+    }
+
+    get updateWorkPlace() {
+        return this._authorizationDomain + this._urls.updateWorkPlace;
+    }
+
+    get getWorkPlaceList() {
+        return this._authorizationDomain + this._urls.getWorkPlaceList;
     }
 
     get userList() {

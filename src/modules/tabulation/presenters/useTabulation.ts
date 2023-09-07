@@ -7,6 +7,8 @@ import { useGetMembersUseCase } from "../../сompanyList/useCase/useGetMembersUs
 import { companyModel } from "../../shared/entities/company/CompanyModel";
 import { useDeleteMemberUseCase } from "../useCase/useDeleteMemberUseCase";
 import { appStateModel } from "../../shared/entities/appState/AppStateModel";
+import { IUser } from "../../shared/entities/user/IUser";
+import { IMembers } from "../../shared/entities/members/IMembers";
 
 export const useTabulation = () => {
     const [containerListRefresh, setContainerListRefresh] = useState(false);
@@ -17,6 +19,8 @@ export const useTabulation = () => {
             getMembers();
         }, [])
     );
+    
+    const onOpenListAddress = () => navigation.navigate('WorkPlaceListView');
 
     const onRefresh = () => {
         setContainerListRefresh(true);
@@ -34,6 +38,10 @@ export const useTabulation = () => {
     const deleteMember = async (user_id: number) => {
         await useDeleteMemberUseCase(Number(companyModel.chosenCompany?.id), user_id)
         getMembers();
-    }
-    return {containerListRefresh, onRefresh, onWorkShift, onAddUser, getMembers , deleteMember };
+    };
+    const onOpenMember = (member: IMembers) => {
+        navigation.navigate('MembersProfileView', { user: member });
+    };
+
+    return { containerListRefresh, onRefresh, onWorkShift, onAddUser, getMembers, deleteMember, onOpenMember ,onOpenListAddress };
 };

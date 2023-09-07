@@ -15,13 +15,14 @@ import { UserListItem } from "../components/userListItem";
 import { MembersListItem } from "../components/membersListItem";
 import { appStateModel } from "../../../shared/entities/appState/AppStateModel";
 import { LoadingView } from "../../../shared/ui/loadingView";
+import { AddOfficeIcon } from "../../../../../assets/icons/addOfficeIcon";
 
 export const AdminTabulationView: FC = observer(() => {
     const { colors, t } = useUiContext();
     const styles = useMemo(() => getStyle(colors), [colors]);
-    const { containerListRefresh, onRefresh, onWorkShift, onAddUser, getMembers, deleteMember } = useTabulation();
+    const { containerListRefresh, onRefresh, onWorkShift, onAddUser, deleteMember , onOpenListAddress } = useTabulation();
 
-    const renderItem = useCallback(({ item }: any) => <MembersListItem deleteMember={deleteMember} membersListItem={item} />, []);
+    const renderItem = useCallback(({ item }: any) => <MembersListItem  deleteMember={deleteMember} membersListItem={item} />, []);
     const keyExtractor = useCallback((item: { user_id: string }) => item.user_id, []);
 
     return (
@@ -29,7 +30,7 @@ export const AdminTabulationView: FC = observer(() => {
             <View style={styles.buttonWrapper}>
                 <AdminButton icon={<AddUserIcon color={colors.icon} />} onPress={onAddUser} />
                 <AdminButton icon={<TimeIcon color={colors.icon} />} onPress={onWorkShift} />
-                <AdminButton icon={<TimeIcon color={colors.icon} />} onPress={onWorkShift} />
+                <AdminButton icon={<AddOfficeIcon color={colors.icon} />} onPress={onOpenListAddress} />
                 <AdminButton icon={<TimeIcon color={colors.icon} />} onPress={onWorkShift} />
             </View>
             <Text style={styles.title}>{t('members')}</Text>

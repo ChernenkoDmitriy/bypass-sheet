@@ -10,8 +10,6 @@ import { useUiContext } from "../../../UIProvider";
 import { ICompany } from "../../shared/entities/company/ICompany";
 import { companyModel } from "../../shared/entities/company/CompanyModel";
 import { useAcceptInviteUseCase } from "../useCase/useAcceptInviteUseCase";
-import { useGetMembersUseCase } from "../useCase/useGetMembersUseCase";
-
 
 export const useCompanyList = () => {
     const [containerListRefresh, setContainerListRefresh] = useState(false);
@@ -24,6 +22,24 @@ export const useCompanyList = () => {
             getCompanyList();
         }, [])
     );
+
+    // useEffect(() => {
+    //      setInterval(getLocation, 20000);
+    //   }, []);
+
+    // const getLocation = () => {
+    //     Geolocation.getCurrentPosition(
+    //         position => {
+    //             const { latitude, longitude } = position.coords;
+    //             console.log(latitude,longitude);
+    //         },
+    //         error => {
+    //             console.error(`Ошибка получения локации: ${error.message}`);
+    //         },
+    //         { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
+    //     );
+    // };
+    // const locationInterval = setInterval(getLocation, 100000);
 
     // useEffect(() => {
     //     requestPermission();

@@ -33,12 +33,12 @@ export const WorkShiftItem: FC<IProps> = observer(({ workShift, deleteWorkShift,
                     {
                         id: '1',
                         title: t('edit'),
-                        titleColor: colors.text,
+                        titleColor: "#000",
                     },
                     {
                         id: '2',
                         title: t('delete'),
-                        titleColor: colors.text,
+                        titleColor: "#000",
                     },
                 ]}
                 shouldOpenOnLongPress={false}

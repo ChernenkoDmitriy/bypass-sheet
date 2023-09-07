@@ -21,7 +21,6 @@ export const CompanyItem: FC<IProps> = ({ companyItem, deleteCompany, onEditComp
     const { colors } = useUiContext();
     const { t } = useUiContext();
     const styles = useMemo(() => getStyle(colors), [colors]);
-    const navigation = useNavigation<StackNavigationProp<any>>();
     const isInvite = useMemo(() => companyItem.settings[0].role === null && companyItem.settings[0].status === "pending", [companyItem.settings[0].role, companyItem.settings[0].status === "pending"]);
     const isAdmin = useMemo(() => companyItem.settings[0].role === 'admin', [companyItem.settings[0].role]);
 
@@ -59,12 +58,12 @@ export const CompanyItem: FC<IProps> = ({ companyItem, deleteCompany, onEditComp
                     {
                         id: '1',
                         title: t('edit'),
-                        titleColor: colors.text,
+                        titleColor: '#000',
                     },
                     {
                         id: '2',
                         title: t('delete'),
-                        titleColor: colors.text,
+                        titleColor: '#000',
                     },
                 ]}
                 shouldOpenOnLongPress={false}

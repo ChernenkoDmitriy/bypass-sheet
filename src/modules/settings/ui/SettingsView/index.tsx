@@ -11,8 +11,8 @@ import { LanguageIcon } from '../../../../../assets/icons/LanguageIcon';
 import { UseSetting } from '../../presenter/useSettings';
 import { SunIcon } from '../../../../../assets/icons/sunIcon';
 import { MoonIcon } from '../../../../../assets/icons/moonIcon';
-import { View } from 'react-native-reanimated/lib/typescript/Animated';
 import { userModel } from '../../../shared/entities/user/userModel';
+import { View } from 'react-native';
 
 export const SettingsView: FC = observer(() => {
     const { t, colors } = useUiContext();
@@ -24,8 +24,10 @@ export const SettingsView: FC = observer(() => {
             <ProfileWrapper user={userModel.user}/>
             <SettingsItem icon={!isEnabled ? <SunIcon /> : <MoonIcon color={colors.icon}/>} title={t('theme')} text={activeTheme} switchV={true} value={isEnabled} onSwitchValueChange={handleTheme} />
             <SettingsItem icon={<LanguageIcon  color={colors.icon}/>} title={t('language')} switchV={false} arrow activeLanguage={activeLanguage} onPress={getSelectLanguage} />
+            <View style={styles.buttonWrapper}>
             <MainButton title={t('changeCompany')} onPress={onChangeCompany} containerStyle={styles.button}/>
-            <MainButton title={'log out'} onPress={LogOut} />
+            <MainButton title={t('logOut')} onPress={LogOut} />
+            </View>
         </ScreenContainer>
     );
 });

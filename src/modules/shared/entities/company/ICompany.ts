@@ -1,6 +1,6 @@
-interface ISettings{
-    role:string | null;
-    status:string;
+interface ISettings {
+    role: string | null;
+    status: string;
 }
 
 export interface ICompany {
@@ -8,5 +8,5 @@ export interface ICompany {
     name: string;
     avatar: string | null;
     offset: number | 0;
-    settings:ISettings[];
+    settings: ISettings[];
 };
