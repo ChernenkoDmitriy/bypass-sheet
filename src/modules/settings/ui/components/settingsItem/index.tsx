@@ -1,7 +1,4 @@
-import { observer } from 'mobx-react';
 import React, { FC, ReactElement, useMemo } from 'react';
-import { useNavigation } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
 import { useUiContext } from '../../../../../UIProvider';
 import { getStyle } from './styles';
 import { View, Text, TouchableOpacity, Switch, ViewStyle } from 'react-native';
@@ -15,12 +12,13 @@ interface IProps {
     containerStyle?: ViewStyle;
     icon?: ReactElement;
     arrow?: boolean;
+    selectLanguage?: boolean;
     activeLanguage?: string;
     onPress?: () => void;
     onSwitchValueChange?: (isReminderOn: boolean) => void;
 };
 
-export const SettingsItem: FC<IProps> = ({ title, switchV, containerStyle, activeLanguage, value, icon, text, arrow, onPress, onSwitchValueChange }) => {
+export const SettingsItem: FC<IProps> = ({ title, switchV, containerStyle, activeLanguage, value, icon, text, arrow, selectLanguage, onPress, onSwitchValueChange }) => {
     const { colors } = useUiContext();
     const styles = useMemo(() => getStyle(colors), [colors]);
 
@@ -40,7 +38,7 @@ export const SettingsItem: FC<IProps> = ({ title, switchV, containerStyle, activ
             {arrow
                 ? <View style={styles.languageWrapper}>
                     <Text style={styles.title}>{activeLanguage}</Text>
-                    <ArrowIosRight color={colors.icon}/>
+                    <ArrowIosRight color={colors.icon} />
                 </View>
                 : null
             }

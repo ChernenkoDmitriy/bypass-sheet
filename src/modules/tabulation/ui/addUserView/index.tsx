@@ -13,8 +13,9 @@ import { observer } from "mobx-react";
 export const AddUserView: FC = observer(() => {
     const { colors, t } = useUiContext();
     const styles = useMemo(() => getStyle(colors), [colors]);
-    const { search, containerListRefresh, onRefresh, setSearch, addUser } = UseAddUser();
-    const renderItem = useCallback(({ item }: any) => <UserListItem addUser={addUser} userListItem={item} />, []);
+    const { search, containerListRefresh,onRefresh, setSearch, addUser } = UseAddUser();
+
+    const renderItem = useCallback(({ item }: any) => <UserListItem  addUser={addUser} userListItem={item} />, []);
     const keyExtractor = useCallback((item: { id: string }) => item.id, []);
 
     return (

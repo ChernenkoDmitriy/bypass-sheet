@@ -32,5 +32,5 @@ export const UseAddUser = () => {
         showSuccess('isSuccessInvite');
     };
 
-    return { search,containerListRefresh,onRefresh, setSearch, getUserList, addUser }
+    return { search, containerListRefresh, onRefresh, setSearch, getUserList, addUser }
 };
