@@ -22,8 +22,10 @@ export const MembersListItem: FC<IProps> = memo(({ membersListItem, deleteMember
     const navigation = useNavigation<StackNavigationProp<any>>();
 
     const onOpenMember = () => {
-        membersModel.chosenMember = membersListItem;
-        navigation.navigate('MembersProfileView');
+        if(membersListItem.role !== 'admin' && membersListItem.status !== 'pending'){
+            membersModel.chosenMember = membersListItem;
+            navigation.navigate('MembersProfileView');
+        };
     };
 
     const contentStatus = useMemo(() => {

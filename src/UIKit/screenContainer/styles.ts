@@ -11,7 +11,6 @@ export const getStyle = (colors: IColors) => {
         contentContainerStyle: {
             flexGrow: 1,
             backgroundColor:colors.background,
-            paddingHorizontal:scaleHorizontal(15)
         },
         default:{
             flex:1,

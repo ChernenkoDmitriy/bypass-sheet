@@ -14,8 +14,6 @@ class WorkPlaceService {
     createWorkPlace = async (company_id: number, longitude: number, latitude: number, radius: number, name: string, address: string): Promise<IResponse> => {
         try {
             const response = await this.requester.post(this.links.createWorkPlace, { company_id, longitude, latitude, radius, name, address });
-            console.log(response);
-
             const result = processingResponse(response);
             return result;
         } catch (error) {

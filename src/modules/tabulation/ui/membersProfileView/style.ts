@@ -16,14 +16,27 @@ export const getStyle = (colors: IColors) => {
             color: colors.text,
             fontFamily: 'Roboto-Regular',
             textAlign: 'center',
-            paddingVertical: scaleVertical(25),
         },
         map: {
             width: '100%',
             height: scaleVertical(350),
             backgroundColor: 'tomato',
+        },
+        button: {
+            position: 'absolute',
+            width: scaleHorizontal(60),
+            height: scaleVertical(60),
+            backgroundColor: colors.primary,
             justifyContent: 'center',
-            alignItems: 'center'
+            alignItems: 'center',
+            borderRadius: 12,
+            bottom: 10,
+            right: 5
+        },
+        flatListTitle: {
+            flexDirection: 'row',
+            paddingHorizontal: scaleHorizontal(15),
+            justifyContent: 'space-between',
         },
         informationWrapper: {
             paddingHorizontal: scaleHorizontal(15),
@@ -37,9 +50,31 @@ export const getStyle = (colors: IColors) => {
             marginLeft: scaleHorizontal(10)
         },
         scheduleWrapper: {
+            borderTopWidth: 0.5,
             paddingHorizontal: scaleHorizontal(15),
-            marginTop: scaleVertical(10)
-        }
+            marginTop: scaleVertical(10),
+            paddingTop: scaleVertical(10),
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center'
+        },
+        historyWrapper: {
+            paddingTop: scaleVertical(30),
+            paddingBottom: scaleVertical(30),
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            paddingHorizontal: scaleHorizontal(15),
+            alignItems: 'center'
+        },
+        workShift: {
+            justifyContent: 'center',
+            alignItems: 'center',
+            paddingHorizontal: scaleHorizontal(25),
+            paddingVertical: scaleVertical(10),
+            borderWidth: 0.5,
+            borderColor: colors.primary,
+            borderRadius: 10
+        },
     });
     return styles;
 };

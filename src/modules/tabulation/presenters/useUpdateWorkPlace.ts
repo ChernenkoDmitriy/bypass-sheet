@@ -99,7 +99,8 @@ export const useUpdateWorkPlace = () => {
             onBlurName();
             onBlurAddress();
         } else {
-            await useUpdateWorkPlaceUseCase(workPlaceModel.chosenWorkPlace?.id || 0, companyModel.chosenCompany?.id || 0, workPlaceModel.longitude, workPlaceModel.latitude, Number(radius), name, address)
+            await useUpdateWorkPlaceUseCase(workPlaceModel.chosenWorkPlace?.id || 0, companyModel.chosenCompany?.id || 0, workPlaceModel.longitude, workPlaceModel.latitude, Number(radius), name, address);
+            workPlaceModel.chosenWorkPlace = null;
             navigation.goBack();
             setErrorName('');
             setErrorAddress('');
@@ -107,5 +108,5 @@ export const useUpdateWorkPlace = () => {
         };
     };
 
-    return { name, isValidName, errorName, address, isValidAddress, errorAddress, radius, isValid, errorRadius, onAddress, onBlurAddress, onBlurName, onName, openMap, onBlur, onSetRadius, onContinue, }
+    return { name, isValidName, errorName, address, isValidAddress, errorAddress, radius, isValid, errorRadius, onAddress, onBlurAddress, onBlurName, onName, openMap, onBlur, onSetRadius, onContinue };
 };

@@ -31,7 +31,7 @@ export const AdminTabulationView: FC = observer(() => {
                 <AdminButton icon={<AddUserIcon color={colors.icon} />} onPress={onAddUser} />
                 <AdminButton icon={<TimeIcon color={colors.icon} />} onPress={onWorkShift} />
                 <AdminButton icon={<AddOfficeIcon color={colors.icon} />} onPress={onOpenListAddress} />
-                <AdminButton icon={<TimeIcon color={colors.icon} />} onPress={onWorkShift} />
+                {/* <AdminButton icon={<TimeIcon color={colors.icon} />} onPress={onWorkShift} /> */}
             </View>
             <Text style={styles.title}>{t('members')}</Text>
             <FlatList

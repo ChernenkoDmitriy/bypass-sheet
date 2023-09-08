@@ -117,5 +117,29 @@ class CompanyService {
             return { isError: true, data: null, message: '' } as any;
         }
     }
+
+    createTimeSheet = async (company_id: number): Promise<IResponse> => {
+        try {
+            const response = await this.requester.post(this.links.createTimeSheet, { company_id });
+            const result = processingResponse(response);
+            return result;
+        } catch (error) {
+            loggerModel.add('error', 'CompanyService -> createTimeSheet: ' + this.links.createTimeSheet + { company_id }, JSON.stringify(error));
+            console.warn('CompanyService -> createTimeSheet: ', this.links.createTimeSheet, { company_id }, error);
+            return { isError: true, data: null, message: '' } as any;
+        }
+    }
+
+    finishTimeSheet = async (company_id: number): Promise<IResponse> => {
+        try {
+            const response = await this.requester.post(this.links.finishTimeSheet, { company_id });
+            const result = processingResponse(response);
+            return result;
+        } catch (error) {
+            loggerModel.add('error', 'CompanyService -> finishTimeSheet: ' + this.links.finishTimeSheet + { company_id }, JSON.stringify(error));
+            console.warn('CompanyService -> finishTimeSheet: ', this.links.finishTimeSheet, { company_id }, error);
+            return { isError: true, data: null, message: '' } as any;
+        }
+    }
 }
 export const companyService = new CompanyService(requester, links);

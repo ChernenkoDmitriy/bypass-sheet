@@ -5,6 +5,7 @@ import { useUiContext } from "../../../UIProvider";
 import { workPlaceModel } from "../../shared/entities/workPlace/WorkPlaceModel";
 import { useCreateWorkPlaceUseCase } from "../useCase/useCreateWorkPlaceUseCase";
 import { companyModel } from "../../shared/entities/company/CompanyModel";
+import { useUpdateWorkPlaceUseCase } from "../useCase/useUpdateWorkPlaceUseCase";
 
 export const UseWorkPlace = () => {
     const [radius, setRadius] = useState('');
@@ -98,7 +99,8 @@ export const UseWorkPlace = () => {
             onBlurName();
             onBlurAddress();
         } else {
-            await useCreateWorkPlaceUseCase(companyModel.chosenCompany?.id || 0, workPlaceModel.longitude, workPlaceModel.latitude, Number(radius), name, address)
+            await useCreateWorkPlaceUseCase(companyModel.chosenCompany?.id || 0, workPlaceModel.longitude, workPlaceModel.latitude, Number(radius), name, address);
+            workPlaceModel.chosenWorkPlace = null;
             navigation.goBack();
             setErrorName('');
             setErrorAddress('');

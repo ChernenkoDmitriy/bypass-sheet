@@ -1,11 +1,10 @@
-import React, { FC, useCallback, useMemo, useRef, useState } from "react";
+import React, { FC, useMemo, useState } from "react";
 import { useUiContext } from "../../../../UIProvider";
 import { ScreenContainer } from "../../../../UIKit/screenContainer";
 import { getStyle } from "./style";
 import { DashboardHeader } from "../../../dashboard/ui/components/dashboardHeader";
 import MapView, { Marker } from "react-native-maps";
-import { Button, TextInput, View } from "react-native";
-import axios from "axios";
+import { View } from "react-native";
 import { MainButton } from "../../../../UIKit/mainButton";
 import { workPlaceModel } from "../../../shared/entities/workPlace/WorkPlaceModel";
 import { observer } from "mobx-react";
@@ -27,7 +26,7 @@ export const SearchAddressMapView: FC = observer(() => {
 
     const selectedAddress = () => {
         if (workPlaceModel.latitude && workPlaceModel.longitude) {
-            navigation.goBack()
+            navigation.goBack();
         };
     };
 
@@ -42,7 +41,7 @@ export const SearchAddressMapView: FC = observer(() => {
                     {selectedCoordinate && (
                         <Marker
                             coordinate={selectedCoordinate}
-                            title="Выбранное место"
+                            title={t('selectedAddress')}
                         />
                     )}
                 </MapView>

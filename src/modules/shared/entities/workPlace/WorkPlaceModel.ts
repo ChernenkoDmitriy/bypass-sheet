@@ -1,7 +1,4 @@
-import { IStorage, storage } from "../../../../../libs/storage";
 import { MobXRepository } from "../../repository/MobXRepository"
-import { IUser } from "../user/IUser";
-import { IMembers } from "../members/IMembers";
 import { IWorkPlace } from "./IWorkPlace";
 
 export interface IWorkPlaceModel {
@@ -26,7 +23,7 @@ class WorkPlaceModel implements IWorkPlaceModel {
     }
 
     get longitude() {
-        return this.longitudeRepository.data || 0;  
+        return this.longitudeRepository.data || 0;
     }
 
     set longitude(data: number) {
@@ -34,7 +31,7 @@ class WorkPlaceModel implements IWorkPlaceModel {
     }
 
     get chosenWorkPlace() {
-        return this.chosenWorkPlaceRepository.data || null; 
+        return this.chosenWorkPlaceRepository.data || null;
     }
 
     set chosenWorkPlace(data: IWorkPlace | null) {
@@ -42,7 +39,7 @@ class WorkPlaceModel implements IWorkPlaceModel {
     }
 
     get workPlaceList() {
-        return this.workPlaceListRepository.data || []; 
+        return this.workPlaceListRepository.data || [];
     }
 
     set workPlaceList(data: []) {

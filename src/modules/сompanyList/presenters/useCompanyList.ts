@@ -13,7 +13,7 @@ import { useAcceptInviteUseCase } from "../useCase/useAcceptInviteUseCase";
 
 export const useCompanyList = () => {
     const [containerListRefresh, setContainerListRefresh] = useState(false);
-
+    const time = new Date().getTime();
     const navigation = useNavigation<StackNavigationProp<any>>();
     const { t } = useUiContext();
 
@@ -102,13 +102,9 @@ export const useCompanyList = () => {
         getCompanyList();
     }
 
-    const getCompanyList = async () => {
-        const { message } = await useCompanyListUseCase();
-    };
+    const getCompanyList = async () =>  await useCompanyListUseCase();
 
-    const onEditCompany = (id: number, companyName: string) => {
-        navigation.navigate('EditCompanyView', { id: id, companyName: companyName });
-    };
+    const onEditCompany = (id: number, companyName: string) =>  navigation.navigate('EditCompanyView', { id: id, companyName: companyName });
 
     const onConnectToCompany = () => navigation.navigate('ConnectToCompanyView');
     const onCreateCompany = () => navigation.navigate('CreateCompanyView');

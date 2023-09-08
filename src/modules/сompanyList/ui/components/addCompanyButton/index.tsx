@@ -22,11 +22,11 @@ export const AddCompanyButton: FC<IProps> = ({ onCreateCompany, onConnectToCompa
                 nativeEvent.event === '1' ? onConnectToCompany() : onCreateCompany();
             }}
             actions={[
-                {
-                    id: '1',
-                    title: t('connectToCompany'),
-                    titleColor: '#000',
-                },
+                // {
+                //     id: '1',
+                //     title: t('connectToCompany'),
+                //     titleColor: '#000',
+                // },
                 {
                     id: '2',
                     title: t('createCompany'),

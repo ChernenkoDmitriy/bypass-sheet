@@ -26,6 +26,8 @@ import { SearchAddressMapView } from '../../modules/tabulation/ui/SearchAddressM
 import { CreateWorkPlaceView } from '../../modules/tabulation/ui/CreateWorkPlaceView';
 import { WorkPlaceListView } from '../../modules/tabulation/ui/WorkPlaceListView';
 import { UpdateWorkPlaceView } from '../../modules/tabulation/ui/updateWorkPlaceView';
+import { CalendarScreen } from '../../modules/tabulation/ui/CalendarScreen';
+import { HistoryMembersView } from '../../modules/settings/ui/HistoryMembersView';
 
 const Stack = createStackNavigator();
 
@@ -56,6 +58,8 @@ export const StackNavigator: FC = observer(() => {
             <Stack.Screen name='WorkPlaceListView' component={WorkPlaceListView} />
             <Stack.Screen name='AddUserView' component={AddUserView} />
             <Stack.Screen name='MembersProfileView' component={MembersProfileView} />
+            <Stack.Screen name='CalendarScreen' component={CalendarScreen} />
+            <Stack.Screen name='HistoryMembersView' component={HistoryMembersView} />
             <Stack.Screen name='ProfileView' component={ProfileView} options={{ presentation: 'modal' }} />
         </Stack.Navigator >
     );

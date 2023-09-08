@@ -12,11 +12,12 @@ import { DoneIcon } from "../../../../../assets/icons/DoneIcon";
 import { ButtonAddItem } from "../../../bypassSheetCreate/ui/components/buttonAddItem";
 import { UseWorkPlace } from "../../presenters/useWorkPlace";
 import { workPlaceModel } from "../../../shared/entities/workPlace/WorkPlaceModel";
+import { useUpdateWorkPlace } from "../../presenters/useUpdateWorkPlace";
 
 export const UpdateWorkPlaceView: FC = observer(() => {
     const { colors, t } = useUiContext();
     const styles = useMemo(() => getStyle(colors), [colors]);
-    const { name, isValidName, errorName, address, isValidAddress, errorAddress, radius, isValid, errorRadius, onAddress, onBlurAddress, onBlurName, onName, openMap, onBlur, onSetRadius, onContinue, } = UseWorkPlace();
+    const { name, isValidName, errorName, address, isValidAddress, errorAddress, radius, isValid, errorRadius, onAddress, onBlurAddress, onBlurName, onName, openMap, onBlur, onSetRadius, onContinue, } = useUpdateWorkPlace();
 
     return (
         <ScreenContainer edges={['bottom']} containerStyle={styles.container} headerComponent={<DashboardHeader title={t('updateAddress')} isBackAvailable={true} onCreate={onContinue} create />}>

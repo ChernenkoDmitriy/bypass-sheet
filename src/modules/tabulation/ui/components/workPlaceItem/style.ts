@@ -10,8 +10,8 @@ export const getStyle = (colors: IColors) => {
             borderBottomWidth: 0.5,
             borderColor: colors.primary,
             height: scaleVertical(150),
-            flexDirection: 'row'
-
+            flexDirection: 'row',
+            marginTop: scaleVertical(5)
         },
         wrapper: {
             marginLeft: scaleHorizontal(10),
@@ -25,18 +25,17 @@ export const getStyle = (colors: IColors) => {
             alignItems: 'center'
         },
         title: {
-            marginTop:scaleVertical(10),
+            marginTop: scaleVertical(10),
             fontSize: scaleFontSize(18),
             color: colors.text,
             fontFamily: 'Roboto-Regular',
         },
         text: {
-            marginTop:scaleVertical(10),
+            marginTop: scaleVertical(10),
             fontSize: scaleFontSize(14),
             color: colors.text,
             fontFamily: 'Roboto-Regular',
         },
-
         optionsButton: {
             position: 'absolute',
             top: scaleVertical(10),

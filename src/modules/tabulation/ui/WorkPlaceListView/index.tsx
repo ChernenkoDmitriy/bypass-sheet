@@ -10,6 +10,7 @@ import { UseWorkPlaceList } from "../../presenters/useWorkPlaceList";
 import { workPlaceModel } from "../../../shared/entities/workPlace/WorkPlaceModel";
 import { WorkPlaceItem } from "../components/workPlaceItem";
 import { WorkPlaceEmptyList } from "../components/workPlaceEmptyList";
+import { LoadingView } from "../../../shared/ui/loadingView";
 
 export const WorkPlaceListView: FC = observer(() => {
     const { colors, t } = useUiContext();

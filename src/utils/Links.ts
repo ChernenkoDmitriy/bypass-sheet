@@ -18,6 +18,10 @@ export interface ILinks {
     deleteWorkPlace: string;
     updateWorkPlace: string;
     getWorkPlaceList: string;
+    createTimeSheet: string;
+    finishTimeSheet: string;
+    timeSheetListUser: string;
+    timeSheetListAdmin: string;
 };
 
 class Links implements ILinks {
@@ -42,6 +46,10 @@ class Links implements ILinks {
         deleteWorkPlace: '/company-standards/work-place/delete',
         updateWorkPlace: '/company-standards/work-place/update',
         getWorkPlaceList: '/company-standards/work-place/list',
+        createTimeSheet: '/company-standards/timesheet/create',
+        finishTimeSheet: '/company-standards/timesheet/finish',
+        timeSheetListUser: '/company-standards/timesheet/list-user',
+        timeSheetListAdmin: '/company-standards/timesheet/list-admin',
     }
 
     get login() {
@@ -114,6 +122,22 @@ class Links implements ILinks {
 
     get getWorkPlaceList() {
         return this._authorizationDomain + this._urls.getWorkPlaceList;
+    }
+
+    get createTimeSheet() {
+        return this._authorizationDomain + this._urls.createTimeSheet;
+    }
+
+    get finishTimeSheet() {
+        return this._authorizationDomain + this._urls.finishTimeSheet;
+    }
+
+    get timeSheetListUser() {
+        return this._authorizationDomain + this._urls.timeSheetListUser;
+    }
+
+    get timeSheetListAdmin() {
+        return this._authorizationDomain + this._urls.timeSheetListAdmin;
     }
 
     get userList() {
