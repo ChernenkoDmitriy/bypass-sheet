@@ -13,19 +13,14 @@ import { TimeIcon } from "../../../../../assets/icons/TimeIcon";
 import { companyModel } from "../../../shared/entities/company/CompanyModel";
 import { UserListItem } from "../components/userListItem";
 import { MembersListItem } from "../components/membersListItem";
-import { AdminTabulationView } from "../AdminTabulationView";
-import { UserTabulationView } from "../UserTabulationView";
 
-export const TabulationView: FC = observer(() => {
+export const UserTabulationView: FC = observer(() => {
     const { colors, t } = useUiContext();
     const styles = useMemo(() => getStyle(colors), [colors]);
 
     return (
-        <ScreenContainer edges={['bottom']} containerStyle={styles.container} headerComponent={<DashboardHeader title={companyModel.chosenCompany?.name} isBackAvailable={false} />}>
-            {companyModel.chosenCompany?.settings[0].role === 'admin'
-                ? <AdminTabulationView />
-                : <UserTabulationView />
-            }
-        </ScreenContainer>
+        <View style={styles.container}>
+           <Text style={styles.title}>я Юзер тут</Text>
+        </View>
     );
 });

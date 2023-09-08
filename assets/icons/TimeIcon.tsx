@@ -11,8 +11,8 @@ interface IProps {
 export const TimeIcon: FC<IProps> = ({ width, height, color }) => (
     <Svg
         viewBox="0 0 20 20"
-        width={width || scaleVertical(20)}
-        height={height || scaleVertical(20)}
+        width={width || scaleVertical(25)}
+        height={height || scaleVertical(25)}
     >
         <G
             transform="translate(-303 -748) translate(301 746)"

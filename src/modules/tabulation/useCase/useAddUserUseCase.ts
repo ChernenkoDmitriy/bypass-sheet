@@ -1,7 +1,7 @@
-import { IResponse } from "../../../../libs/requester/IRequester/IResponse";
-import { appStateModel } from "../../shared/entities/appState/AppStateModel";
-import { companyService } from "../../shared/entities/company/CompanyService";
 import Toast from "react-native-toast-message";
+import { IResponse } from "../../../../libs/requester/IRequester/IResponse";
+
+import { companyService } from "../../shared/entities/company/CompanyService";
 
 const processResponse = (response: IResponse) => {
     if (response.data.message) {
@@ -16,13 +16,12 @@ const processResponse = (response: IResponse) => {
     return { message: '' };
 };
 
-export const useDeleteCompanyUseCase = async (company_id: number) => {
+export const useAddUserUseCase = async (company_id: number, members: number[]) => {
     try {
-        const response = await companyService.deleteCompany(company_id);
+        const response = await companyService.addUser(company_id, members);
         const result = processResponse(response.data);
         return result;
     } catch (error) {
         return { message: 'error' };
-    } finally {
     };
 };

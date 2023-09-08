@@ -1,20 +1,20 @@
-import React, { FC, useCallback, useMemo } from "react";
+import React, { FC, ReactElement, useMemo } from "react";
 import { useUiContext } from "../../../../../UIProvider";
 import { getStyle } from "./style";
 import { Text, TouchableOpacity, View } from 'react-native'
 
 interface IProps {
-    title: string;
+    icon: ReactElement;
     onPress?: () => void;
 };
 
-export const AdminButton: FC<IProps> = ({ title, onPress }) => {
+export const AdminButton: FC<IProps> = ({ icon, onPress }) => {
     const { colors, t } = useUiContext();
     const styles = useMemo(() => getStyle(colors), [colors]);
 
     return (
         <TouchableOpacity style={styles.container} onPress={onPress}>
-            <Text style={styles.title}>{title}</Text>
+            {icon}
         </TouchableOpacity>
     );
 };

@@ -1,12 +1,15 @@
 import { IStorage, storage } from "../../../../../libs/storage";
 import { MobXRepository } from "../../repository/MobXRepository"
+import { IUser } from "../user/IUser";
 import { ICompany } from "./ICompany";
+import { IMembers } from "./iMembers";
 
 export interface ICompanyModel {
     offset: number;
     limit: number;
     companyList: ICompany[];
     chosenCompany: ICompany | null;
+    companyListMembers: IMembers[] ;
 }
 
 class CompanyModel implements ICompanyModel {
@@ -14,6 +17,7 @@ class CompanyModel implements ICompanyModel {
     private limitRepository = new MobXRepository<number>(20);
     private companyListRepository = new MobXRepository<[]>([]);
     private chosenCompanyRepository = new MobXRepository<ICompany | null>(null);
+    private companyListMembersRepository = new MobXRepository<[]>([]);
 
     constructor(private storage: IStorage) {
         this.load();
@@ -34,7 +38,7 @@ class CompanyModel implements ICompanyModel {
     }
 
     get offset() {
-        return this.offsetRepository.data || 2;  //TODO real data 
+        return this.offsetRepository.data || 0;  //TODO real data 
     }
 
     set offset(data: number) {
@@ -59,6 +63,14 @@ class CompanyModel implements ICompanyModel {
 
     get chosenCompany() {
         return this.chosenCompanyRepository.data || null;
+    }
+
+    set companyListMembers(data: []) {
+        this.companyListMembersRepository.save(data);
+    }
+
+    get companyListMembers() {
+        return this.companyListMembersRepository.data || [];
     }
 
     set chosenCompany(data: ICompany | null) {

@@ -15,9 +15,9 @@ const processResponse = (response: IResponse) => {
     return { message: '' };
 };
 
-export const useUpdateCompanyUseCase = async (id: number, name: string, description: 'Description') => {
+export const useUpdateCompanyUseCase = async (company_id: number, name: string, description: 'Description') => {
     try {
-        const response = await companyService.updateCompany(id , name , description);
+        const response = await companyService.updateCompany(company_id , name , description);
         const result = processResponse(response.data);
         return result;
     } catch (error) {

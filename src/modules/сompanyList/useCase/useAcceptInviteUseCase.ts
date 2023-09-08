@@ -1,5 +1,5 @@
 import { IResponse } from "../../../../libs/requester/IRequester/IResponse";
-import { appStateModel } from "../../shared/entities/appState/AppStateModel";
+import { companyModel } from "../../shared/entities/company/CompanyModel";
 import { companyService } from "../../shared/entities/company/CompanyService";
 import Toast from "react-native-toast-message";
 
@@ -13,12 +13,13 @@ const processResponse = (response: IResponse) => {
         });
         return { message: response.data.message };
     };
+    companyModel.companyList = response.data
     return { message: '' };
 };
 
-export const useDeleteCompanyUseCase = async (company_id: number) => {
+export const useAcceptInviteUseCase = async (company_id: number, isAccept: boolean) => {
     try {
-        const response = await companyService.deleteCompany(company_id);
+        const response = await companyService.acceptInvite(company_id,isAccept);
         const result = processResponse(response.data);
         return result;
     } catch (error) {
