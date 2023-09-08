@@ -21,6 +21,13 @@ import { WorkShiftView } from '../../modules/tabulation/ui/workShiftView';
 import { CreateWorkShiftView } from '../../modules/tabulation/ui/createWorkShiftView';
 import { EditWorkShiftView } from '../../modules/tabulation/ui/editWorkShiftView';
 import { AddUserView } from '../../modules/tabulation/ui/addUserView';
+import { MembersProfileView } from '../../modules/tabulation/ui/membersProfileView';
+import { SearchAddressMapView } from '../../modules/tabulation/ui/SearchAddressMapView';
+import { CreateWorkPlaceView } from '../../modules/tabulation/ui/CreateWorkPlaceView';
+import { WorkPlaceListView } from '../../modules/tabulation/ui/WorkPlaceListView';
+import { UpdateWorkPlaceView } from '../../modules/tabulation/ui/updateWorkPlaceView';
+import { CalendarScreen } from '../../modules/tabulation/ui/CalendarScreen';
+import { HistoryMembersView } from '../../modules/settings/ui/HistoryMembersView';
 
 const Stack = createStackNavigator();
 
@@ -35,6 +42,7 @@ export const StackNavigator: FC = observer(() => {
             <Stack.Screen name='CompanyListView' component={CompanyListView} />
             <Stack.Screen name='ConnectToCompanyView' component={ConnectToCompanyView} />
             <Stack.Screen name='CreateCompanyView' component={CreateCompanyView} />
+            <Stack.Screen name='SearchAddressMapView' component={SearchAddressMapView} />
             <Stack.Screen name='EditCompanyView' component={EditCompanyView} />
             <Stack.Screen name='SettingsView' component={SettingsView} />
             <Stack.Screen name='SelectLanguageView' component={SelectLanguageView} />
@@ -44,8 +52,14 @@ export const StackNavigator: FC = observer(() => {
             <Stack.Screen name='BypassSheetView' component={BypassSheetView} />
             <Stack.Screen name='WorkShiftView' component={WorkShiftView} />
             <Stack.Screen name='CreateWorkShiftView' component={CreateWorkShiftView} />
+            <Stack.Screen name='CreateWorkPlaceView' component={CreateWorkPlaceView} />
+            <Stack.Screen name='UpdateWorkPlaceView' component={UpdateWorkPlaceView} />
             <Stack.Screen name='EditWorkShiftView' component={EditWorkShiftView} />
+            <Stack.Screen name='WorkPlaceListView' component={WorkPlaceListView} />
             <Stack.Screen name='AddUserView' component={AddUserView} />
+            <Stack.Screen name='MembersProfileView' component={MembersProfileView} />
+            <Stack.Screen name='CalendarScreen' component={CalendarScreen} />
+            <Stack.Screen name='HistoryMembersView' component={HistoryMembersView} />
             <Stack.Screen name='ProfileView' component={ProfileView} options={{ presentation: 'modal' }} />
         </Stack.Navigator >
     );

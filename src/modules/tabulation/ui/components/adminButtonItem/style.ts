@@ -5,20 +5,20 @@ import { scaleFontSize, scaleHorizontal, scaleVertical } from "../../../../../ut
 export const getStyle = (colors: IColors) => {
     const styles = StyleSheet.create({
         container: {
-            width: '100%',
+            width:scaleHorizontal(70),
             borderWidth: 0.5,
             borderColor: colors.primary,
             marginTop: scaleVertical(15),
             height: scaleVertical(60),
             borderRadius: 8,
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
         },
         title: {
             fontSize: scaleFontSize(22),
             color: colors.text,
             fontFamily: 'Roboto-Regular',
-        }
+        },
     });
     return styles;
 };

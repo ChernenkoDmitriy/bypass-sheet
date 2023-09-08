@@ -18,7 +18,7 @@ export const RootNavigator: FC = observer(() => {
     const { colors, theme } = useUiContext();
     userModel;
     companyModel;
-    
+
     useEffect(() => {
         loggerModel.add('response', 'token: ', '');
         console.log('token: ', userModel.token);
@@ -27,7 +27,7 @@ export const RootNavigator: FC = observer(() => {
     return (
         <KeyboardAvoidingView style={{ flex: 1, backgroundColor: colors.background }} behavior={isIOS ? 'padding' : undefined}>
             <StatusBar backgroundColor={colors.background} barStyle={theme === 'dark' ? 'light-content' : 'dark-content'} />
-            <NavigationContainer>
+            <NavigationContainer >
                 <StackNavigator />
             </NavigationContainer>
             <Logger />

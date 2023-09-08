@@ -4,7 +4,7 @@ import { workShiftService } from "../../shared/entities/workShift/WorkShiftServi
 import { appStateModel } from "../../shared/entities/appState/AppStateModel";
 import { workShiftModel } from "../../shared/entities/workShift/WorkShiftModel";
 import { userModel } from "../../shared/entities/user/userModel";
-import { userService } from "../../shared/entities/user/userService";
+import { companyService } from "../../shared/entities/company/CompanyService";
 
 const processResponse = (response: IResponse) => {
     if (response.data.message) {
@@ -19,16 +19,13 @@ const processResponse = (response: IResponse) => {
     return { message: '' };
 };
 
-export const useGetUserListUseCase = async (offset: number | 0) => {
+export const useGetUserListUseCase = async (offset?: 0, search?: string) => {
     try {
-        appStateModel.isLoading = true;
-        const response = await userService.getUserList(offset);
+        const response = await companyService.getUserList(offset, search);
         userModel.userList = response.data.data;
         const result = processResponse(response.data);
         return result;
     } catch (error) {
         return { message: 'error' };
-    } finally {
-        appStateModel.isLoading = false;
     };
 };

@@ -8,8 +8,13 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { ProfileIcon } from '../../../../../../assets/icons/inputs/ProfileIcon';
 import { userModel } from '../../../../shared/entities/user/userModel';
 import { scaleVertical } from '../../../../../utils/Utils';
+import { IUser } from '../../../../shared/entities/user/IUser';
 
-export const ProfileWrapper: FC = observer(() => {
+interface IProps {
+    user: IUser | null;
+};
+
+export const ProfileWrapper: FC<IProps> = ({user}) => {
     const { t, colors } = useUiContext();
     const navigation = useNavigation<StackNavigationProp<any>>();
     const styles = useMemo(() => getStyle(colors), [colors]);
@@ -18,9 +23,9 @@ export const ProfileWrapper: FC = observer(() => {
         <TouchableOpacity style={styles.container}>
             <ProfileIcon width={scaleVertical(65)} height={scaleVertical(65)} />
             <View>
-                <Text style={styles.text}>{userModel.user?.last_name} {userModel.user?.first_name}</Text>
-                <Text style={styles.text}>{userModel.user?.phone}</Text>
+                <Text style={styles.text}>{user?.last_name} {user?.first_name}</Text>
+                <Text style={styles.text}>{user?.phone}</Text>
             </View>
         </TouchableOpacity>
     );
-});
+};

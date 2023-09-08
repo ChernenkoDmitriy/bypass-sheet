@@ -28,9 +28,9 @@ export const UseSetting = () => {
         });
     };
 
-    const getSelectLanguage = () => {
-        navigation.navigate('SelectLanguageView');
-    };
+    const openHistory = () => navigation.navigate('HistoryMembersView');
 
-    return { isEnabled, activeLanguage, activeTheme, handleTheme, LogOut, getSelectLanguage, onChangeCompany }
+    const getSelectLanguage = () => navigation.navigate('SelectLanguageView')
+
+    return { isEnabled, activeLanguage, activeTheme, openHistory, handleTheme, LogOut, getSelectLanguage, onChangeCompany };
 };

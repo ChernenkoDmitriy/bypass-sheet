@@ -18,7 +18,6 @@ export const useCreateWorkShift = () => {
     const { t } = useUiContext();
     const navigation = useNavigation<StackNavigationProp<any>>();
     const selectTime = useMemo(()=>!!selectedTimeStart  && !!selectedTimeEnd ,[selectedTimeStart,selectedTimeEnd ]);    
-console.log(selectTime);
 
     useEffect(() => {
         if (isCompanyName) {

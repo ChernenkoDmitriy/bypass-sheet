@@ -1,5 +1,5 @@
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { useListWorkShiftUseCase } from "../useCase/useListWorkShiftUseCase";
 import { companyModel } from "../../shared/entities/company/CompanyModel";
 import { useDeleteWorkShiftUseCase } from "../useCase/useDeleteWorkShiftUseCase";
@@ -8,6 +8,7 @@ import { Alert } from "react-native";
 import { useUiContext } from "../../../UIProvider";
 
 export const UseListWorkShift = () => {
+    const [containerListRefresh, setContainerListRefresh] = useState(false);
     const navigation = useNavigation<StackNavigationProp<any>>();
     const { t } = useUiContext();
 
@@ -16,6 +17,12 @@ export const UseListWorkShift = () => {
             getListWorkShift();
         }, [])
     );
+
+    const onRefresh = () => {
+        setContainerListRefresh(true);
+        getListWorkShift();
+        setContainerListRefresh(false);
+    };
 
     const deleteWorkShift = async (id: number, company_id: number) => {
         Alert.alert(
@@ -46,5 +53,5 @@ export const UseListWorkShift = () => {
         const { message } = await useListWorkShiftUseCase(companyModel.chosenCompany?.id || 0);
     };
 
-    return { deleteWorkShift, onEditWorkShift , onCreateWorkShift }
+    return { containerListRefresh, onRefresh, deleteWorkShift, onEditWorkShift, onCreateWorkShift }
 };

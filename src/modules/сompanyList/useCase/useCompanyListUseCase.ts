@@ -17,9 +17,9 @@ const processResponse = (response: IResponse) => {
     return { message: '' };
 };
 
-export const useCompanyListUseCase = async (offset: number) => {
+export const useCompanyListUseCase = async (offset?: number) => {
     try {
-        const response = await companyService.getCompanyList(offset);
+        const response = await companyService.getCompanyList(offset); 
         const result = processResponse(response.data);
         return result;
     } catch (error) {

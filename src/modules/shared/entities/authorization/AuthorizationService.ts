@@ -17,8 +17,8 @@ class AuthorizationService {
             const result = processingResponse(response);
             return result;
         } catch (error) {
-            loggerModel.add('error', 'AuthorizationService -> verifyCode: ' + this.links.login + { phone, password }, JSON.stringify(error));
-            console.warn('AuthorizationService -> verifyCode: ', this.links.login, { phone, password }, error);
+            loggerModel.add('error', 'AuthorizationService -> login: ' + this.links.login + { phone, password }, JSON.stringify(error));
+            console.warn('AuthorizationService -> login: ', this.links.login, { phone, password }, error);
             return { isError: true, data: null, message: '' } as any;
         }
     }
@@ -26,11 +26,12 @@ class AuthorizationService {
     registration = async (first_name: string, last_name: string, phone: string, password: string): Promise<IResponse> => {
         try {
             const response = await this.requester.post(this.links.registration, { first_name, last_name, phone, password });
+            console.log('response', response);
             const result = processingResponse(response);
             return result;
         } catch (error) {
-            loggerModel.add('error', 'AuthorizationService -> verifyCode: ' + this.links.registration + { first_name, last_name, phone, password }, JSON.stringify(error));
-            console.warn('AuthorizationService -> verifyCode: ', this.links.registration, { first_name, last_name, phone, password }, error);
+            loggerModel.add('error', 'AuthorizationService -> registration: ' + this.links.registration + { first_name, last_name, phone, password }, JSON.stringify(error));
+            console.warn('AuthorizationService -> registration: ', this.links.registration, { first_name, last_name, phone, password }, error);
             return { isError: true, data: null, message: '' } as any;
         }
     }

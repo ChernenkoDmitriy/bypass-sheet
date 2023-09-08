@@ -20,9 +20,9 @@ export const BypassSheetView: FC = observer(() => {
             <HeaderWithBackButton title={bypassReport?.title} />
             <ReportList {...{ bypassReport, onChangeComment, onChangeRate, onAddPhoto, onDeletePhoto, onChangeIsDone }} />
             <View style={styles.buttonContainer}>
-                <MainButton title={t('localReport')} onPress={onCreateLocalReport} containerStyle={styles.button} />
-                <MainButton title={t('createGoogleReport')} onPress={onCreateReport} containerStyle={styles.button} disabled={!userModel.user} />
+                {/* <MainButton title={t('localReport')} onPress={onCreateLocalReport} containerStyle={styles.button} /> */}
+                {/* <MainButton title={t('createGoogleReport')} onPress={onCreateReport} containerStyle={styles.button} disabled={!userModel.user} /> */}
             </View>
         </ScreenContainer>
-    )
-})
+    );
+});
