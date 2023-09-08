@@ -10,8 +10,8 @@ import { userModel } from '../../shared/entities/user/userModel';
 import { uploadGoogleSheetUseCase } from './UpdateGoogleSheetUseCase';
 
 const generateShareableExcel = async (): Promise<string> => {
-    await permissionsRN.writeFile();
-    const now = new Date();
+    // await permissionsRN.writeFile();
+    const now = new Date();    
     const fileName = "/" + now.getHours() + "_" + now.getMinutes() + '_' + now.getSeconds() + '_report.xlsx';
     const fileUri = FileSystem.ExternalDirectoryPath + fileName;
     return new Promise<string>((resolve, reject) => {
@@ -30,7 +30,7 @@ const generateShareableExcel = async (): Promise<string> => {
             { header: 'Photos', key: 'photos', width: 28 }
         ];
         // Add some test data
-        const reportItems = bypassReportModel.bypassReport?.items;
+        const reportItems = bypassReportModel.bypassReport?.items;        
         reportItems?.forEach((item, index) => {
             const { title, comment, rate, isDone, photos } = item;
             worksheet.addRow({ description: title, comment, rate, isDone: isDone });

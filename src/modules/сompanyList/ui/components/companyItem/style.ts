@@ -20,7 +20,7 @@ export const getStyle = (colors: IColors) => {
             elevation: 4,
         },
         informationWrapper: {
-            width: '70%',
+            width: '100%',
             height: '100%',
             paddingVertical: scaleVertical(15),
             justifyContent: 'space-between',
@@ -36,6 +36,27 @@ export const getStyle = (colors: IColors) => {
             color: colors.text,
             fontFamily: 'Roboto-Regular'
         },
+        textButton:{
+            fontSize: scaleFontSize(14),
+            color: colors.text,
+            fontFamily: 'Roboto-Regular'
+        },
+        inviteWrapper:{
+            flexDirection:'row',
+            alignItems:'center',
+            justifyContent:'space-between',
+        },
+        inviteButton:{
+            padding:7,
+            borderWidth:0.5,
+            borderRadius:20,
+            borderColor:colors.modalBackground,
+            marginRight:scaleHorizontal(8)
+        },
+        buttonWrapper:{
+            flexDirection:'row',
+            paddingRight:scaleHorizontal(10)
+        }
     });
     return styles;
 };

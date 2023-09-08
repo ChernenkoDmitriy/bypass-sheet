@@ -14,7 +14,6 @@ class WorkShiftService {
     createWorkShift = async (company_id: number, startTime: string, endTime: string, name: string): Promise<IResponse> => {
         try {
             const response = await this.requester.post(this.links.createWorkShift, { company_id, startTime, endTime, name });
-            console.log(response);
             const result = processingResponse(response);
             return result;
         } catch (error) {

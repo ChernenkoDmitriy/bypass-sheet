@@ -37,7 +37,7 @@ export const DashboardHeader: FC<IProps> = memo(({ photo, title, isBackAvailable
                 </View>
                 {settings
                     ? <TouchableOpacity onPress={goToSettings}>
-                        <SettingsIcon width={scaleVertical(35)} height={scaleVertical(35)} />
+                        <SettingsIcon color={colors.icon} width={scaleVertical(35)} height={scaleVertical(35)} />
                     </TouchableOpacity>
                     : null
                 }

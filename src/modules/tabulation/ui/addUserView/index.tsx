@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useMemo } from "react";
+import React, { FC, useCallback, useMemo, useState } from "react";
 import { useUiContext } from "../../../../UIProvider";
 import { ScreenContainer } from "../../../../UIKit/screenContainer";
 import { getStyle } from "./style";
@@ -13,16 +13,19 @@ import { observer } from "mobx-react";
 export const AddUserView: FC = observer(() => {
     const { colors, t } = useUiContext();
     const styles = useMemo(() => getStyle(colors), [colors]);
-    UseAddUser();
-    console.log(userModel.userList);
-    
-    const renderItem = useCallback(({ item }: any) => <UserListItem userListItem={item} />, []);
-    const keyExtractor = useCallback((item: { id: string; }) => item.id, []);
+    const { search, containerListRefresh, onRefresh, setSearch, addUser } = UseAddUser();
+    const renderItem = useCallback(({ item }: any) => <UserListItem addUser={addUser} userListItem={item} />, []);
+    const keyExtractor = useCallback((item: { id: string }) => item.id, []);
 
     return (
         <ScreenContainer edges={['bottom']} containerStyle={styles.container} headerComponent={<DashboardHeader title={t('addUser')} isBackAvailable={true} />}>
-            <Search />
+            <Search
+                value={search}
+                onChangeText={setSearch}
+            />
             <FlatList
+                refreshing={containerListRefresh}
+                onRefresh={onRefresh}
                 showsVerticalScrollIndicator={false}
                 data={userModel.userList}
                 renderItem={renderItem}

@@ -9,7 +9,7 @@ export const getStyle = (colors: IColors) => {
         },
         buttonContainer: {
             flexDirection: 'row',
-            justifyContent: 'space-between',
+            justifyContent:'center',
             paddingHorizontal: 16,
         },
         button: {
@@ -20,4 +20,4 @@ export const getStyle = (colors: IColors) => {
         }
     });
     return styles;
-}
+};
