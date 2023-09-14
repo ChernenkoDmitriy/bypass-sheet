@@ -1,16 +1,13 @@
-import { useFocusEffect, useNavigation } from "@react-navigation/native";
-import { useCallback } from "react";
-import { useListWorkShiftUseCase } from "../useCase/useListWorkShiftUseCase";
-import { companyModel } from "../../shared/entities/company/CompanyModel";
-import { useDeleteWorkShiftUseCase } from "../useCase/useDeleteWorkShiftUseCase";
-import { StackNavigationProp } from "@react-navigation/stack";
-import { Alert } from "react-native";
-import { useUiContext } from "../../../UIProvider";
+import { useFocusEffect } from "@react-navigation/native";
+import { useCallback, useEffect, useState } from "react";
 import { useGetUserListUseCase } from "../useCase/useGetUserListUseCase";
+import { useAddUserUseCase } from "../useCase/useAddUserUseCase";
+import { useShowToast } from "../../shared/hooks/useShowToast";
 
 export const UseAddUser = () => {
-    const navigation = useNavigation<StackNavigationProp<any>>();
-    const { t } = useUiContext();
+    const [search, setSearch] = useState('');
+    const [containerListRefresh, setContainerListRefresh] = useState(false);
+    const { showSuccess } = useShowToast();
 
     useFocusEffect(
         useCallback(() => {
@@ -18,9 +15,22 @@ export const UseAddUser = () => {
         }, [])
     );
 
-    const getUserList = async () => {
-        const { message } = await useGetUserListUseCase(0);
+    useEffect(() => {
+        useGetUserListUseCase(0, search);
+    }, [search]);
+
+    const onRefresh = () => {
+        setContainerListRefresh(true);
+        getUserList();
+        setContainerListRefresh(false);
     };
 
-    return { getUserList  }
+    const getUserList = async () => await useGetUserListUseCase(0);
+
+    const addUser = async (company_id: number, members: number[]) => {
+        await useAddUserUseCase(company_id, members);
+        showSuccess('isSuccessInvite');
+    };
+
+    return { search, containerListRefresh, onRefresh, setSearch, getUserList, addUser }
 };

@@ -34,7 +34,7 @@ export const useEditCompany = () => {
         if (!/\d/.test(value)) setName(value);
     };
 
-    const getSelectedCompany = async (id: number, name: string, description: 'Description') => {
+    const getSelectedCompany = async (company_id: number, name: string, description: 'Description') => {
         if (!isCompanyName) {
             const { message } = await useUpdateCompanyUseCase(id, name, description);
             navigation.navigate('CompanyListView');

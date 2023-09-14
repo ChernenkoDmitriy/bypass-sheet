@@ -1,17 +1,18 @@
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { useCallback, useEffect } from "react";
+import { useCallback, useState } from "react";
 import { useCompanyListUseCase } from "../useCase/useCompanyListUseCase";
-import { userModel } from "../../shared/entities/user/userModel";
 import { useDeleteCompanyUseCase } from "../useCase/useDeleteCompanyUseCase";
-import { isIOS } from "../../../utils/Utils";
-import { Alert, Linking } from "react-native";
+import { Alert } from "react-native";
 import { useUiContext } from "../../../UIProvider";
-import { ICompany } from "../../shared/entities/company/ICompany";
-import { companyModel } from "../../shared/entities/company/CompanyModel";
-
+import { useAcceptInviteUseCase } from "../useCase/useAcceptInviteUseCase";
+import { companyModel } from "../../../entities/company/CompanyModel";
+import { ICompany } from "../../../entities/company/ICompany";
+import { userModel } from "../../../entities/user/userModel";
 
 export const useCompanyList = () => {
+    const [containerListRefresh, setContainerListRefresh] = useState(false);
+    const time = new Date().getTime();
     const navigation = useNavigation<StackNavigationProp<any>>();
     const { t } = useUiContext();
 
@@ -20,6 +21,24 @@ export const useCompanyList = () => {
             getCompanyList();
         }, [])
     );
+
+    // useEffect(() => {
+    //      setInterval(getLocation, 20000);
+    //   }, []);
+
+    // const getLocation = () => {
+    //     Geolocation.getCurrentPosition(
+    //         position => {
+    //             const { latitude, longitude } = position.coords;
+    //             console.log(latitude,longitude);
+    //         },
+    //         error => {
+    //             console.error(`Ошибка получения локации: ${error.message}`);
+    //         },
+    //         { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
+    //     );
+    // };
+    // const locationInterval = setInterval(getLocation, 100000);
 
     // useEffect(() => {
     //     requestPermission();
@@ -48,9 +67,15 @@ export const useCompanyList = () => {
     //     };
     // };
 
+    const onRefresh = () => {
+        setContainerListRefresh(true);
+        getCompanyList();
+        setContainerListRefresh(false);
+    };
+
     const onPressEvent = (company: ICompany) => {
-            companyModel.chosenCompany = company;
-            navigation.navigate('TabNavigator');
+        companyModel.chosenCompany = company;
+        navigation.navigate('TabNavigator');
     };
 
     const deleteCompany = async (id: number) => {
@@ -71,16 +96,17 @@ export const useCompanyList = () => {
             },]
         );
     };
+    const acceptInvite = async (company_id: number, isAccept: boolean) => {
+        await useAcceptInviteUseCase(company_id, isAccept);
+        getCompanyList();
+    }
 
-    const getCompanyList = async () => {
-        const { message } = await useCompanyListUseCase(Number(userModel.user?.id));
-    };
+    const getCompanyList = async () =>  await useCompanyListUseCase();
 
-    const onEditCompany = (id: number, companyName: string) => {
-        navigation.navigate('EditCompanyView', { id: id, companyName: companyName });
-    };
+    const onEditCompany = (id: number, companyName: string) =>  navigation.navigate('EditCompanyView', { id: id, companyName: companyName });
 
     const onConnectToCompany = () => navigation.navigate('ConnectToCompanyView');
     const onCreateCompany = () => navigation.navigate('CreateCompanyView');
-    return { onConnectToCompany, onCreateCompany, deleteCompany, onEditCompany, onPressEvent }
+
+    return { containerListRefresh, onRefresh, onConnectToCompany, onCreateCompany, deleteCompany, onEditCompany, acceptInvite, onPressEvent, getCompanyList };
 };

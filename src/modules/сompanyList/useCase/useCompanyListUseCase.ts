@@ -1,7 +1,7 @@
 import { IResponse } from "../../../../libs/requester/IRequester/IResponse";
-import { companyModel } from "../../shared/entities/company/CompanyModel";
-import { companyService } from "../../shared/entities/company/CompanyService";
 import Toast from "react-native-toast-message";
+import { companyModel } from "../../../entities/company/CompanyModel";
+import { companyService } from "../../../entities/company/CompanyService";
 
 const processResponse = (response: IResponse) => {
     if (response.data.message) {
@@ -17,9 +17,9 @@ const processResponse = (response: IResponse) => {
     return { message: '' };
 };
 
-export const useCompanyListUseCase = async (offset: number) => {
+export const useCompanyListUseCase = async (offset?: number) => {
     try {
-        const response = await companyService.getCompanyList(offset);
+        const response = await companyService.getCompanyList(offset); 
         const result = processResponse(response.data);
         return result;
     } catch (error) {

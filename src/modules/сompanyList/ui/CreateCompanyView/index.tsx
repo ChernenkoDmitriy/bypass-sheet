@@ -3,7 +3,6 @@ import { useUiContext } from "../../../../UIProvider";
 import { ScreenContainer } from "../../../../UIKit/screenContainer";
 import { getStyle } from "./style";
 import { DashboardHeader } from "../../../dashboard/ui/components/dashboardHeader";
-import { Text } from 'react-native'
 import { MainInput } from "../../../../UIKit/mainInput";
 import { useCompanyView } from "../../presenters/useCompanyView";
 

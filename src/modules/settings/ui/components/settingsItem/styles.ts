@@ -9,14 +9,14 @@ export const getStyle = (colors: IColors) => {
             height: scaleVertical(60),
             flexDirection: 'row',
             alignItems: 'center',
-            paddingHorizontal: scaleHorizontal(10),
+            // paddingHorizontal: scaleHorizontal(10),
             justifyContent:'space-between'
         },
         title: {
             fontSize: scaleFontSize(18),
             fontFamily: 'Roboto-Regular',
             color: colors.text,
-            marginLeft: scaleHorizontal(25),
+            // marginLeft: scaleHorizontal(25),
             marginRight: scaleHorizontal(10)
         },
         text: {

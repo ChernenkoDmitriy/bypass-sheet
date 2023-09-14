@@ -8,7 +8,6 @@ import { BypassItemCreator } from './components/bypassItemCreator';
 import { ContinueReport } from './components/continueReport';
 import { getStyle } from './styles';
 import { DashboardHeader } from './components/dashboardHeader';
-import { companyModel } from '../../shared/entities/company/CompanyModel';
 
 export const DashboardView: FC = observer(() => {
     const { t, colors } = useUiContext();

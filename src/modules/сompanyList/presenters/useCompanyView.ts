@@ -33,7 +33,7 @@ export const useCompanyView = () => {
     }, [isCompanyName]);
 
     const onSetName = (value: string) => {
-        if (!/\d/.test(value)) setCompanyName(value);
+        setCompanyName(value);
     };
 
     const onCreate = async () => {

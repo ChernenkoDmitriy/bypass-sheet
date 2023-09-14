@@ -28,9 +28,7 @@ export const UseSetting = () => {
         });
     };
 
-    const getSelectLanguage = () => {
-        navigation.navigate('SelectLanguageView');
-    };
+    const getSelectLanguage = () => navigation.navigate('SelectLanguageView')
 
-    return { isEnabled, activeLanguage, activeTheme, handleTheme, LogOut, getSelectLanguage, onChangeCompany }
+    return { isEnabled, activeLanguage, activeTheme, handleTheme, LogOut, getSelectLanguage, onChangeCompany };
 };

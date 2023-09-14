@@ -14,14 +14,15 @@ const processResponse = (response: IResponse) => {
         });
         return { message: response.data.message };
     };
-    userModel.user = response.data;
+    userModel.user = response.data.user;
+    userModel.token = response.data.token;
     return { message: '' };
 };
 
 export const registrationUseCase = async (first_name: string, last_name: string, phone: string, password: string) => {
     try {
         appStateModel.isLoading = true;
-        const response = await authorizationService.registration(first_name, last_name, phone, password);
+        const response = await authorizationService.registration(first_name, last_name, phone, password);        
         const result = processResponse(response);
         return result;
     } catch (error) {

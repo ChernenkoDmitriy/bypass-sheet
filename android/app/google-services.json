@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "426804847942",
+    "project_id": "pc-api-5341550995992994215-824",
+    "storage_bucket": "pc-api-5341550995992994215-824.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:426804847942:android:0530e8f2d304729b7ef147",
+        "android_client_info": {
+          "package_name": "com.bypasssheethelper"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "426804847942-4qtj2eu4sa994ipiuurrpsohqa864oj3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPD2taugGVrGEpH0pAxnaPIlacz58dkyM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "426804847942-4qtj2eu4sa994ipiuurrpsohqa864oj3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

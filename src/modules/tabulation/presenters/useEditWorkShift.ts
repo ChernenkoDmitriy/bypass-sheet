@@ -1,13 +1,9 @@
 import { useNavigation, useRoute } from "@react-navigation/native"
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { googleSignInModule } from "../../../../libs/google/googleSignIn/GoogleSignInModule";
-import { userModel } from "../../shared/entities/user/userModel";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { useUiContext } from "../../../UIProvider";
-import { useShowToast } from "../../shared/hooks/useShowToast";
-import { companyModel } from "../../shared/entities/company/CompanyModel";
-import { useCreateWorkShiftUseCase } from "../useCase/useCreateWorkShiftUseCase";
 import { useUpdateWorkShiftUseCase } from "../useCase/useUpdateWorkShiftUseCase";
+import { companyModel } from "../../../entities/company/CompanyModel";
 
 export const useEditWorkShift = () => {
     const [companyName, setCompanyName] = useState('');
@@ -19,7 +15,6 @@ export const useEditWorkShift = () => {
     const [errorName, setErrorName] = useState('');
     const isCompanyName = useMemo(() => companyName.length <= 2, [companyName]);
     const { t } = useUiContext();
-    const { showSuccess } = useShowToast();
     const navigation = useNavigation<StackNavigationProp<any>>();
     const selectTime = useMemo(() => !!selectedTimeStart && !!selectedTimeEnd, [selectedTimeStart, selectedTimeEnd]);
     const route = useRoute();
@@ -74,7 +69,7 @@ export const useEditWorkShift = () => {
     }, [isCompanyName]);
 
     const onSetName = (value: string) => {
-        if (!/\d/.test(value)) setCompanyName(value);
+        setCompanyName(value);
     };
 
     const onEdit = async () => {

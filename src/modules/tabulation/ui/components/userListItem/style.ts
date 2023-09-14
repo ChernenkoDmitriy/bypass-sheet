@@ -7,28 +7,28 @@ export const getStyle = (colors: IColors) => {
         container: {
             marginTop: scaleVertical(10),
             width: '100%',
-            borderRadius: 9,
-            backgroundColor: colors.card,
             flexDirection: 'row',
             alignItems: 'center',
-            justifyContent: 'space-between',
-            paddingHorizontal:scaleHorizontal(10)
+            justifyContent: 'space-between'
         },
         informationWrapper: {
-            flexDirection: 'row',
-            paddingVertical: scaleVertical(25),
+            flexDirection: 'row'
         },
-        optionsButton: {
-            position: 'absolute',
-            top: 10,
-            right: 15,
+        titleWrapper:{
+            marginLeft:scaleHorizontal(5),
+            borderBottomWidth:0.5,
+            borderBottomColor:colors.card,
+            flex:1
         },
         text: {
-            fontSize: scaleFontSize(18),
+            fontSize: scaleFontSize(16),
             color: colors.text,
             fontFamily: 'Roboto-Regular',
-            marginLeft: scaleHorizontal(10)
+            marginLeft:scaleHorizontal(8),
         },
+        button:{
+            justifyContent:'center'
+        }
     });
     return styles;
 };

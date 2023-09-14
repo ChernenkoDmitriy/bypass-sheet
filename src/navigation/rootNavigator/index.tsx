@@ -8,17 +8,17 @@ import { useUiContext } from '../../UIProvider';
 import { LoadingView } from '../../modules/shared/ui/loadingView';
 import { InternetConnection } from '../../UIKit/internetConnection';
 import { Logger } from '../../UIKit/logger/ui/logger';
-import { userModel } from '../../modules/shared/entities/user/userModel';
 import { loggerModel } from '../../UIKit/logger/entity/loggerModel';
 import Toast from 'react-native-toast-message';
 import { ToastView } from '../../UIKit/toast';
-import { companyModel } from '../../modules/shared/entities/company/CompanyModel';
+import { companyModel } from '../../entities/company/CompanyModel';
+import { userModel } from '../../entities/user/userModel';
 
 export const RootNavigator: FC = observer(() => {
     const { colors, theme } = useUiContext();
     userModel;
     companyModel;
-    
+
     useEffect(() => {
         loggerModel.add('response', 'token: ', '');
         console.log('token: ', userModel.token);
@@ -27,10 +27,10 @@ export const RootNavigator: FC = observer(() => {
     return (
         <KeyboardAvoidingView style={{ flex: 1, backgroundColor: colors.background }} behavior={isIOS ? 'padding' : undefined}>
             <StatusBar backgroundColor={colors.background} barStyle={theme === 'dark' ? 'light-content' : 'dark-content'} />
-            <NavigationContainer>
+            <NavigationContainer >
                 <StackNavigator />
             </NavigationContainer>
-            <Logger />
+            {/* <Logger /> */}
             <Toast config={{ success: (props) => <ToastView {...props} />, error: (props) => <ToastView error {...props} /> }} />
             <InternetConnection />
             <LoadingView />

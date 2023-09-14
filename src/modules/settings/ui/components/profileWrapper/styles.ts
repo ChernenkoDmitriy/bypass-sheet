@@ -10,7 +10,6 @@ export const getStyle = (colors: IColors) => {
             borderBottomWidth: 0.5,
             flexDirection: 'row',
             alignItems: 'center',
-            paddingHorizontal: scaleHorizontal(40),
         },
         text: {
             fontSize: scaleFontSize(18),

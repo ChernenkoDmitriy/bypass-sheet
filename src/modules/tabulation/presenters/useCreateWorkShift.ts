@@ -2,9 +2,8 @@ import { useNavigation } from "@react-navigation/native"
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { useUiContext } from "../../../UIProvider";
-import { useShowToast } from "../../shared/hooks/useShowToast";
-import { companyModel } from "../../shared/entities/company/CompanyModel";
 import { useCreateWorkShiftUseCase } from "../useCase/useCreateWorkShiftUseCase";
+import { companyModel } from "../../../entities/company/CompanyModel";
 
 export const useCreateWorkShift = () => {
     const [companyName, setCompanyName] = useState('');
@@ -18,7 +17,6 @@ export const useCreateWorkShift = () => {
     const { t } = useUiContext();
     const navigation = useNavigation<StackNavigationProp<any>>();
     const selectTime = useMemo(()=>!!selectedTimeStart  && !!selectedTimeEnd ,[selectedTimeStart,selectedTimeEnd ]);    
-console.log(selectTime);
 
     useEffect(() => {
         if (isCompanyName) {
@@ -69,7 +67,7 @@ console.log(selectTime);
     }, [isCompanyName]);
 
     const onSetName = (value: string) => {
-        if (!/\d/.test(value)) setCompanyName(value);
+       setCompanyName(value);
     };
 
     const onCreate = async () => {

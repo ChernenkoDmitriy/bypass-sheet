@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, useMemo } from "react";
+import React, { FC, useCallback, useMemo } from "react";
 import { useUiContext } from "../../../../UIProvider";
 import { ScreenContainer } from "../../../../UIKit/screenContainer";
 import { getStyle } from "./style";
@@ -7,24 +7,23 @@ import { FlatList, Text } from 'react-native';
 import { AddCompanyButton } from "../components/addCompanyButton";
 import { CompanyItem } from "../components/companyItem";
 import { useCompanyList } from "../../presenters/useCompanyList";
-import { userModel } from "../../../shared/entities/user/userModel";
 import { observer } from "mobx-react";
-import { useCompanyListUseCase } from "../../useCase/useCompanyListUseCase";
-import { companyModel } from "../../../shared/entities/company/CompanyModel";
-import { ICompany } from "../../../shared/entities/company/ICompany";
-import { useFocusEffect } from '@react-navigation/native';
+import Geolocation from '@react-native-community/geolocation';
+import { companyModel } from "../../../../entities/company/CompanyModel";
 
 export const CompanyListView: FC = observer(() => {
     const { colors, t } = useUiContext();
     const styles = useMemo(() => getStyle(colors), [colors]);
-    const { onConnectToCompany, onCreateCompany, deleteCompany, onEditCompany, onPressEvent } = useCompanyList();
+    const { containerListRefresh, onRefresh, onConnectToCompany, onCreateCompany, deleteCompany, onEditCompany, onPressEvent, getCompanyList, acceptInvite } = useCompanyList();
 
-    const renderItem = useCallback(({ item }: any) => <CompanyItem onPress={onPressEvent} companyItem={item} deleteCompany={deleteCompany} onEditCompany={onEditCompany} />, []);
+    const renderItem = useCallback(({ item }: any) => <CompanyItem acceptInvite={acceptInvite} onPress={onPressEvent} companyItem={item} deleteCompany={deleteCompany} onEditCompany={onEditCompany} />, []);
     const keyExtractor = useCallback((item: { id: string; }) => item.id, []);
 
     return (
         <ScreenContainer edges={['bottom']} containerStyle={styles.container} headerComponent={<DashboardHeader isBackAvailable={false} settings />}>
             <FlatList
+                refreshing={containerListRefresh}
+                onRefresh={onRefresh}
                 showsVerticalScrollIndicator={false}
                 data={companyModel.companyList}
                 renderItem={renderItem}

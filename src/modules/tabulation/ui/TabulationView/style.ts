@@ -6,7 +6,18 @@ export const getStyle = (colors: IColors) => {
     const styles = StyleSheet.create({
         container: {
             flex: 1,
-            paddingHorizontal:scaleHorizontal(15),
+            paddingHorizontal: scaleHorizontal(15),
+        },
+        buttonWrapper: {
+            flexDirection: 'row',
+            justifyContent:'space-between'
+        },
+        title:{
+            fontSize:scaleFontSize(22),
+            color:colors.text,
+            fontFamily:'Roboto-Regular',
+            textAlign:'center',
+            paddingVertical:scaleVertical(25),
         },
     });
     return styles;
