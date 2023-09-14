@@ -8,11 +8,11 @@ import { useUiContext } from '../../UIProvider';
 import { LoadingView } from '../../modules/shared/ui/loadingView';
 import { InternetConnection } from '../../UIKit/internetConnection';
 import { Logger } from '../../UIKit/logger/ui/logger';
-import { userModel } from '../../modules/shared/entities/user/userModel';
 import { loggerModel } from '../../UIKit/logger/entity/loggerModel';
 import Toast from 'react-native-toast-message';
 import { ToastView } from '../../UIKit/toast';
-import { companyModel } from '../../modules/shared/entities/company/CompanyModel';
+import { companyModel } from '../../entities/company/CompanyModel';
+import { userModel } from '../../entities/user/userModel';
 
 export const RootNavigator: FC = observer(() => {
     const { colors, theme } = useUiContext();
@@ -30,7 +30,7 @@ export const RootNavigator: FC = observer(() => {
             <NavigationContainer >
                 <StackNavigator />
             </NavigationContainer>
-            <Logger />
+            {/* <Logger /> */}
             <Toast config={{ success: (props) => <ToastView {...props} />, error: (props) => <ToastView error {...props} /> }} />
             <InternetConnection />
             <LoadingView />

@@ -6,18 +6,18 @@ export const getStyle = (colors: IColors) => {
     const styles = StyleSheet.create({
         container: {
             width: '100%',
-            borderTopWidth: 0.5,
-            borderBottomWidth: 0.5,
             borderColor: colors.primary,
-            height: scaleVertical(150),
+            // height: scaleVertical(150),
             flexDirection: 'row',
-            marginTop: scaleVertical(5)
+            marginTop: scaleVertical(5),
+            borderWidth: 0.6,
+            borderRadius: 7,
         },
         wrapper: {
             marginLeft: scaleHorizontal(10),
         },
         avatar: {
-            height: scaleVertical(150),
+            height: scaleVertical(130),
             width: scaleVertical(150),
             borderRadius: 7,
             backgroundColor: colors.primary,

@@ -25,7 +25,7 @@ export const SettingsItem: FC<IProps> = ({ title, switchV, containerStyle, activ
     return (
         <TouchableOpacity style={[styles.container, containerStyle]} onPress={onPress}>
             <View style={{ flexDirection: 'row' }}>
-                {icon}
+                {/* {icon} */}
                 <Text style={styles.title}>{title}</Text>
             </View>
             {switchV ?

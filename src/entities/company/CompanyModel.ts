@@ -1,8 +1,7 @@
-import { IStorage, storage } from "../../../../../libs/storage";
 import { MobXRepository } from "../../repository/MobXRepository"
-import { IUser } from "../user/IUser";
 import { ICompany } from "./ICompany";
 import { IMembers } from "../members/IMembers";
+import { IStorage, storage } from "../../../libs/storage";
 
 export interface ICompanyModel {
     offset: number;

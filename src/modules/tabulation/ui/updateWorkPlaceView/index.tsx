@@ -4,15 +4,11 @@ import { ScreenContainer } from "../../../../UIKit/screenContainer";
 import { getStyle } from "./style";
 import { DashboardHeader } from "../../../dashboard/ui/components/dashboardHeader";
 import { observer } from "mobx-react";
-import { companyModel } from "../../../shared/entities/company/CompanyModel";
 import { Text, TouchableOpacity, View } from "react-native";
 import { GeolocationIcon } from "../../../../../assets/icons/GeolocationIcon";
 import { MainInput } from "../../../../UIKit/mainInput";
-import { DoneIcon } from "../../../../../assets/icons/DoneIcon";
-import { ButtonAddItem } from "../../../bypassSheetCreate/ui/components/buttonAddItem";
-import { UseWorkPlace } from "../../presenters/useWorkPlace";
-import { workPlaceModel } from "../../../shared/entities/workPlace/WorkPlaceModel";
 import { useUpdateWorkPlace } from "../../presenters/useUpdateWorkPlace";
+import { workPlaceModel } from "../../../../entities/workPlace/WorkPlaceModel";
 
 export const UpdateWorkPlaceView: FC = observer(() => {
     const { colors, t } = useUiContext();

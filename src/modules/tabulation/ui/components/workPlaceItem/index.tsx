@@ -5,13 +5,13 @@ import { Text, TouchableOpacity, View } from 'react-native'
 import { observer } from "mobx-react";
 import { OptionsIcon } from "../../../../../../assets/icons/optionsIcon";
 import { MenuView } from "@react-native-menu/menu";
-import { IWorkPlace } from "../../../../shared/entities/workPlace/IWorkPlace";
-import { companyModel } from "../../../../shared/entities/company/CompanyModel";
-import { workPlaceModel } from "../../../../shared/entities/workPlace/WorkPlaceModel";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { useNavigation } from "@react-navigation/native";
 import { AddOfficeIcon } from "../../../../../../assets/icons/addOfficeIcon";
 import { OfficeIcon } from "../../../../../../assets/icons/OfficeIcon";
+import { companyModel } from "../../../../../entities/company/CompanyModel";
+import { IWorkPlace } from "../../../../../entities/workPlace/IWorkPlace";
+import { workPlaceModel } from "../../../../../entities/workPlace/WorkPlaceModel";
 
 interface IProps {
     workPlace: IWorkPlace;
@@ -22,6 +22,14 @@ export const WorkPlaceItem: FC<IProps> = observer(({ workPlace, onDeleteWorkPLac
     const { colors, t } = useUiContext();
     const styles = useMemo(() => getStyle(colors), [colors]);
     const navigation = useNavigation<StackNavigationProp<any>>();
+
+    const workPlaceName = useMemo(() => {
+        if (workPlace.name.length <= 10) {
+            return workPlace.name
+        } else if (workPlace.name.length >= 10 ) {
+            return workPlace.name.slice(0, 10 )+ '...'
+        }
+    }, [workPlace.name.length]);
 
     const onUpdateWorkPlace = () => {
         workPlaceModel.chosenWorkPlace = workPlace;
@@ -34,7 +42,7 @@ export const WorkPlaceItem: FC<IProps> = observer(({ workPlace, onDeleteWorkPLac
                 <OfficeIcon color={colors.icon} />
             </View>
             <View style={styles.wrapper}>
-                <Text style={styles.title}>{workPlace.name}</Text>
+                <Text style={styles.title}>{workPlaceName}</Text>
                 <Text style={styles.text}>{workPlace.address}</Text>
                 <Text style={styles.text}>{'Radius' + ': ' + workPlace.radius}</Text>
             </View>

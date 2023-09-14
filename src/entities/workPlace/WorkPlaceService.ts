@@ -1,9 +1,9 @@
-import { IRequester, requester } from "../../../../../libs/requester";
-import { IFormDataRequest } from "../../../../../libs/requester/IRequester/IFormDataRequest";
-import { IResponse } from "../../../../../libs/requester/IRequester/IResponse";
-import { processingResponse } from "../../../../../libs/requester/processingResponse";
-import { loggerModel } from "../../../../UIKit/logger/entity/loggerModel";
-import { ILinks, links } from "../../../../utils/Links";
+import { IRequester, requester } from "../../../libs/requester";
+import { IFormDataRequest } from "../../../libs/requester/IRequester/IFormDataRequest";
+import { IResponse } from "../../../libs/requester/IRequester/IResponse";
+import { processingResponse } from "../../../libs/requester/processingResponse";
+import { loggerModel } from "../../UIKit/logger/entity/loggerModel";
+import { ILinks, links } from "../../utils/Links";
 
 class WorkPlaceService {
     constructor(

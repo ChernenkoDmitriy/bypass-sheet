@@ -2,11 +2,11 @@ import React, { FC, useMemo } from "react";
 import { getStyle } from "./style";
 import { TouchableOpacity, Text, View } from 'react-native';
 import { useUiContext } from "../../../../../UIProvider";
-import { IUser } from "../../../../shared/entities/user/IUser";
 import { AddUserIcon } from "../../../../../../assets/icons/AddUserIcon";
 import { LogoPicker } from "../../../../../UIKit/logoPicker";
 import { observer } from "mobx-react";
-import { companyModel } from "../../../../shared/entities/company/CompanyModel";
+import { companyModel } from "../../../../../entities/company/CompanyModel";
+import { IUser } from "../../../../../entities/user/IUser";
 
 interface IProps {
     userListItem: IUser;

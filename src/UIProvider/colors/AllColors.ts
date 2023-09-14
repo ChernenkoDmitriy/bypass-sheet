@@ -26,7 +26,7 @@ export const allColors = {
     },
     dark: {
         text:'#FFFFFF',
-        primary:'#0082FF',
+        primary:'#e7ad24',
         accentText: '#4C6EBB',
         buttonText: '#0F0F10',
         regularText: '#f0f0f5',

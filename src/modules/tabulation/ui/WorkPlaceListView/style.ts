@@ -5,6 +5,7 @@ import { scaleFontSize, scaleHorizontal, scaleVertical } from "../../../../utils
 export const getStyle = (colors: IColors) => {
     const styles = StyleSheet.create({
         container: {
+          paddingHorizontal:scaleHorizontal(15),
             flex: 1,
         },
     });

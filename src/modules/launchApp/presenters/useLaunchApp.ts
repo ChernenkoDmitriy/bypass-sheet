@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import { useEffect } from "react";
-import { userModel } from "../../shared/entities/user/userModel";
-import { companyModel } from "../../shared/entities/company/CompanyModel";
+import { companyModel } from "../../../entities/company/CompanyModel";
+import { userModel } from "../../../entities/user/userModel";
 
 export const useLaunchApp = () => {
     const navigation = useNavigation<any>();

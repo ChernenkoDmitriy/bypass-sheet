@@ -1,15 +1,14 @@
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { useCompanyListUseCase } from "../useCase/useCompanyListUseCase";
-import { userModel } from "../../shared/entities/user/userModel";
 import { useDeleteCompanyUseCase } from "../useCase/useDeleteCompanyUseCase";
-import { isIOS } from "../../../utils/Utils";
-import { Alert, Linking } from "react-native";
+import { Alert } from "react-native";
 import { useUiContext } from "../../../UIProvider";
-import { ICompany } from "../../shared/entities/company/ICompany";
-import { companyModel } from "../../shared/entities/company/CompanyModel";
 import { useAcceptInviteUseCase } from "../useCase/useAcceptInviteUseCase";
+import { companyModel } from "../../../entities/company/CompanyModel";
+import { ICompany } from "../../../entities/company/ICompany";
+import { userModel } from "../../../entities/user/userModel";
 
 export const useCompanyList = () => {
     const [containerListRefresh, setContainerListRefresh] = useState(false);

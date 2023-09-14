@@ -8,8 +8,8 @@ import { AddCompanyButton } from "../components/addCompanyButton";
 import { CompanyItem } from "../components/companyItem";
 import { useCompanyList } from "../../presenters/useCompanyList";
 import { observer } from "mobx-react";
-import { companyModel } from "../../../shared/entities/company/CompanyModel";
 import Geolocation from '@react-native-community/geolocation';
+import { companyModel } from "../../../../entities/company/CompanyModel";
 
 export const CompanyListView: FC = observer(() => {
     const { colors, t } = useUiContext();

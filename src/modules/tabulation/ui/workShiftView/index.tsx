@@ -6,10 +6,10 @@ import { DashboardHeader } from "../../../dashboard/ui/components/dashboardHeade
 import { FlatList } from "react-native";
 import { WorkShiftItem } from "../components/workShiftItem";
 import { WorkShiftEmptyList } from "../components/workShiftEmptyList";
-import { workShiftModel } from "../../../shared/entities/workShift/WorkShiftModel";
 import { UseListWorkShift } from "../../presenters/useListWorkShift";
 import { observer } from "mobx-react";
 import { ButtonAddItem } from "../../../bypassSheetCreate/ui/components/buttonAddItem";
+import { workShiftModel } from "../../../../entities/workShift/WorkShiftModel";
 
 export const WorkShiftView: FC = observer(() => {
     const { colors, t } = useUiContext();

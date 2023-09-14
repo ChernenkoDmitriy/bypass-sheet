@@ -159,8 +159,12 @@ export const translations = {
     end: 'End',
     openWorkShift: 'Open a work shift',
     closeWorkShift: 'Close the work shift',
+    noneData: 'No data',
+    toStartShift:'To start a shift, click the button above',
   },
   uk: {
+    toStartShift:'Щоб почати робочу зміну , натисніть кнопку вище',
+    noneData: 'Немає даних',
     openWorkShift: 'Відкрити робочу зміну',
     closeWorkShift: 'Закрити робочу зміну',
     start: 'Початок',

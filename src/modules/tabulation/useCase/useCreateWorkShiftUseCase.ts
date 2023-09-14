@@ -1,8 +1,8 @@
 import Toast from "react-native-toast-message";
 import { IResponse } from "../../../../libs/requester/IRequester/IResponse";
-import { workShiftService } from "../../shared/entities/workShift/WorkShiftService";
-import { appStateModel } from "../../shared/entities/appState/AppStateModel";
-import { workShiftModel } from "../../shared/entities/workShift/WorkShiftModel";
+import { appStateModel } from "../../../entities/appState/AppStateModel";
+import { workShiftModel } from "../../../entities/workShift/WorkShiftModel";
+import { workShiftService } from "../../../entities/workShift/WorkShiftService";
 
 const processResponse = (response: IResponse) => {
     if (response.data.message) {

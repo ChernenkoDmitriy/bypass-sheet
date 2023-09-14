@@ -2,10 +2,9 @@ import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useUiContext } from "../../../UIProvider";
-import { workPlaceModel } from "../../shared/entities/workPlace/WorkPlaceModel";
-import { useCreateWorkPlaceUseCase } from "../useCase/useCreateWorkPlaceUseCase";
-import { companyModel } from "../../shared/entities/company/CompanyModel";
 import { useUpdateWorkPlaceUseCase } from "../useCase/useUpdateWorkPlaceUseCase";
+import { companyModel } from "../../../entities/company/CompanyModel";
+import { workPlaceModel } from "../../../entities/workPlace/WorkPlaceModel";
 
 export const useUpdateWorkPlace = () => {
     const [radius, setRadius] = useState('');
@@ -84,11 +83,11 @@ export const useUpdateWorkPlace = () => {
     };
 
     const onName = (value: string) => {
-        if (!/\d/.test(value)) setName(value);
+         setName(value);
     };
 
     const onAddress = (value: string) => {
-        if (!/\d/.test(value)) setAddress(value);
+         setAddress(value);
     };
 
     const openMap = () => navigation.navigate('SearchAddressMapView');

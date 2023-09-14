@@ -2,8 +2,8 @@ import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { useState } from "react";
 import { useTimeSheetAdminUseCase } from "../useCase/useTimeSheetAdminUseCase";
-import { companyModel } from "../../shared/entities/company/CompanyModel";
-import { membersModel } from "../../shared/entities/members/MembersModel";
+import { companyModel } from "../../../entities/company/CompanyModel";
+import { membersModel } from "../../../entities/members/MembersModel";
 
 export const useCalendar = () => {
     const [selectedCustomDate, setSelectedCustomDate] = useState<{ endDate: number, startDate: number } | null>(null);
@@ -11,11 +11,11 @@ export const useCalendar = () => {
     const navigation = useNavigation<StackNavigationProp<any>>();
 
     const toTimestamp = (date: string): number => {
-        return new Date(date).getTime() / 1000;
+        return new Date(date).getTime();
     };
 
     const isDisableSaveButton = (endDate: number, startDate: number) => {
-        const now = new Date().getTime() / 1000;
+        const now = new Date().getTime();
 
         if (startDate < now && endDate < now) {
             if (startDate !== 0 && endDate !== 0 && startDate !== endDate) {

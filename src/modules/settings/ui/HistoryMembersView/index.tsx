@@ -5,11 +5,11 @@ import { ScreenContainer } from '../../../../UIKit/screenContainer';
 import { DashboardHeader } from '../../../dashboard/ui/components/dashboardHeader';
 import { getStyle } from './styles';
 import { FlatList, Text, View } from 'react-native';
-import { companyModel } from '../../../shared/entities/company/CompanyModel';
 import { TimeSheetUserItem } from '../components/timeSheetUserItem';
-import { timeSheetModel } from '../../../shared/entities/timeSheet/TimeSheetModel';
 import { useTimeSheetUserListUseCase } from '../../useCase/useTimeSheetUserListUseCase';
 import { useFocusEffect } from '@react-navigation/native';
+import { companyModel } from '../../../../entities/company/CompanyModel';
+import { timeSheetModel } from '../../../../entities/timeSheet/TimeSheetModel';
 
 export const HistoryMembersView: FC = observer(() => {
     const { t, colors } = useUiContext();

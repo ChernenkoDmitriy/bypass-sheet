@@ -6,11 +6,11 @@ export const getStyle = (colors: IColors) => {
     const styles = StyleSheet.create({
         container: {
             flex: 1,
-            justifyContent:'center'
         },
         buttonWrapper: {
-            flexDirection: 'row',
-            justifyContent:'space-between'
+            flex:1,
+            justifyContent:'flex-end',
+            marginBottom:scaleVertical(30)
         },
         title:{
             fontSize:scaleFontSize(22),
@@ -19,6 +19,18 @@ export const getStyle = (colors: IColors) => {
             textAlign:'center',
             paddingVertical:scaleVertical(25),
         },
+        text:{
+            color:colors.text,
+            fontSize:scaleFontSize(12),
+            textAlign:'center',
+            marginTop:scaleVertical(15)
+        },
+        buttonText:{
+            fontSize:scaleFontSize(18),
+            color:colors.primary,
+            textAlign:'center',
+            marginTop:scaleVertical(10)
+        }
     });
     return styles;
 };

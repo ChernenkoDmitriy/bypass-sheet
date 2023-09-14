@@ -9,8 +9,9 @@ export const getStyle = (colors: IColors) => {
             borderWidth: 0.5,
             borderColor: colors.primary,
             marginTop: scaleVertical(15),
-            height: scaleVertical(120),
             borderRadius: 8,
+            paddingVertical:scaleVertical(5),
+            paddingRight:scaleHorizontal(60)
         },
         title: {
             fontSize: scaleFontSize(22),
@@ -30,7 +31,7 @@ export const getStyle = (colors: IColors) => {
             height: '100%',
             paddingVertical: scaleVertical(15),
             justifyContent: 'space-between',
-            paddingLeft: scaleHorizontal(15)
+            paddingLeft: scaleHorizontal(15),
         },
         optionsButton: {
             position: 'absolute',

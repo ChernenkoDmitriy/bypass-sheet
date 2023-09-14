@@ -1,14 +1,10 @@
 import { useFocusEffect, useNavigation } from "@react-navigation/native"
 import { useCallback, useState } from "react";
-import { googleSignInModule } from "../../../../libs/google/googleSignIn/GoogleSignInModule";
-import { userModel } from "../../shared/entities/user/userModel";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { useGetMembersUseCase } from "../../сompanyList/useCase/useGetMembersUseCase";
-import { companyModel } from "../../shared/entities/company/CompanyModel";
 import { useDeleteMemberUseCase } from "../useCase/useDeleteMemberUseCase";
-import { appStateModel } from "../../shared/entities/appState/AppStateModel";
-import { IUser } from "../../shared/entities/user/IUser";
-import { IMembers } from "../../shared/entities/members/IMembers";
+import { companyModel } from "../../../entities/company/CompanyModel";
+import { IMembers } from "../../../entities/members/IMembers";
 
 export const useTabulation = () => {
     const [containerListRefresh, setContainerListRefresh] = useState(false);

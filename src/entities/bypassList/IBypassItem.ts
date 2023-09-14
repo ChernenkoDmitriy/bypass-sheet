@@ -1,4 +1,4 @@
-import { ICropedImage } from "../../../../../libs/imagePicker/IImagePicker/ICropedImage";
+import { ICropedImage } from "../../../libs/imagePicker/IImagePicker/ICropedImage";
 
 export interface IBypassItem {
     id: number;

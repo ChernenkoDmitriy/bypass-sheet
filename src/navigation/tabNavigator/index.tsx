@@ -21,16 +21,19 @@ export const TabNavigator: FC = () => {
             headerShown: false,
             tabBarShowLabel: true,
             tabBarHideOnKeyboard: true,
+            tabBarActiveTintColor: colors.primary,
+
             tabBarStyle: {
                 height: scaleVertical(65),
-                backgroundColor: colors.buttonText,
-                borderTopColor: colors.buttonText,
-                paddingTop:scaleVertical(5)
+                backgroundColor: colors.background,
+                borderTopColor: colors.background,
+                paddingTop:scaleVertical(5),
             },
+            
         }}>
-            <Tab.Screen name={t("dashboard")} component={DashboardView} options={{ tabBarIcon: ({ focused }) => <HomeIcon color={focused ? colors.text : colors.icon} /> }}/>
-            <Tab.Screen name={t("tabulation")} component={TabulationView} options={{ tabBarIcon: ({ focused }) => <TimeIcon color={focused ? colors.text : colors.icon} /> }}/>
-            <Tab.Screen name={t("settings")} component={SettingsView} options={{ tabBarIcon: ({ focused }) => <ProfileIcon color={focused ? colors.text : colors.icon} /> }} />
+            <Tab.Screen name={t("dashboard")} component={DashboardView} options={{ tabBarIcon: ({ focused }) => <HomeIcon color={focused ? colors.primary : colors.icon} /> }}/>
+            <Tab.Screen name={t("tabulation")} component={TabulationView} options={{ tabBarIcon: ({ focused }) => <TimeIcon color={focused ? colors.primary : colors.icon} /> }}/>
+            <Tab.Screen name={t("settings")} component={SettingsView} options={{ tabBarIcon: ({ focused }) => <ProfileIcon color={focused ? colors.primary : colors.icon} /> }} />
         </Tab.Navigator>
     );
 };

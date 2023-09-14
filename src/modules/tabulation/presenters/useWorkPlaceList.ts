@@ -1,9 +1,9 @@
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
-import { companyModel } from "../../shared/entities/company/CompanyModel"
 import { useWorkPlaceListUseCase } from "../useCase/useWorkPlaceListUseCase"
 import { useCallback, useState } from "react";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { useDeleteWorkPlaceUseCase } from "../useCase/useDeleteWorkPlaceUseCase 2";
+import { companyModel } from "../../../entities/company/CompanyModel";
 
 export const UseWorkPlaceList = () => {
     const [containerListRefresh, setContainerListRefresh] = useState(false);

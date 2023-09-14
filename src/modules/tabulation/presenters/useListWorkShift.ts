@@ -1,11 +1,11 @@
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { useCallback, useState } from "react";
 import { useListWorkShiftUseCase } from "../useCase/useListWorkShiftUseCase";
-import { companyModel } from "../../shared/entities/company/CompanyModel";
 import { useDeleteWorkShiftUseCase } from "../useCase/useDeleteWorkShiftUseCase";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { Alert } from "react-native";
 import { useUiContext } from "../../../UIProvider";
+import { companyModel } from "../../../entities/company/CompanyModel";
 
 export const UseListWorkShift = () => {
     const [containerListRefresh, setContainerListRefresh] = useState(false);

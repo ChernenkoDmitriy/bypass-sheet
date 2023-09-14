@@ -1,26 +1,28 @@
-import React, { FC, useCallback, useMemo, useState } from "react";
+import React, { FC, useEffect, useMemo, useState } from "react";
 import { useUiContext } from "../../../../UIProvider";
-import { ScreenContainer } from "../../../../UIKit/screenContainer";
 import { getStyle } from "./style";
-import { DashboardHeader } from "../../../dashboard/ui/components/dashboardHeader";
-import { FlatList, Text, View } from 'react-native'
-import { AdminButton } from "../components/adminButtonItem";
-import { useTabulation } from "../../presenters/useTabulation";
+import { View, Text } from 'react-native'
 import { observer } from "mobx-react";
-import { InviteIcon } from "../../../../../assets/icons/InviteIcon";
-import { AddUserIcon } from "../../../../../assets/icons/AddUserIcon";
-import { TimeIcon } from "../../../../../assets/icons/TimeIcon";
-import { companyModel } from "../../../shared/entities/company/CompanyModel";
-import { UserListItem } from "../components/userListItem";
-import { MembersListItem } from "../components/membersListItem";
 import { MainButton } from "../../../shared/ui/mainButton";
 import { useCreateTimeSheetUseCase } from "../../useCase/useCreateTimeSheetUseCase";
 import { useFinishTimeSheetUseCase } from "../../useCase/useFinishTimeSheetUseCase";
+import { UserCalendar } from "../components/userCalendar";
+import { useTimeSheetUserListUseCase } from "../../../settings/useCase/useTimeSheetUserListUseCase";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { companyModel } from "../../../../entities/company/CompanyModel";
 
 export const UserTabulationView: FC = observer(() => {
     const { colors, t } = useUiContext();
     const styles = useMemo(() => getStyle(colors), [colors]);
     const [start, setStart] = useState(true);
+    const navigation = useNavigation<StackNavigationProp<any>>();
+
+    const openHistory = () => navigation.navigate('HistoryMembersView');
+
+    useEffect(() => {
+        useTimeSheetUserListUseCase(companyModel.chosenCompany?.id || 0, 1613980001709, 16939800017090);
+    }, []);
 
     const set = async () => {
         if (start) {
@@ -33,10 +35,15 @@ export const UserTabulationView: FC = observer(() => {
 
     return (
         <View style={styles.container}>
-            {start
-                ? <MainButton title={t("openWorkShift")} onPress={set} />
-                : <MainButton title={t("closeWorkShift")} onPress={set} />
-            }
+            <UserCalendar />
+            <View style={styles.buttonWrapper}>
+                {start
+                    ? <MainButton title={t("openWorkShift")} onPress={set} />
+                    : <MainButton title={t("closeWorkShift")} onPress={set} />
+                }
+                <Text style={styles.buttonText} onPress={openHistory}>{t('history')}</Text>
+                <Text style={styles.text}>{t('toStartShift')}</Text>
+            </View>
         </View>
     );
 });
